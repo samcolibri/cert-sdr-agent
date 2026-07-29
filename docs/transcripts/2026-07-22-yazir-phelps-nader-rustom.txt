@@ -1,0 +1,144 @@
+AI SDR for Certifcations-20260722_153602-Meeting Transcript
+July 22, 2026, 7:36PM
+24m 6s
+ Nader Rustom started transcription
+ Yazir Phelps   0:03 because it will help describe like our, yeah, let me put this. So we introduce, yeah, of course, of course. I, we introduce certifications.
+ Nader Rustom   0:06 Mm. And... You don't mind if I ask questions as we go along, too? Yeah.
+ Yazir Phelps   0:21 last year as a product. Certifications are...
+ Nader Rustom   0:26 In FHA or in.
+ Yazir Phelps   0:26 Like, and I think we introduced them in Elite MP, but now we're selling them in FHGA, and that's kind of where we'll see where we can leverage the SDR, but at the minimum, like in Elite MP, and we are...
+ Nader Rustom   0:31 Okay. Yeah. Yeah, and just for context with Elite NP is part of FHA technically, or is it its own brand?
+ Yazir Phelps   0:42 But. This is its own brand, so they are different websites. So, we have one website, one website, Elite MP. These certifications are sold on both, and but both are on also on Hotspot, like both brands, so like they come from Hotspot, the customers are there.
+ Nader Rustom   0:52 Yeah. Okay. Yeah. Yeah. Can I ask a quick question on that? Sorry to interrupt you. Just so I can get context to what you're saying. Elite NP, what's the main pain point that they solve? FHA, I know that this pain point is around, we talked about this before, where it was like board ready and so forth.
+ Yazir Phelps   1:03 Definitely, yeah. No. Different, different group, actually different group, um, because if she serves different audiences, so the pain point.
+ Nader Rustom   1:20 Yeah. Okay. Cool. Pain point for both would be great to describe.
+ Yazir Phelps   1:27 Yes. So pain point that is serves for FHA is the certifications are in areas that they were not taught in school, but they're emerging in care and that patients are asking them about. So functional, so the certifications are on functional medicine, HRT, Derm. things that in school, they teach them the pharmacology segments of it. These are emerging medical areas that are now. in demand, but they haven't been trained on. So they're filling a competency gap for them. So now these trainings are long, they're like 90, 80 hours and they're expensive, they're like $4,000. So the list price is 3999, so 4000. So The gap that they... Fill for the elite MP is the same. And it asks them to, while the ones in FHA are using it just so that they can apply it in practice and all that for their employers, because people are asking about it and they need to be informed or patients, ask them about it. On the elite MP side, those folks are also creating new revenue streams from it. So they have a business that this is helping them to learn. to then treat and have new revenue streams. So one is solving for business growth, and in the other one is solving for patient. patient involvement into a field that they're not prepared to treat. So I would say knowledge gap and then the knowledge gap to provide better care, knowledge gap on a lead MP to make more money. So they are, like I said, there's four of them. functional medicine, HRT, so hormone replacement therapy, dermatology, and the last one is a woman's hormone treatments, which is a portion of like the, it's a version of the HRT, but just focus on woman. So what we are trying to do another here is that typically people don't go, oh, 4,000 right away. Like, let me buy it. So they want more information. They want, like when I talk to them, they're asking me to reaffirm the things that are there, to show them what's in there. They have questions. They want to talk to somebody about it because they're spending $4,000. So. In lieu of having a human talk to them, I wanted to see if we can try having a BDR or SDR do it. And also... Because a lot of the information there is consistent. What's in this? Do I have? Like, you know, what do I get? Like all these different things that we can train the AI on it. And part of it too is the follow up. Like I said, Nate, I don't know about you, but I don't go to websites and start spending $4,000 left or right. I have to like, if I'm going to spend 4000, I like. You know, of something I really already know, or if it's something that is like that, I want to know what I'm going to get out of it, so... We were looking, for example, in FHEA, we had $1,000,000 on abandoned carts from Functional Medicine. So I'm like, I want to go after those people. I want to nurture them. I want, so what happens to Nader? I'm like,
+ Nader Rustom   4:54 Just. These are people who went to FHA's website, were going to purchase. Nah, maybe not right now. And right now, do we have anyone following up with these people?
+ Yazir Phelps   5:12 The bando. Yeah. This in emails, but the emails are like not to you, so I'm trying to figure it out how that like the emails are like do this, do that, and then I know this can be more, but I was hoping this one could be more narrow, like into like...
+ Nader Rustom   5:31 Yeah. What do the emails look like today with the follow-up to the people in the abandoned cart saying, hey, you forgot something?
+ Yazir Phelps   5:39 Yeah, so it's like a very generic abandoned cart, like, oh, you left something in the car. Here's like a 10% on it. But it's not like. Yeah, so you were functional medicine. Do you know why this is important? Do you need to talk about, like, what's more? Like, do you need, like, here are some things like they need to be... Like what I told everybody into like functional medicine is this integrated medicines if we're the like again, I give myself speech, right? But we want the agent to do that. And ideally, and I don't know what the functionalities of the agent are too, but if we have phone like through hotspot, if we have numbers, can they can they text?
+ Nader Rustom   6:05 Yeah. Yeah. Oh yeah, okay. Does HubSpot have texting capabilities today? It does.
+ Yazir Phelps   6:23 Yeah, uh-huh, it does.
+ Nader Rustom   6:26 Okay, and are we using that in any use cases right now or?
+ Yazir Phelps   6:28 We're not use, we're not using it right now, so I would love to.
+ Nader Rustom   6:32 Yeah, okay. So that's it.
+ Yazir Phelps   6:33 When they sign in and give us a phone number, they say they they opt in.
+ Nader Rustom   6:36 Yeah. Well, this sounds to me like a clear B2C use case, right? Most of the people who are in the car are B2C, right?
+ Yazir Phelps   6:44 Oh yeah, it is B2C, but the reason that we put it on is because like a high dollar amount that it can be and we have like no humans.
+ Nader Rustom   6:49 Yeah, yeah, yeah. Yeah, yeah. So the alternative to solving this right now without an AISDR would probably be to get an inside sales rep who basically does a lot of calls and saying, hey, like, just saw that you abandoned your cart and I was curious to know, like, was there something that didn't meet expectations? I'd love to get a better sense of what you're thinking about.
+ Yazir Phelps   7:01 Right. Cool.
+ Nader Rustom   7:15 what you're looking to get, maybe something like that. Is that right? Okay. So like, what's missing today is obviously like, we don't have someone doing this, but what else would you say is missing from us doing this well today? Because like, clearly we're sending emails. That's like not super effective because it's not signal based, it's not tailored.
+ Yazir Phelps   7:16 Yep. Correct. Correct. All right.
+ Nader Rustom   7:36 It's not, it's not getting someone to a call or to a meeting.
+ Yazir Phelps   7:39 Correct. Where I think that, what else? I think that that is really it, Nader. If we have like an inside sales team that we will be getting to talk to these folks and find out what their objections are and overcoming them, that's it. Like they need to be sold into it. I think that.
+ Nader Rustom   7:42 What else? What else do you see? Yeah. Yeah, yeah, I gotcha.
+ Yazir Phelps   8:02 the websites get them information and get them in, but they need to like have an interaction. So to me, that's what we're missing. Like somebody, again, a follow up that says, schedule a call to talk or, you know, and or call them and reach out and say like, hey, we saw you were here kind of thing. So.
+ Nader Rustom   8:11 Mhm. Yeah. Mm. Yeah.
+ Yazir Phelps   8:21 And that's why I wanted to try first with a digital one to see if we can make some traction.
+ Nader Rustom   8:24 Yeah, yeah. I got it. So it sounds like the outcome here, based on what you're saying right now, is the outcome is to get them to buy. Is this like purely abandoned carts or is it get, also get them to buy, like, who, who's the list? Is it just abandoned cart people or is it someone else too?
+ Yazir Phelps   8:47 I would start with the abandoned car people, but I also would have, like, we have leads.
+ Nader Rustom   8:52 Lead, okay, so.
+ Yazir Phelps   8:53 that have like either signed up for a form or have, and then we also have, I would say, warm audiences, people that have opened the emails about it, visited the site, but happened. So I would say that we have those.
+ Nader Rustom   9:05 Yeah. Okay, so abandon cart people and then semi-warm to warm leads, right? And so let's say we're going to be reaching out to them. Is the goal of reaching out to them to get them to buy directly through the agent or is it to get them to jump on a call with?
+ Yazir Phelps   9:10 Three level. Correct.
+ Nader Rustom   9:29 a rep to close that opportunity.
+ Yazir Phelps   9:32 close through the agent would be my desire, because what I'm trying to do is not add humans.
+ Nader Rustom   9:35 Yeah, and yeah. Oh, okay. So you want to, you want this to like completely push the opportunity to close.
+ Yazir Phelps   9:47 I want to try it.
+ Nader Rustom   9:47 through e-mail, through e-mail and through text.
+ Yazir Phelps   9:50 Yes, I went by, and then if not, then we can be like, schedule a call, but I don't have anybody to talk to them if they schedule a call.
+ Nader Rustom   9:51 Okay.
+ Yazir Phelps   10:05 Correct.
+ Nader Rustom   10:06 to a meeting.
+ Yazir Phelps   10:07 If we find that we cannot be successful during that matter, then it would be to get them to talk to somebody and then I'll hire somebody to talk to them because it's enough. Like, it's like Moreland, right? You know, this certification costs the same as the Moreland courses that they do for, or like enrollments they do for teaching.
+ Nader Rustom   10:14 Yeah. Mhm. Yeah.
+ Yazir Phelps   10:26 like for to go to school, the certificate. So like it's a, so I think ultimately if we can't get through here, and I do think ultimately we're gonna have to have some sort of that, maybe, but I mean, I'm hoping that these agents can be enough, but in the meantime, it could be a SDR that closes them.
+ Nader Rustom   10:28 Yeah. Yeah. But.
+ Yazir Phelps   10:45 And if we find out we're not having success there, then I'll get a person.
+ Nader Rustom   10:49 And is there, let's say for example, we create a workflow or a sequence where someone responds. They say, hey, like, I'd love to learn more about this. I had some questions. Today, do we have anyone able to handle that response? or will it be purely, hey, you know, just buy and if you don't buy, then we lose you. They're gonna respond if, if, if they do.
+ Yazir Phelps   11:20 I think, yeah, they're going to respond. Yeah, if they don't, I think that I can find somebody in the meantime Nader that at least I train that could answer those and then kind of go from there. They might not be like for the test, right? Like it'll be like, I can look at the team and be like,
+ Nader Rustom   11:35 Yeah, yeah, yeah, yeah, I gotcha.
+ Yazir Phelps   11:39 Okay, you. You're gonna do this because like right now.
+ Nader Rustom   11:41 Yeah. Yeah, so I guess like the first phase of this would be pure AI as their agent. Let's see how much of that amount we can retrieve. If we see that there's at least some element of retrieval, we can then push to phase two, which is turning this into generating a meeting, having an inside sales rep.
+ Yazir Phelps   12:03 Active.
+ Nader Rustom   12:04 having that inside sales rep close. I gotcha. Okay.
+ Yazir Phelps   12:06 Mhm.
+ Nader Rustom   12:11 And so, like, I'd love for you to kind of walk me through, like, what one of these prospects is unaware of today.
+ Yazir Phelps   12:21 Yeah.
+ Nader Rustom   12:22 To make a decision.
+ Yazir Phelps   12:24 Yes, so. Some of the things that are on our work today, so I want to... Let's go to Fitzgerald.
+ Nader Rustom   12:34 Yeah.
+ Yazir Phelps   12:35 Some of them are like, oh, I heard about this functional meta things thing or HRT where, but I really don't know much about it. So I was.
+ Nader Rustom   12:38 Ketts. Yeah. And I guess like some of it's seasonal too, I imagine, if it's like FHA, like, hey, I'm getting ready now, September. Oh yeah, you know, it's the new year. Is that also the case or not really?
+ Yazir Phelps   12:53 No, not really. No, this is more like there's a huge movement into functional medicine, integrated medicines is becoming more and more of a thing. So it's kind of the, so it used to be that functional medicine was like, oh, that's like not evidence-based and this kind of, this is evidence-based. So there's a lot of education that are like, they're like, well, I see that, I don't know about it.
+ Nader Rustom   12:54 Okay, okay, I'll let you finish then.
+ Yazir Phelps   13:15 My patients are asking me about it, but I say, oh, ignore that because I don't want to answer. And so first is education. So the things that are not about it, it's like, what is in it? So like the course, if you go to the landing page for the course, it'll have what you get on the certification, what's included, you know, how much it costs, like, you know, some stats about this stuff.
+ Nader Rustom   13:26 Mm.
+ Yazir Phelps   13:38 But it doesn't go into like, what is functional medicine? Like what is like, so I think like what they're missing is some basic understanding of what it is. Their patients are talking about it. They know it's a thing. It's like, okay, I give you a perfect example. It's like for us business and market AI.
+ Nader Rustom   13:42 Yeah, I gotcha. Mm.
+ Yazir Phelps   13:56 It's like if we were like, yeah, I hear this thing. Like, what does it do? Like, how do I use it? I know everybody, like, I know I got to do it, but I don't know how, you know what I mean? Like, it's kind of like that for them. It's like functional medicine is like the new thing. And all these things are. There are things. And then dermatology, for example, that one's one that
+ Nader Rustom   13:57 Yeah. Yeah. I gotcha. Mhm.
+ Yazir Phelps   14:14 They're never comfortable with them because they don't they do like a couple of courses like of hours on school and but most of the patients the when they come in, so dorms always hard. So what they lack is like confidence and this course really helps them treat in primary care things that they wouldn't have been taught. So
+ Nader Rustom   14:21 Mm. Yeah, I gotcha.
+ Yazir Phelps   14:34 I think like what they lack there is like knowledge and stuff, but, and I think what they lack is like, what can I do if I get this? And Derm is different. It's like, they know what Derm is. It's more about how can I use this to help me in my job? Like, why should I do $4,000? Like, I'll just, so, and that's when the information is there, but they read, but they don't read. Like, it just like, so.
+ Nader Rustom   14:47 Mhm. Mm. Mhm, funny. Okay. Yeah.
+ Yazir Phelps   14:58 Does you just need to be reinforced and give examples of it? Like, so for example, like, hey, you know, we can type those in into the thing, like an example of typically, because I get this me to say, tell me something that they typically will not be able to treat, but now with this, like show me a before and after of you, like with this certificate, right?
+ Nader Rustom   15:01 Mm. Mhm. Yeah, yeah.
+ Yazir Phelps   15:18 versus the functional medicine, it's like AI for new people in business and they're like, I hear about it, I know I gotta get on the train, but I don't know how to do it.
+ Nader Rustom   15:24 Yeah, yeah, yeah. So it sounds to me like the way to solve this is, at least in this current version, is to have really good e-mail copy that's tailored to the pain point of the person and helping them make a decision on their current state to a future state.
+ Yazir Phelps   15:35 Mhm. Correct.
+ Nader Rustom   15:46 Like some type of transformation around, hey, I got wealthier. Hey, I got healthier. Hey, my relationships got better. Hey, like things that that individual B2C consumer cares about, right? I'm just giving examples. I'm not saying those are the ones. I'm saying like, hey, I need to make a decision on where I'm at today.
+ Yazir Phelps   16:01 Devin.
+ Nader Rustom   16:06 to where I'm going. Maybe that's like some type of ambition. Maybe it's like some type of story. Hey, here's actually a story of how we did this, right? Sounds to me like that's what you're kind of describing. You're describing helping them understand their current state and how they will.
+ Yazir Phelps   16:14 Correct.
+ Nader Rustom   16:22 be empowered in a with this product to their desired future state. Okay. Can I ask you a quick question on this with regards to like how we want to reach out to them? We could do this in like 2 formats. Obviously there was e-mail and then there's like kind of what you're talking about with.
+ Yazir Phelps   16:25 Yes. Yes, yes. Yes.
+ Nader Rustom   16:41 Text. First off, are we collecting their emails? Are these people that we have their emails? Obviously with warm leads, I imagine there's like a list of people that we've reached out to in the past. It's like an emailing list. They've opted into marketing in some way. That's one list. But the abandoned carts, do we have their emails and phone numbers?
+ Yazir Phelps   16:52 Yeah, mhm. Yeah. Yes. I think for them they have, we do because for at least a good amount of them because when they're in the abandoned cart, if you already done like your e-mail, like he knows who you are. Like, so that's how we get like the emails going. Yes, in Hotspot they would be. So I'm also thinking to.
+ Nader Rustom   17:16 Yeah, this is their profile. Yeah.
+ Yazir Phelps   17:24 The more and more I think about it, because I know the agents that you have built are more tailored to where with the ultimate goal of getting them to a salesperson to talk to them, right? So.
+ Nader Rustom   17:30 Mhm. Mm. Yeah.
+ Yazir Phelps   17:36 Do you think that... I should just get somebody and you lead them to them. No. Okay. All right. Okay.
+ Nader Rustom   17:40 No, there's a clear use case here. There's 100% clear use case. Before we can get someone, like there has to be a clear use case. Like there's a very clear use case of us reaching out to a warm list or us that at least not maximizing the way that we should reach out. So like.
+ Yazir Phelps   17:49 OK. Okay. Right. Correct. You know, they emailed them, but it's like, you know, it's one too many and not like, so I think if we can, yeah.
+ Nader Rustom   18:01 The way that I would kind of see this. Yeah, the way that you would do this is the following, in my opinion at least. Like right now, it sounds like the only tech stack that we have is HubSpot to solve this today, right?
+ Yazir Phelps   18:18 Mhm, Yeah.
+ Nader Rustom   18:19 Um... We don't necessarily need an enrichment tool, at least not like a ZoomInfo or an Apollo. Like, you don't really need that. You don't really need another sequencing type tool like Outreach or GunGage. So like, the use case for us to just like do something better with what we have and being nimble is absolutely there.
+ Yazir Phelps   18:27 No, because they're in the beginning. Mhm.
+ Nader Rustom   18:44 The one thing that, like, if we wanted to think about this, it would be like, do we want to use that list and create targeted campaigns and ads towards them? Like, maybe.
+ Yazir Phelps   18:58 Maybe, but you know what it means? Like we're doing all of that and they see the ad. This is like requires like they feel like a human is reaching out rather than like, but we're making like a human versus because that we're doing all the other stuff, but the other stuff feels like selling to them. We want to be like.
+ Nader Rustom   19:05 Exactly, exactly. Yeah, exactly. Exactly, 100%.
+ Yazir Phelps   19:16 Talking to them.
+ Nader Rustom   19:17 Yeah, so like, tell me a little bit more about like what your expectations are around success. Like, if we were to talk about like specific metrics, right, like revenue, enrollments, maybe a cost saving of a headcount, like walk me through
+ Yazir Phelps   19:28 Yes. Mhm. Yeah.
+ Nader Rustom   19:36 Here, like what you would see as success metrics around around deploying this.
+ Yazir Phelps   19:44 So I think that we are in a very good spot right now because in lieu of having something and having like what I had is my team right now is running a dedicated campaign against those like warm leads for like 10 days right now. But still like marketing talk and stuff like that and notice like, so, and it's again, the same sequence for everybody kind of thing. So I think that if we look at that campaign. and say our conversion rate was this.
+ Nader Rustom   20:19 Muh.
+ Yazir Phelps   20:20 Our goal with this one, because otherwise I don't know what to tell you because we haven't tried anything else, right? Like, so it would be.
+ Nader Rustom   20:23 Mmh. Yeah, and it sounds like that's the conversation with Gail that we have to have.
+ Yazir Phelps   20:28 The Gail will be the conversation with Gail will be more like access to all the information. Like for me, I just want her to carry the project so that then she can tell you like where to get the information, what the kind of stuff like, right? Because she being, she's been working on like the Ruby advisor when you went to the site is supposed to, but like that, like people are not engaging with it as much. So like I.
+ Nader Rustom   20:39 OKOK.
+ Yazir Phelps   20:50 technically that should be trying to sell them too, but it also doesn't have a like, hey, buy here now. Like it's more about asking them like where to go. And so.
+ Nader Rustom   20:58 Yeah.
+ Yazir Phelps   21:00 I think that if we look at how that campaign ends, which will end like next week, and we said, hey, with that campaign, we had a conversion rate of X. Then we say our idea is with this more human-like outreach and more of like an SDR. We would increase that.
+ Nader Rustom   21:20 Yeah, okay.
+ Yazir Phelps   21:21 Because otherwise you would tell me, well, just go send emails, you know, like, and do that and do workflows and stuff like that. So now we are launching.
+ Nader Rustom   21:25 Yeah, totally.
+ Yazir Phelps   21:33 This same thing in that CE, we have like $1,000,000 goal that we're trying to hit in additional sales of this with that CE that has a.
+ Nader Rustom   21:39 Yeah, yeah. That's a separate brand, right?
+ Yazir Phelps   21:44 separate brands, so but they have like a different list of people. So I wonder in that those people are like less qualified. So I wonder if that's where we could do an append or of some sort that has like where they work and we can say like that's where we can get smarter about.
+ Nader Rustom   21:48 Yeah. Yeah. Yeah.
+ Yazir Phelps   22:06 But I think we first need to make it work with these people that we have because if we cannot make it work with this, those are even colder.
+ Nader Rustom   22:09 Yeah. Yeah, I hear you. Just in the spirit of time, because I do have a meeting that I got to drop to in 2 minutes here. As next steps, it sounds like Gail is going to be owning the project. So the next meeting that we have with her is going to be primarily around gathering insights on
+ Yazir Phelps   22:14 Yeah. Yeah. Yes.
+ Nader Rustom   22:33 ICPs, pain points, story, current state, future state, all the things that would be kind of incorporated into the brain of how this agent would function. Is that fair to say?
+ Yazir Phelps   22:42 Yeah. Yes, because she'll be our quarterback with the internal team to get all those things like, and she, like, the reason I want to her not in this is because she understands how AI works and the agents and all this, so she can get the information, can like help navigate like the things.
+ Nader Rustom   22:47 Got it. Got it, got it. Ketts. Got it. Got it. Got it. And so the other part of this would be understanding metrics, impact, and business case. So we have to build that over the next two weeks. And so as a next step, I would love to kind of get a better sense with whether it's a resource on your team or who it may be, but digging deeper to getting...
+ Yazir Phelps   23:06 Correct. Yeah. Mhm.
+ Nader Rustom   23:18 a better understanding of like, okay, this is how many people we're going to be reaching out to. This is our planned conversion rate. If we convert them, this is how much money we can make. Right. And so that would kind of be my next step. So would that next step be with you or would it be with someone else on your team?
+ Yazir Phelps   23:22 Yep. Yeah. We can make, exactly. That's good. You'll be with me, so I'll look at that. I'll get that from there. So I'll work on that. Perfect. Thank you. I know you have a...
+ Nader Rustom   23:36 Okay. Okay. Cool. Do you, do you want to, do you want to send me that information and I can get working on it? Or do you want to have a meeting to go through it?
+ Yazir Phelps   23:44 Yes. I'll send you the information and then if you have any questions, then we can talk to it. So I am, yeah, yeah, and I'm going, yeah, exactly. I'm going on PTO towards the end of next week and the following week. So I'm going to get it to you before I go. So like, if not by the end of the week, like by Tuesday of next week.
+ Nader Rustom   23:47 Yeah, yeah, so we could do that async, and then, and then I'll... Cool. Tuesday of next week? Cool. Yeah, that'd be great. Awesome. All right, thanks, Yazir. Bye.
+ Yazir Phelps   24:03 Okay. All right. Thank you. All right. Bye.
+ Nader Rustom stopped transcription
