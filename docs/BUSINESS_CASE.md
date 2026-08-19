@@ -15,7 +15,7 @@ Owner: Nader. This file tracks the numbers and where they come from. Updated 202
 
 ⚠️ **Reconcile before submitting:** $295K vs $1M vs $2.8M are different cuts (flow-enrolled contacts vs monthly Matomo cart value). Define: time window, brand, cert, and whether "opportunity" = cart value or enrolled-flow value.
 
-## Awaiting from Gail/Heather (48h from Jul 28)
+## Awaiting from Gail/Heather (requested Jul 28 — chase any still outstanding)
 
 - [ ] All certs list with per-cert pipeline value (Matomo screenshots)
 - [ ] Which cert to start on (confirmed: Functional Medicine) + rollout order for the rest
@@ -33,10 +33,17 @@ FM/FHEA July example: $2.8M × (10% − 8%) = $56K/month incremental
 ```
 (Replace $2.8M with the reconciled addressable value; extend across certs and brands at rollout.)
 
-Cost side: ~zero incremental headcount (that's the point) — Claude API + build time (Sam, 1–2 wks) + HubSpot SMS costs. Compare against the alternative Yazir named: hiring an inside sales rep.
+Cost side: ~zero incremental headcount (that's the point) — Claude API + build time (Sam, phased P1–P4) + HubSpot delivery costs. Compare against the alternative Yazir named: hiring an inside sales rep ($70K+/yr per rep).
 
-## Success criteria (from calls)
+## Upside not in the recovered-cart math (vision additions)
 
-1. Abandoned-cart conversion: **8% → 10–12%** on FM/FHEA with agent sequence (vs holdout on existing workflow).
-2. Warm-leads: beat the current dedicated campaign's conversion (baseline lands when campaign ends ~early Aug).
-3. Qualitative: objection/question dataset produced for content team (survey effect).
+- **Pre-abandonment saves** — page advisor + cart rescue convert visitors who never enter the abandoned-cart pool; invisible in the 8% baseline, pure upside.
+- **Lead capture** — hesitating visitors become tagged leads (decision state + objection) entering matched nurture paths.
+- **Objection intelligence** — a dataset of what actually blocks buyers, feeding site copy, email content, and ads.
+
+## Success criteria
+
+1. Abandoned-cart conversion: **8% → 10–12%** on FM/FHEA with agent-written recovery emails (vs holdout on the existing workflow).
+2. Advisor-conversation → add-to-cart rate and lead-capture volume benchmarked in the Phase 2 pilot.
+3. Warm-leads: beat the July dedicated campaign's conversion (1/2,500 baseline).
+4. Qualitative: tagged objection/decision-state dataset produced for the content team (survey effect).

@@ -74,7 +74,7 @@ Verbatim transcripts live in [`transcripts/`](transcripts/); original .docx in [
 4. Gail can prototype in Claude (agents + skills that scrape pages) but a customer-facing publish needs an IT resource. Also: lifecycle-marketing agents are being planned **in HubSpot** — this could fall in the same realm. Nader: HubSpot agent + **HubSpot's MCP connection to Claude** (agent built out of HubSpot, runs through a Claude skill) is a candidate shape — Sam to design.
 5. "We have everything we need to start the agent part — it's just being able to connect it."
 
-### Nader's sequence sketch (see SEQUENCE_SPEC.md)
+### Nader's sequence sketch (July design — superseded by [VISION.md](VISION.md) touchpoint 3; current spec: [TOUCHPOINTS.md](TOUCHPOINTS.md))
 7-touch email + SMS: fast check-in → transformation story → 10% discount → discount+Q&A reminder (with SMS nudge) → asset/lead magnet → breakup → roll into the 2,500 warm nurture list (pure education: case studies, stories).
 
 ### Insight loop (Gail)
