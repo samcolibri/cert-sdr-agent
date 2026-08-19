@@ -1,6 +1,6 @@
 # Business Case — Inputs & Skeleton
 
-Owner: Nader (submission target Aug 1, 2026). This file tracks the numbers he needs and where they come from.
+Owner: Nader. This file tracks the numbers and where they come from. Updated 2026-08-19 for the [VISION.md](VISION.md) scope: the three-touchpoint advisor adds two upside lines the July case didn't count — **pre-abandonment saves** (page/cart interventions convert people who never enter the abandoned-cart pool) and **lead capture** from hesitating visitors (tagged by decision state and objection).
 
 ## Known numbers (as of Jul 28)
 

@@ -1,4 +1,6 @@
-# Meeting Notes — Distilled Requirements
+# Meeting Notes — Distilled Requirements (July discovery)
+
+> **⚠️ Superseded on product direction by [`VISION.md`](VISION.md)** (Gail Applin, Aug 17 2026) — the project evolved from an email/SMS recovery sequence into a single three-touchpoint program advisor. These notes remain the record of business context, numbers, stakeholders, and constraints.
 
 Verbatim transcripts live in [`transcripts/`](transcripts/); original .docx in [`source/`](source/). This file is the working summary.
 

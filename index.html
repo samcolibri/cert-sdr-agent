@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cert SDR Agent — AI SDR for Certifications</title>
-<meta name="description" content="An AI sales agent that recovers abandoned certification carts by email and text — no new headcount.">
+<title>FM Program Advisor — AI SDR for the Functional Medicine Certification</title>
+<meta name="description" content="One AI program advisor across three touchpoints: landing page, cart rescue, and recovery emails she writes herself.">
 <style>
   :root{
     --ink:#111827; --ink-2:#4b5563; --muted:#6b7280; --faint:#9ca3af;
@@ -20,7 +20,6 @@
   a{color:var(--accent);text-decoration:none}
   a:hover{text-decoration:underline}
 
-  /* nav */
   nav{position:sticky;top:0;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);
       border-bottom:1px solid var(--line);z-index:10}
   nav .wrap{display:flex;align-items:center;justify-content:space-between;height:56px}
@@ -29,36 +28,34 @@
   nav .links a{color:var(--ink-2)}
   @media(max-width:640px){nav .links{display:none}}
 
-  /* hero */
   header{padding:88px 0 64px;border-bottom:1px solid var(--line)}
   .kicker{font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:16px}
   h1{font-size:clamp(32px,5vw,48px);line-height:1.12;letter-spacing:-.02em;font-weight:800;margin-bottom:20px}
-  .lede{font-size:20px;color:var(--ink-2);max-width:640px}
+  .lede{font-size:20px;color:var(--ink-2);max-width:660px}
   .lede strong{color:var(--ink)}
 
   section{padding:64px 0;border-bottom:1px solid var(--line)}
   h2{font-size:26px;letter-spacing:-.01em;font-weight:750;margin-bottom:8px}
-  .sub{color:var(--muted);margin-bottom:32px;max-width:620px}
+  .sub{color:var(--muted);margin-bottom:32px;max-width:640px}
   h3{font-size:17px;font-weight:700;margin:28px 0 8px}
   p+p{margin-top:12px}
 
-  /* stat tiles */
   .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:16px;margin:8px 0 28px}
   .stat{border:1px solid var(--line);border-radius:12px;padding:20px 20px 16px;background:var(--bg)}
   .stat .n{font-size:32px;font-weight:800;letter-spacing:-.02em;line-height:1.1}
   .stat .l{font-size:13.5px;color:var(--muted);margin-top:6px}
   .stat.hero{background:var(--tint)}
 
-  /* steps */
-  .steps{list-style:none;counter-reset:s;display:grid;gap:14px;margin-top:8px}
-  .steps li{counter-increment:s;display:flex;gap:16px;border:1px solid var(--line);border-radius:12px;padding:16px 18px}
-  .steps li::before{content:counter(s);flex:0 0 30px;height:30px;border-radius:50%;
-    background:var(--ink);color:#fff;font-weight:700;font-size:14px;
-    display:flex;align-items:center;justify-content:center;margin-top:2px}
-  .steps b{display:block;margin-bottom:2px}
-  .steps span{color:var(--ink-2);font-size:15.5px}
+  /* touchpoint cards */
+  .tps{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-top:8px}
+  .tp{border:1px solid var(--line);border-radius:14px;padding:22px}
+  .tp .num{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:50%;
+           background:var(--accent);color:#fff;font-weight:800;font-size:15px;margin-bottom:12px}
+  .tp b{display:block;font-size:16.5px;margin-bottom:6px}
+  .tp .when{font-size:13px;color:var(--accent);font-weight:600;margin-bottom:8px}
+  .tp span{font-size:14.5px;color:var(--ink-2)}
+  .tp.star{border-color:var(--accent);background:var(--accent-soft)}
 
-  /* tables */
   table{width:100%;border-collapse:collapse;font-size:15px;margin-top:8px}
   th{text-align:left;font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);
      font-weight:600;padding:10px 14px;border-bottom:2px solid var(--line)}
@@ -66,6 +63,7 @@
   td:first-child{color:var(--ink);font-weight:600}
   .tablebox{overflow-x:auto;border:1px solid var(--line);border-radius:12px}
   .tablebox table{margin:0}
+
   .isnt{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:8px}
   @media(max-width:640px){.isnt{grid-template-columns:1fr}}
   .isnt .col{border:1px solid var(--line);border-radius:12px;padding:20px}
@@ -75,16 +73,19 @@
   .isnt .yes li::before{content:"✓";color:var(--good);font-weight:700;margin-right:10px}
   .isnt .no li::before{content:"✕";color:var(--faint);font-weight:700;margin-right:10px}
 
-  /* architecture flow */
-  .flow{display:grid;gap:0;margin-top:24px}
-  .frow{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px}
-  .fbox{border:1px solid var(--line);border-radius:12px;padding:16px;background:var(--bg)}
-  .fbox b{display:block;font-size:14.5px;margin-bottom:3px}
-  .fbox span{font-size:13px;color:var(--muted);line-height:1.45;display:block}
-  .fbox.core{border-color:var(--accent);background:var(--accent-soft)}
-  .arrow{text-align:center;color:var(--faint);font-size:20px;padding:6px 0;line-height:1}
+  /* chat demo */
+  .chat{border:1px solid var(--line);border-radius:16px;padding:24px;background:var(--tint);margin-top:24px;max-width:660px}
+  .chat .ctx{font-size:12.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;font-weight:600;margin-bottom:16px}
+  .msg{max-width:85%;padding:12px 16px;border-radius:14px;font-size:14.5px;line-height:1.55;margin-bottom:12px}
+  .msg.agent{background:#fff;border:1px solid var(--line);border-bottom-left-radius:4px}
+  .msg.np{background:var(--accent);color:#fff;margin-left:auto;border-bottom-right-radius:4px}
+  .msg .who{display:block;font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;margin-bottom:4px;opacity:.65}
+  .chat .out{font-size:13.5px;color:var(--good);font-weight:600;margin-top:14px}
 
-  /* money chart */
+  .callout{border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:8px;
+           background:var(--tint);padding:18px 20px;margin-top:28px;font-size:15.5px;color:var(--ink-2)}
+  .callout b{color:var(--ink)}
+
   .chart{margin:28px 0 8px}
   .bar-row{display:grid;grid-template-columns:150px 1fr 170px;align-items:center;gap:14px;padding:9px 0}
   .bar-row .lab{font-size:14px;color:var(--ink-2);text-align:right}
@@ -96,15 +97,11 @@
   .chart-note{font-size:13px;color:var(--muted);margin-top:10px}
   @media(max-width:640px){.bar-row{grid-template-columns:90px 1fr 120px}.bar-row .lab{font-size:12.5px}.bar-row .val{font-size:12.5px}}
 
-  .callout{border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:8px;
-           background:var(--tint);padding:18px 20px;margin-top:28px;font-size:15.5px;color:var(--ink-2)}
-  .callout b{color:var(--ink)}
   .big-money{background:var(--good-soft);border:1px solid #a7f3d0;border-radius:12px;
              padding:26px 28px;margin-top:28px;text-align:center}
   .big-money .n{font-size:clamp(28px,4.5vw,40px);font-weight:800;letter-spacing:-.02em;color:var(--good)}
   .big-money .l{color:var(--ink-2);font-size:15.5px;margin-top:6px}
 
-  /* timeline */
   .tl{list-style:none;margin-top:16px;border-left:2px solid var(--line);display:grid;gap:22px;padding-left:24px}
   .tl li{position:relative}
   .tl li::before{content:"";position:absolute;left:-31px;top:7px;width:12px;height:12px;border-radius:50%;
@@ -123,172 +120,151 @@
 <body>
 
 <nav><div class="wrap">
-  <div class="brand">Cert SDR Agent</div>
+  <div class="brand">FM Program Advisor</div>
   <div class="links">
-    <a href="#problem">Problem</a><a href="#solution">Solution</a><a href="#how">How</a>
-    <a href="#architecture">Architecture</a><a href="#money">The Money</a><a href="#timeline">Timeline</a>
+    <a href="#problem">Problem</a><a href="#vision">The Vision</a><a href="#demo">See It</a>
+    <a href="#how">How</a><a href="#money">The Money</a><a href="#plan">Plan</a>
   </div>
 </div></nav>
 
 <header><div class="wrap">
-  <div class="kicker">AI SDR for Certifications · FHEA + Elite NP</div>
-  <h1>Millions in certification sales are walking away.<br>This agent goes and gets them back.</h1>
-  <p class="lede">An AI sales agent that follows up with every hesitant buyer of our <strong>$3,999 NP certifications</strong> — by email and text, like a helpful human would. <strong>No new headcount. No new software licenses.</strong></p>
+  <div class="kicker">Product Vision · Colibri Healthcare · FHEA + Elite NP</div>
+  <h1>She has questions about a $3,999 certification.<br>Now someone is there to answer them.</h1>
+  <p class="lede">An always-on <strong>AI program advisor</strong> for the Functional Medicine Certification — she meets nurse practitioners on the landing page when they hesitate, steps in when a cart is about to be abandoned, and <strong>writes the follow-up email herself</strong>.</p>
 </div></header>
 
 <section id="problem"><div class="wrap">
   <h2>The Problem</h2>
-  <p class="sub">People want to buy — but nobody spends $4,000 on a website without asking questions first. And today, no one is there to answer them.</p>
+  <p class="sub">A $3,999 clinical credential is a considered purchase — a career pivot, a year of evenings, household money. The buyer has real questions, and today she has nowhere to ask them at the moment she's asking them.</p>
   <div class="stats">
-    <div class="stat hero"><div class="n">$2.8M</div><div class="l">left in abandoned carts in July — Functional Medicine alone, one website</div></div>
-    <div class="stat"><div class="n">8%</div><div class="l">of cart abandoners end up buying. The other 92% walk away.</div></div>
-    <div class="stat"><div class="n">1 / 2,500</div><div class="l">warm leads converted by the current marketing campaign</div></div>
-    <div class="stat"><div class="n">1 email</div><div class="l">is all a $4,000 hesitant buyer gets today — a generic "you left something in your cart"</div></div>
+    <div class="stat hero"><div class="n">$3,999</div><div class="l">the highest-value single SKU in the FHEA catalog (FMP-C, sold on fhea.com &amp; elitenp.com)</div></div>
+    <div class="stat"><div class="n">$2.8M</div><div class="l">left in abandoned carts in July — this one certification, one website</div></div>
+    <div class="stat"><div class="n">8%</div><div class="l">of cart abandoners ever come back and buy</div></div>
+    <div class="stat"><div class="n">1 template</div><div class="l">the same generic "you left something in your cart" email everyone gets</div></div>
   </div>
-  <p>Buyers add a certification to their cart, think <em>"let me sleep on it"</em>… and never come back. The normal fix is hiring an inside sales team. We'd rather not add headcount to find out if follow-up works — so we're building a salesperson out of software.</p>
+  <p>Her real questions: <em>Is it accredited? Does it count toward my prescribing requirements? Will it teach me to charge for this work? Will my employer reimburse it?</em> — asked at 9pm on the landing page, answered by no one.</p>
 </div></section>
 
-<section id="solution"><div class="wrap">
-  <h2>The Solution</h2>
-  <p class="sub">A tireless, knowledgeable AI salesperson that reaches out personally, answers real questions with verified facts, and closes the sale.</p>
-  <ol class="steps">
-    <li><b>Reaches out within 15 minutes</b><span>of an abandoned cart — friendly, not pushy: "Noticed you were looking at the Functional Medicine certification. Any questions I can answer?"</span></li>
-    <li><b>Tells real stories</b><span>how someone just like them took the course, and what changed for their practice and income afterward.</span></li>
-    <li><b>Answers their questions accurately</b><span>"Will this help my practice? Is it worth $4,000? Do I have time for 80 hours?" — using only verified course facts. It never makes things up; if it doesn't know, a real person steps in.</span></li>
-    <li><b>Offers 10% off at the right moment</b><span>as a nudge after the conversation — including a text message — not as the opening line.</span></li>
-    <li><b>Knows when to stop</b><span>after a respectful goodbye email it moves them into a gentle education track. No pestering, instant unsubscribe.</span></li>
-    <li><b>Tells us what buyers are worried about</b><span>every question is logged — a free, always-on survey that makes our website, emails and ads smarter.</span></li>
-  </ol>
+<section id="vision"><div class="wrap">
+  <h2>The Vision — one agent, three touchpoints</h2>
+  <p class="sub">Not three disconnected automations. One advisor with a name, a consistent voice, memory of the conversation — and she says plainly that she's an AI assistant with a human colleague one message away.</p>
+  <div class="tps">
+    <div class="tp"><div class="num">1</div><b>Landing page advisor</b>
+      <div class="when">When behavior signals hesitation — never on page load</div>
+      <span>Lingering on the price block? Opened the FAQ twice? Back for a second visit? Trying to print the page for a boss? She opens with the exact thing that person needs — and captures the lead.</span></div>
+    <div class="tp"><div class="num">2</div><b>Cart &amp; checkout rescue</b>
+      <div class="when">Exit intent · payment stall · coupon hunting</div>
+      <span>She names and removes the single specific blocker in the next thirty seconds — the Affirm monthly figure, the employer invoice — or simply asks permission to follow up.</span></div>
+    <div class="tp star"><div class="num">3</div><b>She writes the recovery email</b>
+      <div class="when">After abandonment · via HubSpot</div>
+      <span>The agent that had the conversation writes the email. Subject line = her actual objection. Body = the answer. The sequence stops the moment it's resolved. <b>No templates.</b></span></div>
+  </div>
+  <div class="callout"><b>Rules she never breaks:</b> one proactive attempt per session · dismissed = silent · never interrupts checkout · never greets someone who already owns the certification · short messages (a wall of text reads as a pop-up, not a person) · answers only from verified course facts — never invents.</div>
+</div></section>
+
+<section id="demo"><div class="wrap">
+  <h2>See It <span class="pill">from the vision doc</span></h2>
+  <p class="sub">A "Clinically Curious" nurse practitioner: organic search, 52 seconds on page, scrolled past the curriculum, no click.</p>
+  <div class="chat">
+    <div class="ctx">On /functional-medicine-certification/</div>
+    <div class="msg agent"><span class="who">Advisor</span>Hi — I'm the FHEA program advisor, and I'm an AI assistant, so you can ask me anything about this certification without a sales call. Most NPs at this point in the page are trying to work out how clinically deep it actually goes. Want me to walk you through the lab interpretation and prescribing content?</div>
+    <div class="msg np"><span class="who">NP</span>Honestly yes. I've looked at three functional medicine programs and two of them were basically supplements and vibes.</div>
+    <div class="msg agent"><span class="who">Advisor</span>That's a fair filter. The program is 95 contact hours, IACET accredited, and 24 of those hours are pharmacology — so it counts toward Rx requirements. Full modules on lab interpretation, cardiometabolic health, HPA axis dysregulation, immunity &amp; inflammation, and gut health, led by Jenni Gallagher, MSN, NP-C with six subject-matter experts. Want the module-by-module outline to compare side by side?</div>
+    <div class="msg np"><span class="who">NP</span>Send the outline. And how long does it take?</div>
+    <div class="msg agent"><span class="who">Advisor</span>Fully online and self-paced with a year of access — most providers finish in three to six months. What's your email and I'll send it now, and flag the two modules people find most demanding so you can plan around them.</div>
+    <div class="out">✓ Lead captured · state: Clinically Curious · objection: rigor · outline delivered · nurture path leads with depth, not discount</div>
+  </div>
+  <p style="margin-top:18px">Notice what she <b>didn't</b> do: mention price. A buyer not yet convinced the program is serious reads a price as a reason to leave. <b>Price becomes relevant the moment rigor is resolved — and not before.</b></p>
+</div></section>
+
+<section id="how"><div class="wrap">
+  <h2>How We'll Build It</h2>
+  <p class="sub">Four phases — starting with the one that needs zero website changes.</p>
+  <ul class="tl">
+    <li><span class="d">Phase 1</span><b>The email writer</b><span>Agent-written recovery emails for FM cart abandoners via HubSpot, grounded in what each person viewed. Human-approved until the team signs off. Comparison group proves the lift.</span></li>
+    <li><span class="d">Phase 2</span><b>The landing-page advisor</b><span>Chat advisor live on the fhea.com cert page with the 8 hesitation triggers, a self-updating knowledge base, lead capture and objection tagging.</span></li>
+    <li><span class="d">Phase 3</span><b>Cart &amp; checkout rescue</b><span>Exit-intent, payment-stall, and coupon-hunt interventions at the moment of truth.</span></li>
+    <li><span class="d">Phase 4</span><b>Close the loop &amp; roll out</b><span>Emails continue the actual on-page conversations. Then elitenp.com, then the other five certifications.</span></li>
+  </ul>
+
+  <h3>What we need to start</h3>
+  <div class="tablebox"><table>
+    <tr><th>What</th><th>Who</th></tr>
+    <tr><td>Persona sign-off — name, voice, what she may promise</td><td>Gail</td></tr>
+    <tr><td>Course facts confirmed as the knowledge-base seed</td><td>Gail / Heather</td></tr>
+    <tr><td>Content assets: module outline, employer one-pager, success stories</td><td>Heather</td></tr>
+    <tr><td>HubSpot access (contacts, email, cookie identity)</td><td>Gail / IT</td></tr>
+    <tr><td>One small script on the fhea.com cert page (Phase 2)</td><td>IT</td></tr>
+    <tr><td>A named human colleague for what the AI can't answer</td><td>Yazir</td></tr>
+    <tr><td>Comparison-group agreement so results are provable</td><td>Gail / Nader</td></tr>
+  </table></div>
 
   <h3>What it is — and isn't</h3>
   <div class="isnt">
     <div class="col yes"><h4>It is</h4><ul>
-      <li>A follow-up salesperson made of software</li>
-      <li>Personal 1-on-1 emails and texts</li>
-      <li>Focused on closing the sale directly</li>
-      <li>Grounded in verified course facts only</li>
-      <li>Starting small: one cert (Functional Medicine), one site (FHEA)</li>
+      <li>One advisor across page, cart &amp; email — with memory</li>
+      <li>Triggered by evidence of hesitation</li>
+      <li>Emails written per-person from her actual conversation</li>
+      <li>An honest, disclosed AI assistant</li>
+      <li>Starting with one product on one site</li>
     </ul></div>
     <div class="col no"><h4>It isn't</h4><ul>
-      <li>A website chat widget (Ruby already does that)</li>
-      <li>Mass marketing blasts (we already do those)</li>
-      <li>A meeting-booking tool (Phase 2, only if needed)</li>
-      <li>Something that invents answers</li>
-      <li>A big-bang launch across everything at once</li>
+      <li>A pop-up that greets everyone on page load</li>
+      <li>A generic abandoned-cart template</li>
+      <li>Something pretending to be human</li>
+      <li>A chatbot that makes things up</li>
+      <li>A big-bang launch across everything</li>
     </ul></div>
   </div>
-</div></section>
-
-<section id="how"><div class="wrap">
-  <h2>How We'll Do It</h2>
-  <p class="sub">A two-week build sprint starting Tuesday, Aug 4 — with safety rails the whole way.</p>
-
-  <h3>Week 1 — Get the conversation started</h3>
-  <p>Build the <b>"brain"</b>: a knowledge base of everything about the certification — what's included, who it's for, honest answers to the five real objections (<em>why does this matter · will it help me grow · what makes it different · do I have the time · is it worth the cost</em>). It updates itself when course pages change — nobody feeds it manually. Then build the message sequence — 6 emails + 1 text — <b>reviewed and approved by our team before anything goes out</b>, and wire it to HubSpot so it fires automatically on cart abandonment.</p>
-
-  <h3>Week 2 — Make it talk back</h3>
-  <p>When someone replies, the AI answers accurately within minutes — or hands off to a real person instead of guessing. And we build the scoreboard: a live dashboard of conversions, revenue recovered, and what buyers are asking.</p>
-
-  <div class="callout"><b>Safety rails:</b> a human approves every template before launch and the first ~50 AI replies · texts only go to people who opted in · unsubscribes honored instantly · a comparison group stays on the old process so we can <b>prove</b> the improvement is real, not luck.</div>
-</div></section>
-
-<section id="architecture"><div class="wrap">
-  <h2>Architecture <span class="pill">simple view</span></h2>
-  <p class="sub">Everything runs on tools we already own — HubSpot for sending and tracking, plus an AI brain. Full technical design in <a href="https://github.com/samcolibri/cert-sdr-agent/blob/main/ARCHITECTURE.md">ARCHITECTURE.md</a>.</p>
-
-  <div class="flow">
-    <div class="frow">
-      <div class="fbox"><b>Course pages &amp; catalog</b><span>FHEA / Elite NP sites, NetSuite — scraped &amp; synced automatically</span></div>
-      <div class="fbox"><b>Heather's content</b><span>objection-answering emails, stories, one-pagers</span></div>
-      <div class="fbox"><b>HubSpot lists</b><span>abandoned carts &amp; warm leads, updated live</span></div>
-    </div>
-    <div class="arrow">↓</div>
-    <div class="frow">
-      <div class="fbox core"><b>Knowledge base (auto-refreshing)</b><span>every fact traced to a source — the agent can only say what's verified</span></div>
-      <div class="fbox core"><b>AI agent (Claude)</b><span>writes personal messages, answers replies, escalates what it can't answer, logs every objection</span></div>
-    </div>
-    <div class="arrow">↓</div>
-    <div class="frow">
-      <div class="fbox"><b>Human approval</b><span>team reviews templates + first ~50 replies before autonomy</span></div>
-      <div class="fbox"><b>HubSpot sends</b><span>7-touch email + SMS sequence, opt-in only</span></div>
-      <div class="fbox"><b>Live scoreboard</b><span>conversion vs. 8% baseline, revenue recovered, buyer questions</span></div>
-    </div>
-  </div>
-
-  <h3>What we need to start</h3>
-  <div class="tablebox"><table>
-    <tr><th>What</th><th>Who</th><th>When</th></tr>
-    <tr><td>Sales data: cart values, conversion rates, lead list origins</td><td>Gail</td><td>~Jul 30</td></tr>
-    <tr><td>Educational content: objection emails, success stories, one-pagers</td><td>Heather</td><td>~Jul 30</td></tr>
-    <tr><td>Business case submitted</td><td>Nader</td><td>Aug 1</td></tr>
-    <tr><td>Final green light</td><td>Molly</td><td>after business case</td></tr>
-    <tr><td>Build time approved (~2 weeks)</td><td>Prabhu</td><td>before Aug 4</td></tr>
-    <tr><td>A named person for questions the AI can't answer</td><td>Yazir</td><td>before launch</td></tr>
-    <tr><td>HubSpot access + texting switched on</td><td>Gail / IT</td><td>week 1</td></tr>
-  </table></div>
-
-  <h3>What we need to finish</h3>
-  <p>Team sign-off on message voice · 1–2 real student success stories (our thinnest content today) · agreement on the comparison group · and — for the Elite NP rollout later — getting its abandoned carts flowing into HubSpot (today they're stuck in Teachable).</p>
 </div></section>
 
 <section id="money"><div class="wrap">
   <h2>The End Outcome — Money</h2>
-  <p class="sub">The goal: move abandoned-cart conversion from 8% to 10–12%. That sounds small. It isn't.</p>
+  <p class="sub">The goal: move abandoned-cart conversion from 8% to 10–12%. On July's volume alone:</p>
 
-  <div class="chart" role="img" aria-label="Monthly recovered revenue from $2.8M of Functional Medicine carts: today at 8% conversion about $224,000; at 10% about $280,000 which is $56,000 more per month; at 12% about $336,000 which is $112,000 more per month.">
+  <div class="chart" role="img" aria-label="Monthly recovered revenue from $2.8M of Functional Medicine carts: today at 8% conversion about $224,000; at 10% about $280,000, which is $56,000 more per month; at 12% about $336,000, which is $112,000 more per month.">
     <div class="bar-row"><div class="lab">Today · 8%</div><div class="bar-track"><div class="bar" style="width:66.7%"></div></div><div class="val">~$224K / mo</div></div>
     <div class="bar-row"><div class="lab">Target · 10%</div><div class="bar-track"><div class="bar hl" style="width:83.3%"></div></div><div class="val">~$280K <em>+$56K/mo</em></div></div>
     <div class="bar-row"><div class="lab">Stretch · 12%</div><div class="bar-track"><div class="bar hl" style="width:100%"></div></div><div class="val">~$336K <em>+$112K/mo</em></div></div>
-    <div class="chart-note">Revenue recovered per month from $2.8M of Functional Medicine carts (July 2026 volume, FHEA).</div>
+    <div class="chart-note">Revenue recovered per month from $2.8M of Functional Medicine carts (July 2026, fhea.com).</div>
   </div>
 
   <div class="big-money">
     <div class="n">+$670K – $1.3M / year</div>
-    <div class="l">of extra revenue — from <b>one</b> certification on <b>one</b> website. And it scales.</div>
+    <div class="l">from recovered carts alone — <b>one certification, one website</b> — before counting the two new revenue lines below.</div>
   </div>
 
-  <h3>Where it scales from here</h3>
-  <p>Six certifications across both brands, each adding its own recovered revenue · 2,500 warm leads converting near zero today — even a handful of $4,000 sales is meaningful · Elite NP's abandoned carts, not even counted in these numbers yet.</p>
+  <h3>What the three-touchpoint vision adds on top</h3>
+  <p><b>Saves before the abandonment</b> — the page advisor and cart rescue convert people who today never even become "abandoned carts" (invisible in the 8% math). <b>A lead engine</b> — hesitating visitors become captured, tagged leads ("Clinically Curious — objection: rigor") entering nurture paths that answer their actual objection. Plus a growing map of exactly what stops buyers, sharpening every page, email, and ad we run.</p>
 
   <h3>What it costs</h3>
-  <p>~2 weeks of build time, AI usage fees (a few hundred dollars a month), and HubSpot texting costs. The alternative — an inside sales team — starts at <b>$70K+ per rep per year</b> before they close a single sale.</p>
+  <p>Build time, AI usage (a few hundred dollars a month), and HubSpot we already own. No new hires — versus <b>$70K+ per year, per inside sales rep</b>, for the traditional alternative.</p>
 
-  <div class="callout"><b>How we'll know it worked:</b> within ~30 days of launch we compare the AI-assisted group against the comparison group. If conversion moves, we scale. If it doesn't, we've spent two weeks and learned exactly what stops buyers — either way, we stop guessing.</div>
+  <div class="callout"><b>How we'll know it worked:</b> advisor-assisted buyers vs. the comparison group, read out ~30 days after each phase goes live. If conversion moves, scale to the remaining five certifications and elitenp.com. If not, we've learned precisely which objections a future sales team must answer. Either way — we stop guessing.</div>
 </div></section>
 
-<section id="timeline"><div class="wrap">
-  <h2>Timeline</h2>
-  <ul class="tl">
-    <li><span class="d">Jul 22 &amp; 28</span><b>Discovery complete</b><span>Requirements gathered from Yazir, Gail and Heather; architecture designed.</span></li>
-    <li class="now"><span class="d">~Jul 30</span><b>Data &amp; content arrive</b><span>Gail and Heather deliver sizing data and educational assets.</span></li>
-    <li><span class="d">Aug 1</span><b>Business case submitted</b><span>Nader submits; Molly green-lights.</span></li>
-    <li><span class="d">Tue Aug 4</span><b>Kickoff — sprint clock starts</b><span>Two-week build sprint begins.</span></li>
-    <li><span class="d">~Aug 18</span><b>Phase 1 live</b><span>Functional Medicine on FHEA: sequences sending, replies answered, scoreboard running.</span></li>
-    <li><span class="d">~Sep 18</span><b>Results readout</b><span>30-day comparison vs. baseline → scale to remaining certs and Elite NP.</span></li>
-  </ul>
-
-  <h3>Who's who</h3>
+<section id="plan"><div class="wrap">
+  <h2>Who's Who</h2>
   <div class="tablebox"><table>
     <tr><th>Person</th><th>Role</th></tr>
+    <tr><td>Gail Applin</td><td>Product owner — authored the vision (Sr. Director of Digital Marketing, Colibri Healthcare)</td></tr>
     <tr><td>Yazir Phelps</td><td>Executive sponsor — owns the certifications business</td></tr>
-    <tr><td>Gail Applin</td><td>Project quarterback — data, access, co-design</td></tr>
-    <tr><td>Heather Bartel</td><td>Content &amp; messaging — the words the agent learns from</td></tr>
+    <tr><td>Heather Bartel</td><td>Content &amp; messaging — the words the advisor learns from</td></tr>
     <tr><td>Nader Rustom</td><td>Business case &amp; go-to-market design</td></tr>
     <tr><td>Sam Chaudhary</td><td>Technical build</td></tr>
-    <tr><td>Molly Swagler</td><td>Green light</td></tr>
-    <tr><td>Prabhu Inbarajan</td><td>Resource approval</td></tr>
+    <tr><td>Molly Swagler / Prabhu Inbarajan</td><td>Green light / resource approval</td></tr>
   </table></div>
 </div></section>
 
 <footer><div class="wrap">
   <div class="doclinks">
     <a href="https://github.com/samcolibri/cert-sdr-agent">GitHub repo</a>
+    <a href="https://github.com/samcolibri/cert-sdr-agent/blob/main/docs/VISION.md">The vision</a>
     <a href="https://github.com/samcolibri/cert-sdr-agent/blob/main/OUTCOME.md">OUTCOME.md</a>
     <a href="https://github.com/samcolibri/cert-sdr-agent/blob/main/ARCHITECTURE.md">ARCHITECTURE.md</a>
-    <a href="https://github.com/samcolibri/cert-sdr-agent/blob/main/docs/SEQUENCE_SPEC.md">Sequence spec</a>
-    <a href="https://github.com/samcolibri/cert-sdr-agent/blob/main/docs/BUSINESS_CASE.md">Business case</a>
+    <a href="https://github.com/samcolibri/cert-sdr-agent/blob/main/docs/TOUCHPOINTS.md">Touchpoint spec</a>
   </div>
-  <div>Cert SDR Agent · Colibri Group · updated Jul 28, 2026</div>
+  <div>FM Program Advisor · Colibri Healthcare · vision by Gail Applin, Aug 17 2026 · page updated Aug 19 2026</div>
 </div></footer>
 
 </body>

@@ -1,138 +1,132 @@
-# Architecture — Cert SDR Agent
+# Architecture — FM Program Advisor (AI SDR)
 
-_Designed 2026-07-28 from the Jul 22 (Yazir/Nader) and Jul 28 (Gail/Heather/Nader) discovery calls. Status: PROPOSED — to be reviewed with Nader/Gail at the Aug 4 kickoff._
+_Rev 2 — 2026-08-19, redesigned around Gail Applin's Aug 17 product vision ([docs/VISION.md](docs/VISION.md)): one agent, one identity, three touchpoints. Supersedes the July email-sequence-first design (preserved in git history)._
 
-## 1. Design Principles
+## 1. What Changed From Rev 1
 
-1. **B2C close, not B2B book.** Phase 1 succeeds if the agent gets prospects to *buy* through email/SMS. Meeting-booking (Phase 2) only activates if AI-only retrieval proves insufficient — then an inside sales rep is hired.
-2. **HubSpot-native delivery.** Both brands' contacts live in HubSpot; HubSpot has email + SMS (opted-in phone numbers). No new sequencer (no Outreach/Gong Engage), no enrichment tool (no Apollo/ZoomInfo) — Nader explicitly ruled these out. The agent's intelligence lives outside HubSpot; delivery and state live inside it.
-3. **Zero hallucination.** Every product claim the agent makes must trace to a knowledge-base entry with a source (landing page, Heather's content, NetSuite catalog). Same rule as ATLAS. Healthcare education audience — no invented stats, no clinical claims.
-4. **Auto-refreshing knowledge base.** Gail's hard requirement: no manual feeding. Scrapers + catalog sync keep the KB current when certification content changes.
-5. **Human approval first, autonomy earned.** First N sends reviewed (lesson from KELLI/ROBBY/ATLAS: stakeholder voice-fit takes ~2 feedback rounds). Graduate to auto-send per touch-type once approved.
-6. **Works in tandem with traditional workflows.** Gail: the agent complements, not replaces, HubSpot marketing workflows and the Ruby on-site advisor. Ruby stays separate (it's the on-site purchase advisor; low engagement today).
-7. **Prove lift honestly.** Keep a holdout group on the existing FM workflow so the 8% → 10–12% claim is attributable to the agent, not seasonality.
+Rev 1 (July) was an email/SMS abandoned-cart sequence with a deferred "maybe later" on-site widget. The Aug 17 vision inverts that: **the on-site conversational advisor is the product**, and the recovery email is no longer a pre-written sequence — it is **written per-contact by the same agent that had the conversation**. What survives from Rev 1: HubSpot as system of record, the auto-refreshing knowledge base, zero-hallucination sourcing, human approval before autonomy, and the holdout-group measurement discipline.
 
-## 2. System Overview
+## 2. Design Principles
+
+1. **One agent, one identity, one memory.** Not three automations. The advisor has a name, a consistent voice, memory of every prior interaction with a contact, and a defined scope of authority. She discloses she's an AI with a human colleague one message away.
+2. **Greet on evidence of hesitation, never on page load.** The failure mode of proactive chat is interrupting converters and ignoring the stuck. Eight behavioral triggers (vision §3.1) gate every proactive contact.
+3. **Objection-sequenced selling.** Decision-state classification drives what the agent talks about and *withholds* — price is never raised with a Clinically Curious NP until rigor is resolved.
+4. **Zero hallucination.** Every product claim traces to a KB fact with a source (program facts seeded from the vision doc: 95 contact hours, IACET, 24 pharm hours, module list, Jenni Gallagher MSN NP-C, 1-year access, 3–6 month completion, Affirm on FHEA only). Unknown → offer the human colleague, never guess.
+5. **The email is a continuation, not a campaign.** Recovery emails reference the actual objection from the conversation, answer it, and the sequence stops the moment it's resolved (reply, purchase, or objection cleared).
+6. **Respectful by construction.** One proactive attempt per session; silent after dismissal; never proactive on checkout; never greets existing cert owners; hard message-length cap; instant unsubscribe/STOP.
+7. **Prove lift honestly.** Holdout on the existing generic flow; conversion, cart-rate, and lead-capture measured against it.
+
+## 3. System Overview
 
 ```mermaid
 flowchart TB
-    subgraph Sources["Data & Content Sources"]
-        MAT[Matomo<br/>cart value analytics]
-        LP[FHEA / Elite NP<br/>landing pages]
-        HC[Heather's objection<br/>content 6-email/cert]
-        NS[NetSuite / BenchPrep<br/>course catalog]
-        TE[Teachable<br/>Elite NP carts — Workstream 3]
+    subgraph SITE["fhea.com / elitenp.com"]
+        PAGE[FM cert landing page]
+        CART[Cart / checkout]
+        WIDGET[Advisor widget JS<br/>chat UI + signal tracker]
+        PAGE --- WIDGET
+        CART --- WIDGET
     end
 
-    subgraph KB["Knowledge Base Pipeline (auto-refresh)"]
-        SCRAPE[Scheduled scraper<br/>+ catalog sync]
-        KBSTORE[(Structured KB<br/>facts + sources + versions)]
-        SCRAPE --> KBSTORE
+    subgraph SIGNALS["Signal Engine (client-side)"]
+        TRIG["8 hesitation triggers:<br/>dwell+scroll · price dwell · FAQ×2 ·<br/>repeat visit · paid cost-intent ·<br/>cookie match · copy/print · idle"]
+        ROE["Rules of engagement:<br/>1 proactive/session · no checkout greet ·<br/>no owner greet · length cap"]
     end
 
-    subgraph HS["HubSpot (system of record + delivery)"]
-        LISTS[Segmented lists:<br/>FM abandoned carts / warm leads]
-        WF[Workflows: triggers,<br/>timing, enrollment/exit]
-        EMAIL[Email sends]
-        SMS[SMS sends<br/>opt-in only]
-        PROPS[Agent properties:<br/>touch #, status, objections]
+    subgraph BACKEND["Advisor Service (Cloudflare Worker — ATLAS pattern)"]
+        CONV[Conversation engine<br/>Claude + KB grounding]
+        STATE[Decision-state classifier<br/>+ objection tagger]
+        MEM[(Contact memory<br/>conversations · states · objections)]
+        EMAILGEN[Recovery email writer<br/>per-contact, conversation-grounded]
+        GUARD[Guardrails: disclosure, price-timing,<br/>claims sourcing, scope of authority]
     end
 
-    subgraph AGENT["Agent Core (Claude)"]
-        COPY[Copy engine:<br/>per-touch personalized drafts]
-        REPLY[Reply handler:<br/>classify → answer from KB → escalate]
-        GUARD[Guardrails:<br/>claims/discount/compliance/escalation]
-        INSIGHT[Objection miner:<br/>Q&A → content gaps report]
+    subgraph KB["Knowledge Base (auto-refresh)"]
+        FACTS[(Verified program facts<br/>+ objection answers + assets)]
+        SCRAPE[Scrapers: landing pages<br/>+ NetSuite/BenchPrep sync]
+        HCONTENT[Heather's objection content,<br/>outline, employer one-pager]
+        SCRAPE --> FACTS
+        HCONTENT --> FACTS
     end
 
-    APPROVE[Approval Layer<br/>human review queue]
-    DASH[Analytics:<br/>conversion vs 8% baseline,<br/>revenue recovered, per-touch attribution]
+    subgraph HS["HubSpot (system of record)"]
+        CONTACT[Contact record: decision state,<br/>objection, advisor history]
+        HSEMAIL[Email delivery]
+        HANDOFF[Human colleague inbox<br/>escalations]
+    end
 
-    LP --> SCRAPE
-    HC --> KBSTORE
-    NS --> SCRAPE
-    TE -.-> LISTS
-    MAT --> DASH
-    KBSTORE --> COPY
-    KBSTORE --> REPLY
-    LISTS --> WF
-    WF -->|touch due| COPY
-    COPY --> GUARD --> APPROVE --> EMAIL
-    APPROVE --> SMS
-    EMAIL -->|reply webhook| REPLY
-    SMS -->|reply| REPLY
-    REPLY --> GUARD
-    REPLY --> INSIGHT
-    EMAIL --> PROPS
-    PROPS --> DASH
+    DASH[Scoreboard: conversion vs 8% holdout ·<br/>advisor→cart rate · leads captured ·<br/>objection frequency]
+
+    TRIG --> WIDGET
+    ROE --> WIDGET
+    WIDGET <--> CONV
+    CONV --> STATE --> MEM
+    CONV --> GUARD
+    FACTS --> CONV
+    MEM --> CONTACT
+    CONTACT -->|cookie match| CONV
+    CART -->|abandonment event| EMAILGEN
+    MEM --> EMAILGEN
+    EMAILGEN --> GUARD --> HSEMAIL
+    HSEMAIL -->|reply| CONV
+    CONV -->|can't answer / asks for human| HANDOFF
+    CONTACT --> DASH
 ```
 
-## 3. Components
+## 4. Components
 
-### 3.1 HubSpot Layer (system of record)
-- **Lists/segments:** FM abandoned-cart segment (exists since Jun 9 for FHEA), warm-leads list (~2,500). Elite NP carts blocked on Teachable→HubSpot capture (Workstream 3).
-- **Workflows:** own enrollment, timing (first touch ~15 min after abandonment), exit-on-purchase, exit-on-unsubscribe, and hand-off to the nurture list after the breakup touch.
-- **Custom properties:** `cert_sdr_touch`, `cert_sdr_status`, `cert_sdr_last_objection`, `cert_sdr_discount_offered` — so the agent's state is queryable and reportable inside HubSpot.
-- **SMS:** HubSpot native texting; only contacts with explicit opt-in; used as a nudge channel (discount reminder), not an education channel — per Nader's design.
+### 4.1 Advisor Widget (client-side, both sites)
+- Embeddable JS snippet on `/functional-medicine-certification/` pages and cart/checkout on fhea.com + elitenp.com. Requires the IT publish path Gail flagged in July.
+- **Signal tracker** implements the trigger inventory (vision §3.1) with exact thresholds: 45s dwell + 60% scroll no-CTA · 10s price-block dwell · 2× FAQ opens · repeat visit ≤14 days · paid-search cost-intent (UTM/ad-group match) · HubSpot cookie match · copy/print attempt · 90s idle.
+- Each trigger maps to a **specific opening move** (e.g. price-dwell → lead with total cost + Affirm monthly figure unprompted; copy/print → offer employer-justification one-pager + invoice).
+- Enforces rules of engagement client-side: one proactive attempt/session, silent after dismissal, suppressed on checkout and for logged-in cert owners.
 
-### 3.2 Knowledge Base Pipeline (Gail's auto-refresh requirement)
-- Scheduled scraper pulls FHEA/Elite NP certification landing pages (what's included, hours, price, format, faculty).
-- Heather's per-cert objection content ingested as first-class KB entries (the five objections: *why does this matter / will it actually help me grow / what makes this different / do I have the time / is the cost worth it*).
-- NetSuite/BenchPrep catalog sync when courses consolidate there (short-term all certs move to NetSuite per Gail).
-- Every KB fact carries `source_url`, `retrieved_at`, `cert_id`. Agent can only cite facts present in the KB — unknown question → graceful "let me get you that" + escalation, never a guess.
-- Refresh cadence: daily scrape diff; changed content flags a review item rather than silently changing live copy.
+### 4.2 Advisor Service (Cloudflare Worker — reuses ATLAS deploy template)
+- **Conversation engine:** Claude, grounded exclusively in KB facts; hard message-length cap; always-on AI disclosure in the greeting; "human colleague one message away" escalation to a named person (Yazir designates).
+- **Decision-state classifier:** tags each contact's state (first archetype: *Clinically Curious* — objection: rigor; more archetypes to be defined with Gail as vision v2 sections land) and primary objection. Tags write to HubSpot.
+- **Contact memory:** every conversation, state, objection, and delivered asset stored per contact — cookie-matched returning visitors get continuity ("skip discovery, reference what she already told us").
+- **Guardrails:** price-timing per decision state, sourced-claims-only, defined scope of authority (what she may promise: outline delivery, invoice, one-pager, Affirm figures; what she may not: unlisted discounts, clinical advice, accreditation claims beyond KB).
 
-### 3.3 Agent Core (Claude)
-- **Copy engine:** generates per-touch drafts personalized by cert, list source, pain-point archetype (FHEA = competency gap for patient care; Elite NP = new revenue stream for their practice), and current-state→future-state transformation stories.
-- **Reply handler:** webhook on email/SMS replies → classify (question / objection / buying signal / opt-out / unrelated) → answer grounded in KB → or escalate to a human (Yazir will designate a trained fallback person).
-- **Objection miner:** every inbound question is logged; weekly digest to Heather/Gail = "what buyers are actually asking" (the survey effect Gail wants) → feeds content roadmap and Ruby/site copy.
-- **Guardrails:** no clinical/medical claims beyond KB facts; discount capped at the approved 10% and offered only at the designated touches; mandatory unsubscribe/STOP handling; brand voice rules per brand (FHEA ≠ Elite NP — different audiences, own websites).
+### 4.3 Recovery Email Writer (Touchpoint 3)
+- On abandonment, the agent drafts the email **from the contact's own conversation**: subject references her actual objection; body answers it; CTA matches her decision state.
+- No conversation history (cold abandoner)? Falls back to a signal-grounded draft (what she viewed, where she stalled) — still written per-contact, never a static template.
+- Sequence continues with agent-written follow-ups and **stops immediately** on reply, purchase, or objection resolution. Replies route back into the same conversation engine.
+- Delivered through HubSpot; human approval queue for the first ~50 generated emails, then graduated autonomy (KELLI lesson: stakeholder sign-off is the only gate).
 
-### 3.4 Approval Layer
-- Review queue (Airtable, same pattern as KELLI/ATLAS) for: all sequence templates before launch, and the first ~50 AI reply drafts.
-- Graduation rule: a touch-type or reply-category goes autonomous after stakeholder sign-off, mirroring the "Kelli approval is the only success gate" lesson from FHEA SDR.
+### 4.4 Knowledge Base (auto-refresh — Gail's standing requirement)
+- Seeded with verified facts from the vision doc (see [docs/VISION.md](docs/VISION.md) KB-seed section).
+- Scrapers watch both landing pages; NetSuite/BenchPrep catalog sync when courses consolidate; Heather's objection content and assets (module outline, employer one-pager, invoice generator) as first-class entries.
+- Changed source content flags a review item — never silently changes live agent behavior.
 
-### 3.5 Analytics
-- Dashboard: conversion rate vs 8% baseline (with holdout), revenue recovered, reply rate, per-touch attribution, SMS vs email contribution, objection frequency.
-- Matomo remains the cart-value source (Products → abandoned carts view Gail demonstrated: $2.8M FM in July).
+### 4.5 Measurement
+- Scoreboard: cart conversion vs 8% holdout, advisor-conversation → add-to-cart rate, leads captured from hesitating visitors, recovery-email reply/close rate, objection & decision-state frequencies (the marketing survey effect).
+- Matomo stays the cart-value source; HubSpot properties carry per-contact agent state.
 
-## 4. Candidate Build Shapes (decision at Aug 4 kickoff)
+## 5. Build Plan
 
-| Option | Shape | Pros | Cons |
-|---|---|---|---|
-| **A. HubSpot-workflow + Claude skill via HubSpot MCP** (Gail/Nader's instinct) | Workflows fire; Claude skill drafts/answers through HubSpot MCP; operator-in-the-loop in Claude | Fastest; no infra; reuses ATLAS skill pattern; Gail can co-own | Reply handling is semi-manual until a worker exists |
-| **B. Cloudflare Worker service (ATLAS pattern)** | Worker receives HubSpot webhooks, calls Claude API, writes back via HubSpot API; MCP endpoint for ops | Fully autonomous replies; proven deploy template (`atlas.colibrigroup.tech`) | More build; needs IT/publish path Gail flagged |
-| **C. On-site slide-in chat (Gail's addition)** | KB-grounded Q&A widget on cart/landing page after 30s | Catches buyers *before* abandonment | Overlaps Ruby; defer to Phase 1.5 to avoid confusing the test |
+| Phase | Scope | Depends on |
+|---|---|---|
+| **P1 — Recovery email writer** | Touchpoint 3 on existing FM/FHEA cart data: agent-written (signal-grounded) recovery emails via HubSpot, approval queue, holdout, scoreboard | HubSpot access; no site changes needed — ship first |
+| **P2 — Landing page advisor** | Widget + signal engine + conversation service on fhea.com FM page; lead capture; decision-state tagging | IT publish path for the JS snippet; KB v1; persona name approved |
+| **P3 — Cart & checkout rescue** | Exit-intent / payment-stall / coupon-hunt interventions | P2 infrastructure; checkout-page event access |
+| **P4 — Full loop + rollout** | Conversation-grounded emails (P2 memory feeding P1 writer), elitenp.com, then other certifications | All prior; Teachable→HubSpot cart capture for Elite NP |
 
-**Recommendation: A for sprint week 1 (sequences live fast), B for week 2 (autonomous reply handling), C deferred.** This matches the two-week sprint and lets us show conversion movement before Yazir returns from PTO.
-
-## 5. Phases & Workstreams
-
-**Gail's three workstreams:**
-1. Abandoned-cart agentic flows (this repo, FM/FHEA first)
-2. Content/KB build-out (Heather-led, agent-accelerated)
-3. Elite NP cart capture: Teachable → HubSpot (prerequisite for ENP rollout)
-
-**Phase plan:**
-- **Phase 1 (2-week sprint):** FM/FHEA abandoned carts, 7-touch email+SMS, KB v1, approval queue, dashboard. Pure AI close.
-- **Phase 1.5:** warm-leads nurture track (2,500 list — education/case-study campaign the breakup touch feeds into), remaining FHEA certs, on-site slide-in decision.
-- **Phase 2 (only if AI-only retrieval underperforms):** meeting-booking CTA + trained human responder → inside sales rep.
+P1 first because it needs no website deployment and directly attacks the measured $2.8M/8% problem; P2/P3 land the vision's differentiator; P4 closes the loop where the email continues the chat.
 
 ## 6. Compliance & Risk
 
-- **TCPA:** SMS only to explicit opt-ins, quiet hours, STOP honored instantly.
-- **CAN-SPAM:** working unsubscribe, physical address, honest subject lines.
-- **Deliverability:** throttled sends, warm domain, monitor spam complaints — this list is warm but fatigued (Elite NP FM audience may be oversaturated per Gail).
-- **Discount governance:** 10% only, at designated touches, coded per-contact to prevent stacking/leakage.
-- **Attribution risk:** without a holdout, the existing Jun-9 FM workflow contaminates the lift claim — run agent vs workflow split.
-- **Data gaps:** Elite NP carts invisible to HubSpot until Workstream 3; exact abandoned-cart numbers inconsistent between calls ($295K/74-person flow vs $1M vs $2.8M July Matomo — business case must reconcile which cut is which).
+- **AI disclosure always** (in the greeting, by design — vision requirement, and good law: bot-disclosure rules).
+- **CAN-SPAM / list hygiene** on recovery emails; instant unsubscribe; sequence stops on resolution.
+- **No clinical advice, no accreditation over-claims** — sourced facts only; escalate to human colleague.
+- **Privacy:** behavioral triggers use first-party site signals + HubSpot cookie match only; disclose in privacy policy; honor consent state.
+- **Persona honesty:** named persona is fine, pretending to be human is not — she says she's an AI.
+- **Widget performance:** snippet must not degrade page speed (it's a revenue page) — async load, size budget.
+- **Data gaps carried from July:** Elite NP carts still in Teachable (P4 blocker); $295K/$1M/$2.8M figures still need reconciliation in the business case.
 
-## 7. What We Reuse From Existing Agents
+## 7. Reuse
 
 | From | What |
 |---|---|
-| ATLAS | Cloudflare Worker + MCP + skill deploy template, zero-hallucination sourcing rule, approval-before-send gates, analytics tooling |
-| KELLI (FHEA SDR) | Same brand family; stakeholder voice-rule workflow, Airtable review queue, QA rubric approach, "stakeholder approval is the only gate" |
-| ROBBY (Moreland) | B2C lessons: B2B/B2C contact distinctions in CRM, greeting/personalization pitfalls, phone-format handling |
-
-**What is deliberately NOT reused:** enrichment stack (Apollo/ZeroBounce waterfalls), Outreach sequencer, bank/territory logic — this is a warm B2C lifecycle motion, not cold B2B outbound.
+| ATLAS | Cloudflare Worker deploy template + CI, zero-hallucination sourcing, approval gates |
+| KELLI | Stakeholder voice-approval workflow, review queue, QA rubric |
+| Rev 1 (this repo) | KB pipeline design, HubSpot property scheme, holdout methodology, business-case math |

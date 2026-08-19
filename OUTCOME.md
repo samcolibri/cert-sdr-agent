@@ -1,121 +1,103 @@
 # The Outcome — In Plain English
 
-*This page explains the whole project in simple terms. No technical background needed. For the deep technical version, see [ARCHITECTURE.md](ARCHITECTURE.md).*
+*This page explains the whole project in simple terms. No technical background needed. The product vision it's based on: [docs/VISION.md](docs/VISION.md) (Gail Applin, Aug 17, 2026). The deep technical version: [ARCHITECTURE.md](ARCHITECTURE.md).*
 
 ---
 
 ## 1. The Problem
 
-We sell certifications for nurse practitioners — Functional Medicine, HRT, Dermatology, Women's Hormone — at about **$4,000 each**, on our FHEA and Elite NP websites.
+We sell the **Functional Medicine Certification** — the most valuable single product in the FHEA catalog at **$3,999** — on fhea.com and elitenp.com.
 
-Here's what's happening today:
+A $3,999 clinical credential is a big, considered decision. The nurse practitioner reading that page is weighing a career change, a possible cash-pay practice, a year of evenings, and money that often comes out of a household budget. She has real questions:
 
-- **People want to buy, but they hesitate.** Nobody spends $4,000 on a website without asking questions first. Buyers add the course to their cart, think "let me sleep on it"… and never come back.
-- **In July alone, people left $2.8 million worth of Functional Medicine certifications sitting in abandoned carts.** That's one certification, one website, one month.
-- **Only 8 out of every 100 of those people end up buying.** The other 92 walk away.
-- **Nobody follows up like a human would.** Today they get one generic email: "You left something in your cart, here's 10% off." That's it. No one answers their questions, no one addresses their doubts, no one talks to them.
-- We also have a list of **2,500 warm leads** — people who signed up, opened our emails, visited our pages. Our current campaign has converted **exactly 1** of them.
+- *"Is this actually accredited?"*
+- *"Does it count toward my prescribing requirements?"*
+- *"Will it teach me how to charge for this work?"*
+- *"Will my employer reimburse it?"*
 
-**In short: buyers are raising their hand, and there's no one there to shake it.** The normal fix would be hiring an inside sales team. We don't want to add headcount to find out if this works.
+**And today, she has nowhere to ask them at the exact moment she's asking them.** So she leaves.
 
----
+- **$2.8 million** of Functional Medicine certifications were left in abandoned carts in July — one product, one website, one month.
+- Only **8 out of 100** cart abandoners come back and buy.
+- The only follow-up is a generic "you left something in your cart" template — the same one everyone gets, answering none of her questions.
 
 ## 2. The Solution
 
-**An AI sales agent that follows up with every single hesitant buyer, like a helpful human would — by email and text message.**
+**One AI program advisor with a name, a voice, and a memory — present at the three moments that decide the sale:**
 
-Think of it as a tireless, knowledgeable salesperson who:
+**① On the page, when she hesitates.** The advisor doesn't pop up on everyone — that's how chat widgets get ignored. She watches for *evidence of being stuck*: lingering on the pricing section, opening the FAQ twice, coming back a second time this week, trying to print the page for her boss. Then she opens with the exact thing that person needs — "Want me to walk you through how clinically deep this actually goes?" or the monthly Affirm payment figure, before she has to ask.
 
-1. **Reaches out within 15 minutes** of someone abandoning their cart — friendly, not pushy: *"Noticed you were looking at the Functional Medicine certification — that's exciting. Any questions I can answer?"*
-2. **Tells real stories** — how someone just like them took the course and what changed for them afterward.
-3. **Answers their questions** — "What exactly is in it? Will this actually help my practice? Is it worth $4,000? Do I have time for 80 hours?" — accurately, using only verified facts about our courses. It never makes things up.
-4. **Offers the 10% discount at the right moment** — as a nudge after the conversation, not as the opening line.
-5. **Knows when to stop** — after a respectful goodbye email, it moves them into a gentle education track instead of pestering them.
-6. **Tells us what buyers are worried about.** Every question it receives is logged, so our marketing team learns exactly what's stopping people from buying — like a free, always-on customer survey.
+**② At the cart, when she stalls.** Added the certification but hovering over the exit button? Hunting for a coupon code? Payment page sitting idle? The advisor steps in once, names the likely blocker, and removes it in thirty seconds — or simply asks permission to follow up.
 
-**No new headcount. No new expensive software.** It runs on HubSpot, which we already own, plus AI.
+**③ In her inbox, after she leaves.** This is the part nobody else does: **the same advisor who had the conversation writes the follow-up email herself.** If she asked about clinical rigor, the subject line addresses rigor and the body answers it — hours, accreditation, faculty, module list. No generic template. And the emails stop the moment her question is resolved or she buys.
 
----
+**Always honest:** she introduces herself as an AI assistant with a human colleague one message away. **Always grounded:** she can only say things verified from our own course facts — she never invents an answer. **Always respectful:** one approach per visit; if dismissed, she goes quiet.
 
 ## 3. What It Is (and Isn't)
 
 | It IS | It ISN'T |
 |---|---|
-| A follow-up salesperson made of software | A chatbot widget on the website (Ruby already does that) |
-| Personal 1-on-1 emails and texts | Mass marketing blasts (we already do those) |
-| Focused on closing the sale directly | A meeting-booking tool (that's Phase 2, only if needed) |
-| Grounded in verified course facts | Something that invents answers |
-| Starting small: ONE certification (Functional Medicine) on ONE site (FHEA) | A big-bang launch across everything at once |
-
----
+| One advisor across page, cart, and email — with memory | Three disconnected automations |
+| Triggered by evidence of hesitation | A pop-up that greets everyone on page load |
+| Emails written per-person from her actual conversation | A generic abandoned-cart template |
+| An honest, disclosed AI assistant | Something pretending to be human |
+| Grounded in verified course facts only | A chatbot that makes things up |
+| Starting with ONE product (Functional Medicine) on ONE site (fhea.com) | A big-bang launch |
 
 ## 4. How We'll Do It
 
-**Step by step, over a 2-week build sprint starting Tuesday, Aug 4:**
+**Phase 1 — The email writer** *(no website changes needed — ships first)*
+The agent starts writing personalized recovery emails for FM cart abandoners through HubSpot, based on what each person viewed and where they stalled. Every email is human-reviewed before sending until the team signs off on autonomy. A comparison group stays on the old template so we can prove the difference.
 
-**Week 1 — Get the conversation started**
-- Build the "brain": a knowledge base of everything about the Functional Medicine certification — what's included, who it's for, common questions and honest answers. It updates itself automatically when our course pages change (no one has to manually feed it).
-- Build the message sequence: 6 emails + 1 text message, written by AI, **reviewed and approved by our team before anything goes out**.
-- Connect it to HubSpot so it triggers automatically when someone abandons a cart.
+**Phase 2 — The landing-page advisor**
+The chat advisor goes live on the fhea.com Functional Medicine page with the hesitation triggers, answering questions from a knowledge base that updates itself when our course pages change. She captures leads and tags what's blocking each buyer.
 
-**Week 2 — Make it talk back**
-- When someone replies with a question, the AI answers it accurately within minutes.
-- If it doesn't know the answer, it hands off to a real person instead of guessing.
-- Build the scoreboard: a live dashboard showing conversions, revenue recovered, and what questions buyers are asking.
+**Phase 3 — Cart & checkout rescue**
+Exit-intent, payment-stall, and coupon-hunt interventions at the moment of truth.
 
-**Safety rails the whole way:**
-- A human approves every message template before launch, and the first ~50 AI replies.
-- Texts only go to people who opted in; unsubscribe requests are honored instantly.
-- We keep a comparison group on the old process, so we can *prove* the improvement is real.
+**Phase 4 — Close the loop & roll out**
+Emails now continue the actual on-page conversations. Then: elitenp.com, then the other five certifications.
 
-**Then:** once Functional Medicine works, roll out to the other certifications, then to Elite NP.
-
----
+**Safety rails throughout:** AI disclosure in every greeting · human approval before autonomy · no clinical advice, no invented claims, no fake discounts · instant unsubscribe · never interrupts someone who's already buying.
 
 ## 5. What We Need to Start
 
-| What | Who | When |
-|---|---|---|
-| Sales data: cart values per certification, current conversion rates, where the 2,500 leads came from | Gail | ~Jul 30 |
-| Educational content: the objection-answering emails already drafted for each cert, success stories, one-pagers | Heather | ~Jul 30 |
-| Business case submitted | Nader | Aug 1 |
-| Final green light | Molly | after business case |
-| Sam's time approved for the 2-week build | Prabhu | before Aug 4 |
-| A named person to handle questions the AI can't answer | Yazir | before launch |
-| HubSpot access (and confirmation texting is switched on) | Gail/IT | week 1 |
+| What | Who |
+|---|---|
+| Persona sign-off: her name, voice, and what she's allowed to promise | Gail |
+| Course facts confirmed as the knowledge base seed (hours, accreditation, modules, faculty, Affirm terms) | Gail / Heather |
+| Content assets: module-by-module outline, employer-justification one-pager, success stories | Heather |
+| HubSpot access (contacts, email, cookie identity) | Gail / IT |
+| A way to put one small script on the fhea.com cert page (Phase 2) | IT |
+| A named human colleague for questions the AI can't answer | Yazir |
+| Comparison-group agreement so results are provable | Gail / Nader |
 
 ## What We Need to Finish
 
-- Team sign-off on the message templates (they must sound like us).
-- 1–2 real success stories from past students (currently our weakest content).
-- Agreement on the comparison group so results are provable.
-- *(Later, for Elite NP)*: getting Elite NP's abandoned carts flowing into HubSpot — today they're stuck in a separate system (Teachable).
-
----
+Real student success stories (thinnest content today) · checkout-page event access for Phase 3 · Elite NP's carts flowing into HubSpot (today they're stuck in Teachable) for Phase 4 · reconciled opportunity numbers for the final business case.
 
 ## 6. The End Outcome — Money
 
-**The goal: move abandoned-cart conversion from 8% to 10–12%.** That sounds small. It isn't:
+**Goal: move abandoned-cart conversion from 8% to 10–12%.** On July's volume:
 
 ```
-Functional Medicine carts in July:            $2.8 million
-Today we recover 8% of that:                  ~$224,000
+Functional Medicine carts (July, fhea.com):   $2.8 million
+Today we recover 8%:                          ~$224,000
 At 10% we'd recover:                          ~$280,000   →  +$56,000/month
 At 12% we'd recover:                          ~$336,000   →  +$112,000/month
 ```
 
-**That's roughly $670K to $1.3M per year of extra revenue — from ONE certification on ONE website** — and it scales:
+**≈ $670K – $1.3M per year of extra revenue from one certification on one website.** And this vision adds two revenue lines the July plan didn't have:
 
-- 6 certifications total across both brands (each adds its own recovered revenue)
-- The 2,500 warm leads (today converting ~0%: even a handful of $4,000 sales is meaningful)
-- Elite NP's abandoned carts (not even measured in these numbers yet)
+1. **Saves before the abandonment** — the page advisor and cart rescue convert people who today never even become "abandoned carts" (they're invisible in the 8% math).
+2. **A lead engine** — hesitating visitors who weren't ready to buy become captured, tagged leads ("Clinically Curious — objection: rigor") entering nurture paths that speak to their actual objection.
 
-**What it costs:** Sam's time for ~2 weeks, AI usage fees (a few hundred dollars a month), and HubSpot texting costs. **No new hires, no new software licenses.** The alternative — an inside sales team — would cost $70K+ per rep per year before they close a single sale.
+Then it scales: elitenp.com, five more certifications, and a growing map of exactly what stops buyers — which sharpens every page, email, and ad we run.
 
-**The bonus outcome nobody's counting:** a growing database of exactly what stops buyers from purchasing — which makes our website, our emails, and our ads better too.
+**What it costs:** build time, AI usage (a few hundred dollars/month), HubSpot we already own. No new hires — versus $70K+/year per inside sales rep, per rep.
 
-**How we'll know it worked:** within ~30 days of launch we compare the AI-assisted group against the comparison group. If conversion moves, we scale it. If it doesn't, we've spent two weeks and learned exactly what a human sales hire needs to overcome — either way, we stop guessing.
+**How we'll know it worked:** advisor-assisted buyers vs. the comparison group, read out ~30 days after each phase goes live. If it moves, scale. If not, we've learned precisely which objections a future human team must answer — either way, we stop guessing.
 
 ---
 
-*Questions? The detailed docs: [ARCHITECTURE.md](ARCHITECTURE.md) (technical design) · [docs/SEQUENCE_SPEC.md](docs/SEQUENCE_SPEC.md) (the exact messages) · [docs/BUSINESS_CASE.md](docs/BUSINESS_CASE.md) (the numbers) · [docs/MEETING_NOTES.md](docs/MEETING_NOTES.md) (where all this came from).*
+*Details: [docs/VISION.md](docs/VISION.md) (the vision) · [ARCHITECTURE.md](ARCHITECTURE.md) (the build) · [docs/TOUCHPOINTS.md](docs/TOUCHPOINTS.md) (exact behaviors) · [docs/BUSINESS_CASE.md](docs/BUSINESS_CASE.md) (the numbers).*
