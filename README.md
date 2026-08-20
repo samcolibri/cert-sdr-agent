@@ -20,8 +20,8 @@ The numbers: **$2.8M in July abandoned-cart opportunity for Functional Medicine 
 | # | Touchpoint | Moment | Job to be done |
 |---|---|---|---|
 | 1 | **Landing page advisor** | Behavior signals hesitation (not disinterest) on the cert page | Answer the unasked question, classify decision state, capture identity, move her to cart |
-| 2 | **Cart & checkout rescue** | Exit intent, payment stall, coupon hunting after add-to-cart | Name and remove the single blocker in 30 seconds, or capture permission to follow up |
-| 3 | **Agent-written recovery email** | After abandonment, via HubSpot | Continue the actual conversation — subject line references her real objection, body answers it, sequence stops when resolved |
+| 2 | **Cart & checkout rescue** | Exit intent, payment stall, coupon hunting after add-to-cart | Name and remove the single blocker in 30 seconds — the Affirm monthly figure, asking what outstanding question she has — or capture permission to follow up |
+| 3 | **Agent-written recovery email** | After abandonment, via HubSpot | Continue the actual conversation — subject = her real objection, body answers it, stops when resolved. If she never engaged, the email invites her to interact with the agent to complete the purchase |
 
 Touchpoint 3 is what makes this different from a chatbot: **the agent that had the conversation writes the email.** No templates.
 
@@ -29,12 +29,13 @@ She has a name (TBD), a consistent voice, memory across touchpoints, and a defin
 
 ## Key Design Rules (from the vision)
 
-- **Greet on evidence of hesitation, never on page load** — 8 behavioral triggers defined in [`docs/VISION.md §3.1`](docs/VISION.md)
+- **Greet on evidence of hesitation, never on page load** — 6 behavioral triggers ([`docs/TOUCHPOINTS.md`](docs/TOUCHPOINTS.md); paid-search and copy/print triggers removed per [Aug 20 feedback](docs/FEEDBACK-2026-08-20.md))
 - **One proactive attempt per session**; dismissed = silent for the session
 - **Never proactive on checkout**; never greet members who already own the cert
 - **Hard cap on message length** — a wall of text reads as a pop-up, not a person
 - **Objection-sequenced selling** — e.g. never mention price to a "Clinically Curious" NP until rigor is resolved
 - **Zero hallucination** — every product claim traces to a verified KB fact
+- **The KB reads the course itself** — course content + lecture transcripts feed the knowledge base (Aug 20 feedback), so the advisor answers depth questions from the source material
 
 ## Key Documents
 
@@ -43,6 +44,7 @@ She has a name (TBD), a consistent voice, memory across touchpoints, and a defin
 - [`docs/TOUCHPOINTS.md`](docs/TOUCHPOINTS.md) — behavior spec per touchpoint (triggers, rescue plays, email rules)
 - [`docs/BUSINESS_CASE.md`](docs/BUSINESS_CASE.md) — the money
 - [`docs/OPEN_QUESTIONS.md`](docs/OPEN_QUESTIONS.md) — decisions pending
+- [`docs/FEEDBACK-2026-08-20.md`](docs/FEEDBACK-2026-08-20.md) — stakeholder feedback round 1 (applied)
 - [`docs/MEETING_NOTES.md`](docs/MEETING_NOTES.md) + [`docs/transcripts/`](docs/transcripts/) — July discovery record
 - [`docs/source/`](docs/source/) — original .docx files (both transcripts + the vision doc)
 
@@ -55,6 +57,7 @@ She has a name (TBD), a consistent voice, memory across touchpoints, and a defin
 | Heather Bartel | Content & messaging — objection content, outline assets, one-pagers |
 | Nader Rustom | Business case & GTM |
 | Sam Chaudhary | Technical build (this repo) |
+| Devin (IT) | Candidate for the WordPress snippet deploy on fhea.com |
 | Molly Swagler / Prabhu | Green light / resource approval |
 
 ## Success Metrics

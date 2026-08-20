@@ -3,6 +3,12 @@
 _Author: **Gail Applin**, Sr. Director of Digital Marketing, Colibri Healthcare · **August 17, 2026**_
 _Faithful markdown conversion of the source document ([original .docx](source/2026-08-17-fhea-fm-ai-sdr-agent-vision-gail-applin.docx)). This document supersedes the July discovery framing and is the current source of truth for product direction._
 
+> **⚠️ Amended by [stakeholder feedback, 2026-08-20](FEEDBACK-2026-08-20.md)** — the text below is preserved as originally written; these deltas override it:
+> 1. Trigger inventory reduced to **6** — *paid search cost intent* and *copy/print attempt* removed.
+> 2. Cart rescue: "…the Affirm monthly figure, **asking what outstanding question she has** — or permission to follow up" (employer invoice removed from this moment).
+> 3. Recovery email also covers the **non-engaged** NP — an email inviting her to interact with the agent to complete the purchase.
+> 4. The KB must ingest **the course content and lecture transcripts** themselves.
+
 ---
 
 > An always-on program advisor that meets nurse practitioners on the Functional Medicine Certification landing page, intervenes when a cart is about to be abandoned, and writes the follow-up email itself.

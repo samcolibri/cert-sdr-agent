@@ -154,24 +154,23 @@
       <span>Lingering on the price block? Opened the FAQ twice? Back for a second visit? Trying to print the page for a boss? She opens with the exact thing that person needs — and captures the lead.</span></div>
     <div class="tp"><div class="num">2</div><b>Cart &amp; checkout rescue</b>
       <div class="when">Exit intent · payment stall · coupon hunting</div>
-      <span>She names and removes the single specific blocker in the next thirty seconds — the Affirm monthly figure, the employer invoice — or simply asks permission to follow up.</span></div>
+      <span>She names and removes the single specific blocker in the next thirty seconds — the Affirm monthly figure, asking what outstanding question she has — or simply asks permission to follow up.</span></div>
     <div class="tp star"><div class="num">3</div><b>She writes the recovery email</b>
       <div class="when">After abandonment · via HubSpot</div>
-      <span>The agent that had the conversation writes the email. Subject line = her actual objection. Body = the answer. The sequence stops the moment it's resolved. <b>No templates.</b></span></div>
+      <span>The agent that had the conversation writes the email. Subject line = her actual objection. Body = the answer. The sequence stops the moment it's resolved. <b>No templates.</b> And if she never engaged with the agent, she still gets a personal email — inviting her to interact with the advisor to help complete the purchase.</span></div>
   </div>
-  <h3>The 8 hesitation triggers — exact thresholds from the vision</h3>
+  <h3>The 6 hesitation triggers — exact thresholds</h3>
   <div class="tablebox"><table>
     <tr><th>Signal</th><th>Threshold</th><th>Her opening move</th></tr>
     <tr><td>Engaged dwell, no CTA click</td><td>45 seconds + 60% scroll depth</td><td>Offer the one thing most people at that scroll position ask about</td></tr>
     <tr><td>Pricing section dwell</td><td>10 seconds in view of the price block</td><td>Total cost clarity + the Affirm monthly figure, unprompted</td></tr>
     <tr><td>FAQ accordion opened</td><td>Two or more opens</td><td>Answer the category she's opening rather than making her read</td></tr>
     <tr><td>Repeat visit</td><td>Second+ visit within 14 days</td><td>Acknowledge the return, ask what's still open</td></tr>
-    <tr><td>Paid search cost intent</td><td>Keyword/ad group: cost, price, financing, worth it</td><td>Open on price and payment before she has to ask</td></tr>
     <tr><td>Known contact from email</td><td>HubSpot cookie match</td><td>Skip discovery, reference what she already told us</td></tr>
-    <tr><td>Copy or print attempt</td><td>Selection copy or print dialog</td><td>Offer the employer-justification one-pager and an invoice</td></tr>
     <tr><td>Idle mid page</td><td>90 seconds without interaction</td><td>Single low-friction offer, then go quiet</td></tr>
   </table></div>
   <div class="callout"><b>Rules she never breaks:</b> one proactive attempt per session · dismissed = silent for the session · never interrupts the checkout page · never greets a logged-in member who already owns the certification · short messages (a wall of text at second forty-five reads as a pop-up, not a person) · answers only from verified course facts — never invents.</div>
+  <div class="callout"><b>She has actually read the course.</b> The knowledge base is fed by the course content and lecture transcripts themselves — module by module — plus the landing pages and objection content. That's how she answers "how deep does the lab-interpretation module really go?" from the source material, not from marketing copy.</div>
 </div></section>
 
 <section id="demo"><div class="wrap">
@@ -193,8 +192,8 @@
   <h2>How We'll Build It</h2>
   <p class="sub">Four phases — starting with the one that needs zero website changes.</p>
   <ul class="tl">
-    <li><span class="d">Phase 1</span><b>The email writer</b><span>Agent-written recovery emails for FM cart abandoners via HubSpot, grounded in what each person viewed. Human-approved until the team signs off. Comparison group proves the lift.</span></li>
-    <li><span class="d">Phase 2</span><b>The landing-page advisor</b><span>Chat advisor live on the fhea.com cert page with the 8 hesitation triggers, a self-updating knowledge base, lead capture and objection tagging.</span></li>
+    <li><span class="d">Phase 1</span><b>The email writer</b><span>The agent reads the course — modules and transcripts — to build her knowledge base, then writes recovery emails for FM cart abandoners via HubSpot, inviting them to bring her their questions. Human-approved until the team signs off. Comparison group proves the lift.</span></li>
+    <li><span class="d">Phase 2</span><b>The landing-page advisor</b><span>Chat advisor live on the fhea.com cert page (WordPress — Devin/IT deploys the snippet) with the 6 hesitation triggers, lead capture and objection tagging.</span></li>
     <li><span class="d">Phase 3</span><b>Cart &amp; checkout rescue</b><span>Exit-intent, payment-stall, and coupon-hunt interventions at the moment of truth.</span></li>
     <li><span class="d">Phase 4</span><b>Close the loop &amp; roll out</b><span>Emails continue the actual on-page conversations. Then elitenp.com, then the other five certifications.</span></li>
   </ul>
@@ -202,11 +201,12 @@
   <h3>What we need to start</h3>
   <div class="tablebox"><table>
     <tr><th>What</th><th>Who</th></tr>
-    <tr><td>Persona sign-off — name, voice, what she may promise</td><td>Gail</td></tr>
-    <tr><td>Course facts confirmed as the knowledge-base seed</td><td>Gail / Heather</td></tr>
+    <tr><td>Persona sign-off — name, voice, what she may promise</td><td>Heather / Yazir</td></tr>
+    <tr><td>Course facts confirmed as the knowledge-base seed</td><td>Gail</td></tr>
+    <tr><td>Course content + lecture transcripts for the agent to read (feeds the knowledge base)</td><td>Gail / LMS access</td></tr>
     <tr><td>Content assets: module outline, employer one-pager, success stories</td><td>Heather</td></tr>
     <tr><td>HubSpot access (contacts, email, cookie identity)</td><td>Gail / IT</td></tr>
-    <tr><td>One small script on the fhea.com cert page (Phase 2)</td><td>IT</td></tr>
+    <tr><td>One small script on the fhea.com cert page (Phase 2)</td><td>IT — Devin may be able to (WordPress page)</td></tr>
     <tr><td>A named human colleague for what the AI can't answer</td><td>Yazir</td></tr>
     <tr><td>Comparison-group agreement so results are provable</td><td>Gail / Nader</td></tr>
   </table></div>
@@ -276,7 +276,7 @@
     <a href="https://github.com/samcolibri/cert-sdr-agent/blob/main/ARCHITECTURE.md">ARCHITECTURE.md</a>
     <a href="https://github.com/samcolibri/cert-sdr-agent/blob/main/docs/TOUCHPOINTS.md">Touchpoint spec</a>
   </div>
-  <div>FM Program Advisor · Colibri Healthcare · vision by Gail Applin, Aug 17 2026 · page updated Aug 19 2026</div>
+  <div>FM Program Advisor · Colibri Healthcare · vision by Gail Applin, Aug 17 2026 · stakeholder feedback applied Aug 20 2026 · page updated Aug 20 2026</div>
 </div></footer>
 
 </body>

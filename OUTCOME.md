@@ -25,13 +25,13 @@ A $3,999 clinical credential is a big, considered decision. The nurse practition
 
 **One AI program advisor with a name, a voice, and a memory — present at the three moments that decide the sale:**
 
-**① On the page, when she hesitates.** The advisor doesn't pop up on everyone — that's how chat widgets get ignored. She watches for *evidence of being stuck*: lingering on the pricing section, opening the FAQ twice, coming back a second time this week, trying to print the page for her boss. Then she opens with the exact thing that person needs — "Want me to walk you through how clinically deep this actually goes?" or the monthly Affirm payment figure, before she has to ask.
+**① On the page, when she hesitates.** The advisor doesn't pop up on everyone — that's how chat widgets get ignored. She watches for *evidence of being stuck*: lingering on the pricing section, opening the FAQ twice, coming back a second time this week, sitting idle mid-page. Then she opens with the exact thing that person needs — "Want me to walk you through how clinically deep this actually goes?" or the monthly Affirm payment figure, before she has to ask.
 
-**② At the cart, when she stalls.** Added the certification but hovering over the exit button? Hunting for a coupon code? Payment page sitting idle? The advisor steps in once, names the likely blocker, and removes it in thirty seconds — or simply asks permission to follow up.
+**② At the cart, when she stalls.** Added the certification but hovering over the exit button? Hunting for a coupon code? Payment page sitting idle? The advisor steps in once and removes the single specific blocker in thirty seconds — the Affirm monthly figure, or simply asking what outstanding question she has — or asks permission to follow up.
 
-**③ In her inbox, after she leaves.** This is the part nobody else does: **the same advisor who had the conversation writes the follow-up email herself.** If she asked about clinical rigor, the subject line addresses rigor and the body answers it — hours, accreditation, faculty, module list. No generic template. And the emails stop the moment her question is resolved or she buys.
+**③ In her inbox, after she leaves.** This is the part nobody else does: **the same advisor who had the conversation writes the follow-up email herself.** If she asked about clinical rigor, the subject line addresses rigor and the body answers it — hours, accreditation, faculty, module list. No generic template. And if she left without ever talking to the advisor, she still gets a personal email — inviting her to come ask her questions and finish the purchase. The emails stop the moment her question is resolved or she buys.
 
-**Always honest:** she introduces herself as an AI assistant with a human colleague one message away. **Always grounded:** she can only say things verified from our own course facts — she never invents an answer. **Always respectful:** one approach per visit; if dismissed, she goes quiet.
+**Always honest:** she introduces herself as an AI assistant with a human colleague one message away. **Always grounded:** she has actually *read the course* — the modules and lecture transcripts feed her knowledge base — and she can only say things verified from it; she never invents an answer. **Always respectful:** one approach per visit; if dismissed, she goes quiet.
 
 ## 3. What It Is (and Isn't)
 
@@ -47,7 +47,7 @@ A $3,999 clinical credential is a big, considered decision. The nurse practition
 ## 4. How We'll Do It
 
 **Phase 1 — The email writer** *(no website changes needed — ships first)*
-The agent starts writing personalized recovery emails for FM cart abandoners through HubSpot, based on what each person viewed and where they stalled. Every email is human-reviewed before sending until the team signs off on autonomy. A comparison group stays on the old template so we can prove the difference.
+First the agent reads the course — modules and transcripts — to build her knowledge base. Then she starts writing personalized recovery emails for FM cart abandoners through HubSpot, based on what each person viewed and where they stalled, inviting them to bring her their questions. Every email is human-reviewed before sending until the team signs off on autonomy. A comparison group stays on the old template so we can prove the difference.
 
 **Phase 2 — The landing-page advisor**
 The chat advisor goes live on the fhea.com Functional Medicine page with the hesitation triggers, answering questions from a knowledge base that updates itself when our course pages change. She captures leads and tags what's blocking each buyer.
@@ -64,11 +64,12 @@ Emails now continue the actual on-page conversations. Then: elitenp.com, then th
 
 | What | Who |
 |---|---|
-| Persona sign-off: her name, voice, and what she's allowed to promise | Gail |
-| Course facts confirmed as the knowledge base seed (hours, accreditation, modules, faculty, Affirm terms) | Gail / Heather |
+| Persona sign-off: her name, voice, and what she's allowed to promise | Heather / Yazir |
+| Course facts confirmed as the knowledge base seed (hours, accreditation, modules, faculty, Affirm terms) | Gail |
+| **Course content + lecture transcripts for the agent to read** (feeds the knowledge base) | Gail / LMS access |
 | Content assets: module-by-module outline, employer-justification one-pager, success stories | Heather |
 | HubSpot access (contacts, email, cookie identity) | Gail / IT |
-| A way to put one small script on the fhea.com cert page (Phase 2) | IT |
+| A way to put one small script on the fhea.com cert page (Phase 2) | IT — Devin may be able to (it's a WordPress page) |
 | A named human colleague for questions the AI can't answer | Yazir |
 | Comparison-group agreement so results are provable | Gail / Nader |
 
