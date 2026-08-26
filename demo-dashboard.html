@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DEMO — Dashboard | FM Program Advisor Sandbox</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#111827;background:#f9fafb;line-height:1.55}
+  .demo-banner{position:sticky;top:0;background:#111827;color:#fad74f;text-align:center;padding:6px;font-size:12px;font-weight:700;letter-spacing:.08em;z-index:100}
+  .demo-banner a{color:#75c7e6}
+  .wrap{max-width:1000px;margin:0 auto;padding:28px 24px}
+  h1{font-size:22px;margin-bottom:4px}
+  .sub{color:#6b7280;font-size:13.5px;margin-bottom:22px}
+  .tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin-bottom:24px}
+  .tile{background:#fff;border:1px solid #e5e7eb;border-radius:10px;padding:14px}
+  .tile b{display:block;font-size:26px}
+  .tile span{font-size:12px;color:#6b7280}
+  h2{font-size:16px;margin:22px 0 10px}
+  .btns{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:8px}
+  button{border:1px solid #e5e7eb;background:#fff;border-radius:8px;padding:9px 14px;font-size:13px;font-weight:600;cursor:pointer}
+  button.primary{background:#1d4ed8;color:#fff;border-color:#1d4ed8}
+  button.danger{color:#b91c1c}
+  .email{background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:16px;margin-bottom:12px}
+  .email .meta{font-size:11.5px;color:#6b7280;margin-bottom:6px}
+  .email .subj{font-weight:700;font-size:14.5px;margin-bottom:8px}
+  .email pre{white-space:pre-wrap;font-family:inherit;font-size:13.5px;color:#374151;background:#f9fafb;border-radius:8px;padding:12px;margin-bottom:10px}
+  .badge{display:inline-block;font-size:10.5px;font-weight:700;padding:2px 8px;border-radius:999px;margin-left:6px}
+  .badge.pending{background:#fef3c7;color:#92400e}
+  .badge.approved{background:#d1fae5;color:#065f46}
+  .badge.rejected{background:#fee2e2;color:#991b1b}
+  .badge.engaged{background:#dbeafe;color:#1e40af}
+  .badge.non_engaged{background:#ede9fe;color:#5b21b6}
+  .kv{background:#fff;border:1px solid #e5e7eb;border-radius:10px;padding:12px 14px;font-size:13px;margin-bottom:10px}
+  .kv b{font-size:12px;color:#6b7280;display:block;margin-bottom:4px;text-transform:uppercase;letter-spacing:.05em}
+</style>
+</head>
+<body>
+<div class="demo-banner">INTERNAL DEMO SANDBOX — DASHBOARD · <a href="demo.html">← landing</a> · <a href="demo-cart.html">cart</a> · <a href="index.html">vision</a> · state lives in this browser</div>
+<div class="wrap">
+  <h1>FM Program Advisor — Sandbox Dashboard</h1>
+  <div class="sub" id="mode"></div>
+
+  <div class="tiles" id="tiles"></div>
+
+  <div class="kv"><b>Decision states</b><div id="states"></div></div>
+  <div class="kv"><b>Objections captured (the survey effect)</b><div id="objections"></div></div>
+  <div class="kv"><b>Guardrail events</b><div id="guards"></div></div>
+
+  <h2>Approval Queue — every email is human-approved before sending</h2>
+  <div class="btns">
+    <button class="primary" id="genBtn">Generate emails for non-engaged synthetic abandoners</button>
+    <button id="refreshBtn">Refresh</button>
+    <button class="danger" id="resetBtn">Reset demo data</button>
+  </div>
+  <div id="queue"></div>
+</div>
+
+<script src="demo-brain.js"></script>
+<script>
+  const $ = id => document.getElementById(id);
+  const el = (tag, cls, text) => { const e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; };
+  const B = window.AdvisorBrain;
+  function tile(v, label) { const t = el('div', 'tile'); t.appendChild(el('b', null, String(v))); t.appendChild(el('span', null, label)); return t; }
+  const fmt = obj => Object.entries(obj || {}).map(([k, v]) => k + ': ' + v).join(' · ') || '—';
+
+  function load() {
+    const s = B.stats();
+    $('mode').textContent = 'Brain: ' + s.brain;
+    const t = $('tiles'); t.textContent = '';
+    t.append(tile(s.sessions, 'sessions'), tile(s.conversations, 'conversations'), tile(s.leads_captured, 'leads captured'),
+             tile(s.abandoned, 'abandonments'), tile(s.emails.pending, 'emails pending'), tile(s.emails.approved, 'approved'),
+             tile(s.emails.engaged_mode, 'continuation emails'), tile(s.emails.non_engaged_mode, 'invite emails'));
+    $('states').textContent = fmt(s.states);
+    $('objections').textContent = fmt(s.objections);
+    $('guards').textContent = (s.guardrail_events || []).join(' · ') || 'none';
+
+    const qd = $('queue'); qd.textContent = '';
+    const q = B.queue();
+    if (!q.length) qd.appendChild(el('div', 'sub', 'Queue empty — chat on the demo landing page, abandon the cart, or generate non-engaged emails.'));
+    q.slice().reverse().forEach(e => {
+      const c = el('div', 'email');
+      const meta = el('div', 'meta', (e.contact.name || '') + ' <' + e.contact.email + '> · ' + new Date(e.created).toLocaleString());
+      meta.appendChild(el('span', 'badge ' + e.mode, e.mode === 'engaged' ? 'continuation' : 'invite-to-chat'));
+      meta.appendChild(el('span', 'badge ' + e.status, e.status));
+      c.appendChild(meta);
+      c.appendChild(el('div', 'subj', 'Subject: ' + e.subject));
+      c.appendChild(el('pre', null, e.body));
+      c.appendChild(el('div', 'meta', 'Grounded in: ' + JSON.stringify(e.grounded_in)));
+      if (e.status === 'pending') {
+        const a = el('button', 'primary', 'Approve'); a.onclick = () => { B.decide(e.id, 'approved'); load(); };
+        const r = el('button', 'danger', 'Reject'); r.onclick = () => { B.decide(e.id, 'rejected'); load(); };
+        const bar = el('div', 'btns'); bar.append(a, r); c.appendChild(bar);
+      }
+      qd.appendChild(c);
+    });
+  }
+  $('genBtn').onclick = async () => { await B.generateNonEngaged(); load(); };
+  $('refreshBtn').onclick = load;
+  $('resetBtn').onclick = () => { B.reset(); load(); };
+  load(); setInterval(load, 5000);
+</script>
+</body>
+</html>

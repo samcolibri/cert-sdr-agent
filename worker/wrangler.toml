@@ -1,0 +1,10 @@
+name = "cert-sdr-advisor"
+main = "advisor-worker.js"
+compatibility_date = "2026-08-01"
+
+# Deploy:
+#   cd worker
+#   npx wrangler login
+#   npx wrangler deploy
+#   npx wrangler secret put ANTHROPIC_API_KEY
+# Then open the Pages demo with ?api=https://cert-sdr-advisor.<subdomain>.workers.dev
