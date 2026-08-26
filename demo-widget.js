@@ -48,8 +48,14 @@
   const input = el('input'); input.placeholder = 'Ask anything about the certification…';
   const send = el('button', null, 'Send');
   inWrap.append(input, send);
-  const brainLabel = window.AdvisorBrain && window.AdvisorBrain.remote ? 'live Claude via Worker' : 'scripted demo brain';
-  const note = el('div', 'adv-note', 'SANDBOX — ' + brainLabel + (FAST > 1 ? ' · fast triggers ×5' : '') + ' · answers only from verified program facts');
+  const B = window.AdvisorBrain;
+  const live = B && B.mode() !== 'scripted';
+  const note = el('div', 'adv-note');
+  note.appendChild(el('span', null, 'SANDBOX — ' + (B ? B.modeLabel() : '?') + (FAST > 1 ? ' · fast triggers ×5' : '') + ' · '));
+  const brainLink = el('a', null, live ? 'disconnect brain' : 'connect live brain');
+  brainLink.href = 'javascript:void(0)';
+  brainLink.onclick = () => { if (live) { if (confirm('Disconnect the live brain from this browser?')) B.disconnect(); } else B.connect(); };
+  note.appendChild(brainLink);
   panel.append(head, msgs, inWrap, note);
   document.body.append(bubble, panel);
 

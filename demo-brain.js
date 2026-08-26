@@ -1,14 +1,66 @@
-/* Demo brain for the GitHub Pages sandbox.
-   Two modes:
-   - REMOTE: if an API URL is set (?api=https://... or localStorage.advisor_api_url), calls the
-     Cloudflare Worker (worker/advisor-worker.js) → real Claude, key stays server-side.
-   - SCRIPTED: built-in mock — the exact flows from Gail's vision doc. No secrets in this file.
-   State (sessions, email queue, stats) lives in the browser (localStorage) either way. */
+/* Demo brain for the GitHub Pages sandbox — three modes, picked automatically:
+   1. WORKER:   ?api=https://... (or saved) → backend proxy, key server-side.
+   2. REQUESTY: a Requesty router key connected in THIS browser (?rkey=... once, or the
+      "connect live brain" prompt) → real claude-sonnet-5; the key lives ONLY in this
+      browser's localStorage, is stripped from the URL immediately, and never appears
+      in the repo or the page source.
+   3. SCRIPTED: built-in flows from the vision doc — zero secrets, never dies.
+   State (sessions, email queue, stats) lives in the browser either way. */
 (function () {
-  const qsApi = new URLSearchParams(location.search).get('api');
-  if (qsApi) localStorage.advisor_api_url = qsApi;
+  const qs = new URLSearchParams(location.search);
+  if (qs.get('api')) localStorage.advisor_api_url = qs.get('api');
+  if (qs.get('rkey')) {
+    localStorage.advisor_rkey = qs.get('rkey');
+    qs.delete('rkey');
+    const rest = qs.toString();
+    history.replaceState(null, '', location.pathname + (rest ? '?' + rest : ''));
+  }
   const API = localStorage.advisor_api_url || '';
+  const rkey = () => localStorage.advisor_rkey || '';
+  const REQUESTY_URL = 'https://router.requesty.ai/v1/chat/completions';
+  const MODEL = localStorage.advisor_model || 'bedrock/claude-sonnet-5';
   const DISCLOSURE = 'I am the FHEA program advisor and I am an AI assistant';
+
+  /* ---------- the full trained brain: persona + verified KB (mirrors kb/facts.json) ---------- */
+  const FACTS = [
+    'Upon successful completion you earn the FMP-C credential — The Elite NP Functional Medicine Certification.',
+    'FHEA has partnered with The Elite Nurse Practitioner to offer this certification.',
+    'Program cost is $3,999 — one-time fee for the full certification and 1-year access.',
+    "Affirm financing is available on FHEA. Exact monthly figures are computed by Affirm at checkout — say 'financing available via Affirm' plus an illustrative ~$334/mo over 12 months, always labeled illustrative.",
+    'Accredited for 95 contact hours, including 24 Rx (pharmacology) hours that count toward prescribing requirements.',
+    'Elite NP partnered with NetCE for development; NetCE is an IACET Accredited Provider (ANSI/IACET standard).',
+    'Completely online and self-paced. 1 year to complete; most providers finish in 3–6 months.',
+    'Lifetime access to the core certification content available at time of purchase, even after the certification year ends.',
+    'No prior functional medicine experience needed — foundational concepts through advanced protocols.',
+    'Immediately applicable in primary care, urgent care, specialty clinics, or your own practice.',
+    'This certification is EXCLUDED from FHEA Memberships and must be purchased separately.',
+    'Program Director: Jenni Gallagher, MSN, NP-C — board-certified NP in Functional Medicine, endocrinology, metabolic health.',
+    'Course authors/SMEs: Brendan Tennefoss NP, Keri Douglas NP, Justin Groce NP, Haley Stevens NP, Lisa Vasile NP, Danielle Hawkins NP, Nicholas Goodwin PMHNP.',
+    'Modules: Legalities/Regulations/Risks; Foundations of Functional Medicine; Lab Interpretation; Gut Health & the Biome; Immunity & Inflammation; Sex Hormones; Cardiometabolic Health; Environmental Toxins; HPA Axis Dysregulation; Integrative Mental Health; Trauma/Stress/Mind-Body; Business & Practice Growth.',
+    "Lab Interpretation module: tighter 'optimal' ranges vs conventional, functional markers beyond CBC/CMP, pattern-based early-dysfunction detection.",
+    'Gut Health module: GI tract as epicenter of health/disease; treatment via digestion, absorption, elimination, microbiome pillars.',
+    'Business module: launch and scale a profitable functional-medicine clinic — cash vs insurance models, pricing, lab partnerships, marketing to cash-pay patients.',
+    'Path: build foundations → master clinical & lab skills → case studies and assessments → pass the exam → certification.',
+    'vs other programs: designed specifically for NPs; no $20K+ price tags; real-world clinical AND business strategies; fully online, self-paced.',
+    'Market: ~10,300+ U.S. clinicians hold a functional-medicine credential; ~60 million chronically ill U.S. adults seek functional medicine; average provider earnings $221,000 (IQR $153k–$283k).',
+    'Legalities module: low-to-moderate liability, covered under malpractice insurance; treat within scope and refer when appropriate.'
+  ];
+  const TRIGGER_MOVES = {
+    dwell_scroll: '45s+ dwell, 60% scroll, no CTA click. Offer the thing most people at that scroll position ask about: how clinically deep it actually goes.',
+    price_dwell: '10s+ on the price block. Lead with total cost clarity and Affirm, unprompted. Price talk IS appropriate for this trigger.',
+    faq_repeat: 'FAQ accordion opened twice+. Answer the category directly instead of making her read.',
+    repeat_visit: 'Second+ visit within 14 days. Acknowledge the return warmly, ask what is still open.',
+    known_contact: 'Known contact (HubSpot cookie match, simulated). Skip discovery, go straight to the open question.',
+    idle: '90s idle mid-page. One low-friction offer, then be ready to go quiet.',
+    cart_exit: 'CART RESCUE: exit intent on the cart page ($3,999 in cart). Name and remove the single most likely blocker in one short message — or ask what outstanding question she has.',
+    cart_coupon: 'CART RESCUE: coupon hunting. Reinforce full value; Affirm is the legitimate cost-easer. Do NOT invent a discount.',
+    cart_stall: 'CART RESCUE: payment step idle. Gently ask what outstanding question she has, or offer the Affirm option (illustrative).'
+  };
+  const SYSTEM = 'You are the FHEA program advisor — the customer-facing persona of the Functional Medicine AI SDR for the Functional Medicine Certification (FMP-C).\n\n' +
+    'IDENTITY & DISCLOSURE\n- Warm, knowledgeable program advisor. On your FIRST message of a conversation say plainly you are an AI assistant ("' + DISCLOSURE + ', so you can ask me anything without a sales call") and that a human colleague is one message away.\n- Plain, concrete, peer-to-peer with a nurse practitioner. Never salesy.\n\n' +
+    'HARD RULES\n- SHORT messages: 2-5 sentences. Never a wall of text.\n- Answer ONLY from the verified facts below. Not covered (state prescribing authority, employer reimbursement, medical advice)? Say so and offer the human colleague. NEVER guess.\n- NEVER invent discounts. You may offer: the module outline, the employer-justification one-pager, Affirm info (illustrative only), a human colleague.\n- OBJECTION-SEQUENCED SELLING: if decision state is clinically_curious and rigor is unresolved, do NOT mention price/cost/financing (exception: price_dwell and cart_* triggers where price IS the topic).\n- One question max per message; end with a low-friction next step.\n\n' +
+    'VERIFIED FACTS\n' + FACTS.map(f => '- ' + f).join('\n') + '\n\n' +
+    'OUTPUT — ONLY a JSON object, no fences:\n{"reply":"<message>","state":"<clinically_curious|price_focused|career_pivot|employer_funded|browsing|unknown>","objection":"<rigor|cost|time|value|applicability|none|unknown>","rigor_resolved":<bool>,"buying_signal":<bool>}';
 
   /* ---------- browser-side store ---------- */
   const store = {
@@ -21,7 +73,23 @@
   const queue = () => store.get('queue', []);
   const saveQueue = q => store.set('queue', q);
 
-  /* ---------- scripted brain (mirrors server/advisor.mjs mock) ---------- */
+  /* ---------- requesty (browser-direct, OpenAI-compatible) ---------- */
+  function parseJSON(text) {
+    try { return JSON.parse(text.replace(/^```(json)?|```$/g, '').trim()); }
+    catch { const m = text.match(/\{[\s\S]*\}/); try { return JSON.parse(m[0]); } catch { return { reply: text.slice(0, 500), state: 'unknown', objection: 'unknown', rigor_resolved: false }; } }
+  }
+  async function requesty(system, messages, maxTokens) {
+    const r = await fetch(REQUESTY_URL, {
+      method: 'POST',
+      headers: { 'Authorization': 'Bearer ' + rkey(), 'content-type': 'application/json' },
+      body: JSON.stringify({ model: MODEL, max_tokens: maxTokens, messages: [{ role: 'system', content: system }].concat(messages) })
+    });
+    const d = await r.json();
+    if (!r.ok || d.error) throw new Error((d.error && d.error.message) || ('router ' + r.status));
+    return parseJSON(d.choices[0].message.content);
+  }
+
+  /* ---------- scripted fallback (vision-doc flows) ---------- */
   function scripted(session, trigger, userMsg) {
     const first = session.messages.filter(m => m.role === 'assistant').length === 0;
     const m = (userMsg || '').toLowerCase();
@@ -67,7 +135,17 @@
 
   /* ---------- public API used by demo-widget.js and the demo pages ---------- */
   window.AdvisorBrain = {
-    remote: !!API,
+    mode() { return API ? 'worker' : (rkey() ? 'requesty' : 'scripted'); },
+    modeLabel() { return API ? 'live via Worker' : (rkey() ? 'LIVE claude-sonnet-5 via Requesty' : 'scripted demo brain'); },
+    connect() {
+      const k = prompt('Paste a Requesty router key (stays ONLY in this browser — localStorage):');
+      if (k && k.trim()) { localStorage.advisor_rkey = k.trim(); location.reload(); }
+    },
+    disconnect() {
+      localStorage.removeItem('advisor_rkey');
+      localStorage.removeItem('advisor_api_url');
+      location.reload();
+    },
     async chat(sessionId, { trigger, message }) {
       const s = getSession(sessionId);
       if (s.dismissed && !message) return { suppressed: true };
@@ -79,10 +157,13 @@
       let parsed;
       if (API) {
         const r = await fetch(API + '/chat', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ messages: s.messages, trigger, message, state: s.state, rigor_resolved: s.rigor_resolved }) });
-        parsed = await r.json();
-        if (parsed.error) throw new Error(parsed.error);
+        parsed = await r.json(); if (parsed.error) throw new Error(parsed.error);
+      } else if (rkey()) {
+        const convo = s.messages.map(m => ({ role: m.role, content: m.content }));
+        convo.push({ role: 'user', content: message ? String(message).slice(0, 2000) : `[PROACTIVE GREETING — no user message yet. Trigger: ${trigger}. ${TRIGGER_MOVES[trigger] || ''} Write your opening message now.]` });
+        parsed = await requesty(SYSTEM, convo, 700);
       } else {
-        await new Promise(r => setTimeout(r, 500 + Math.random() * 600)); // human-ish latency
+        await new Promise(r => setTimeout(r, 500 + Math.random() * 600));
         parsed = scripted(s, trigger, message);
       }
       const g = guardrails(parsed, s, trigger);
@@ -103,6 +184,13 @@
       if (API) {
         const r = await fetch(API + '/email', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ mode: engaged ? 'engaged' : 'non_engaged', contact, messages: s.messages, state: s.state, objection: s.objection, signals: contact.signals || {} }) });
         em = await r.json();
+      } else if (rkey()) {
+        const ctx = engaged
+          ? `MODE: ENGAGED. Conversation:\n${s.messages.map(m => m.role + ': ' + m.content).join('\n').slice(0, 8000)}\nState: ${s.state}; objection: ${s.objection}.\nWrite the recovery email as a CONTINUATION of this conversation. Subject references her actual objection; body answers it; invite reply.`
+          : `MODE: NON-ENGAGED — she never talked to you. Signals: ${JSON.stringify(contact.signals || {}).slice(0, 1000)}.\nWrite a personal email grounded in her signals, INVITING her to interact with the advisor to get answers and complete the purchase. Never a template.`;
+        const sys = SYSTEM.replace('OUTPUT — ONLY a JSON object, no fences:', 'You are writing a recovery EMAIL (same identity, AI disclosure in the signature, verified facts only, no invented discounts, 120-180 words). OUTPUT — ONLY a JSON object:')
+          .replace(/\{"reply".*$/s, '{"subject":"<subject>","body":"<plain-text email signed as the advisor with AI disclosure>"}');
+        em = await requesty(sys, [{ role: 'user', content: ctx }], 900);
       } else { em = scriptedEmail(contact, s); }
       const entry = { id: 'em_' + Date.now() + '_' + Math.random().toString(36).slice(2, 6), mode: engaged ? 'engaged' : 'non_engaged', contact, subject: em.subject, body: em.body, grounded_in: engaged ? { state: s.state, objection: s.objection, turns: s.messages.length } : { signals: contact.signals || {} }, status: 'pending', created: new Date().toISOString() };
       const q = queue(); q.push(entry); saveQueue(q);
@@ -122,7 +210,7 @@
     stats() {
       const ss = Object.values(sessions()); const q = queue();
       const count = (arr, key) => arr.reduce((a, s) => { const k = s[key] || 'unknown'; a[k] = (a[k] || 0) + 1; return a; }, {});
-      return { brain: API ? 'live API (' + API + ')' : 'scripted demo brain (vision-doc flows) — plug a Worker URL via ?api= for live Claude',
+      return { brain: this.modeLabel(),
         sessions: ss.length, conversations: ss.filter(s => s.messages.length).length, leads_captured: ss.filter(s => s.email).length,
         abandoned: ss.filter(s => s.abandoned).length, dismissed: ss.filter(s => s.dismissed).length,
         states: count(ss, 'state'), objections: count(ss, 'objection'),
