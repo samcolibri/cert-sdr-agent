@@ -37,6 +37,16 @@ She has a name (TBD), a consistent voice, memory across touchpoints, and a defin
 - **Zero hallucination** — every product claim traces to a verified KB fact
 - **The KB reads the course itself** — course content + lecture transcripts feed the knowledge base (Aug 20 feedback), so the advisor answers depth questions from the source material
 
+## 🧪 MVP Sandbox (approved 2026-08-26 — built)
+
+The entire agent runs locally as a synthetic sandbox — demo landing page, widget with all 6 triggers + 3 cart rescues, live Claude brain with code-enforced guardrails, agent-written recovery emails (both modes), approval queue, scoreboard:
+
+```bash
+node server/server.mjs   # → localhost:4321 (page) /cart /dashboard — MOCK brain if no ANTHROPIC_API_KEY
+```
+
+Run & demo script: [`docs/SANDBOX.md`](docs/SANDBOX.md) · build plan: [`docs/MVP_PLAN.md`](docs/MVP_PLAN.md)
+
 ## Key Documents
 
 - [`docs/VISION.md`](docs/VISION.md) — **the product vision (source of truth)**

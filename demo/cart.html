@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DEMO — Cart | FM Program Advisor Sandbox</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#111827;line-height:1.6;background:#f9fafb}
+  .demo-banner{position:sticky;top:0;background:#111827;color:#fad74f;text-align:center;padding:6px;font-size:12px;font-weight:700;letter-spacing:.08em;z-index:100}
+  .wrap{max-width:620px;margin:0 auto;padding:40px 24px}
+  .card{background:#fff;border:1px solid #e5e7eb;border-radius:14px;padding:26px;margin-bottom:18px}
+  h1{font-size:26px;margin-bottom:18px}
+  h3{font-size:15px;margin-bottom:10px}
+  .row{display:flex;justify-content:space-between;font-size:15px;padding:8px 0;border-bottom:1px solid #f3f4f6}
+  .row.total{font-weight:800;font-size:17px;border:none}
+  input{width:100%;border:1px solid #e5e7eb;border-radius:8px;padding:11px 12px;font-size:14px;margin-top:6px}
+  .btn{display:block;width:100%;background:#1d4ed8;color:#fff;font-weight:700;padding:14px;border-radius:8px;border:none;font-size:15px;cursor:pointer;margin-top:14px}
+  .btn.ghost{background:#fff;color:#6b7280;border:1px solid #e5e7eb;font-weight:600}
+  .hint{font-size:12.5px;color:#9ca3af;margin-top:8px;text-align:center}
+  #result{margin-top:12px;font-size:13.5px;color:#047857;text-align:center;font-weight:600;white-space:pre-wrap}
+</style>
+</head>
+<body data-advisor-page="cart">
+<div class="demo-banner">INTERNAL DEMO SANDBOX — CART PAGE — no real checkout, no real payment</div>
+
+<div class="wrap">
+  <h1>Your Cart</h1>
+  <div class="card">
+    <div class="row"><span>Functional Medicine Certification (FMP-C)</span><span>$3,999.00</span></div>
+    <div class="row"><span>Access</span><span>1 year + lifetime core content</span></div>
+    <div class="row total"><span>Total</span><span>$3,999.00</span></div>
+    <h3 style="margin-top:16px">Coupon code</h3>
+    <input data-coupon placeholder="Enter coupon code (try focusing here — coupon-hunt rescue)"/>
+  </div>
+
+  <div class="card" data-payment>
+    <h3>Payment (demo — no real fields)</h3>
+    <input placeholder="Email for order confirmation" id="email" value="np.demo@example.com"/>
+    <input placeholder="Card number (disabled in sandbox)" disabled/>
+    <button class="btn" onclick="purchase()">Complete Purchase — demo</button>
+    <button class="btn ghost" onclick="abandon()">Simulate: leave without buying (triggers recovery email)</button>
+    <p class="hint">Exit intent: move your mouse to the top edge of the window. Payment stall: wait 30s on this card.</p>
+    <div id="result"></div>
+  </div>
+</div>
+
+<script>
+  const out = document.getElementById('result');
+  function purchase() { out.textContent = 'Purchase simulated ✓ — session exits all sequences (demo).'; }
+  async function abandon() {
+    const email = document.getElementById('email').value;
+    const r = await fetch('/api/abandon', { method: 'POST', headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({ sessionId: sessionStorage.advisor_sid, email: email, name: 'Demo NP' }) });
+    const d = await r.json();
+    out.textContent = 'Abandonment recorded. The advisor wrote a recovery email (' + d.mode + ' mode):\n"' + d.subject + '"\n→ review it on the dashboard: /dashboard';
+  }
+</script>
+<script src="/widget.js"></script>
+</body>
+</html>

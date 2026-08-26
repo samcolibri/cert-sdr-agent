@@ -1,0 +1,13 @@
+{
+  "name": "cert-sdr-agent",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "FM Program Advisor — AI SDR sandbox for the Functional Medicine Certification (FHEA + Elite NP)",
+  "scripts": {
+    "demo": "node server/server.mjs",
+    "demo:mock": "MOCK=1 node server/server.mjs",
+    "scrape": "node kb/scrape.mjs"
+  },
+  "engines": { "node": ">=18" }
+}

@@ -1,0 +1,35 @@
+{
+  "cert_id": "fmp-c",
+  "cert_name": "Functional Medicine Certification (FMP-C)",
+  "sources": {
+    "landing": "https://www.fhea.com/functional-medicine-certification/ (retrieved 2026-08-26)",
+    "vision": "docs/VISION.md — Gail Applin product vision, 2026-08-17"
+  },
+  "facts": [
+    { "id": "credential", "fact": "Upon successful completion you earn the FMP-C credential — The Elite NP Functional Medicine Certification.", "source": "landing" },
+    { "id": "partnership", "fact": "Fitzgerald Health Education Associates (FHEA) has partnered with The Elite Nurse Practitioner to offer this certification.", "source": "landing" },
+    { "id": "price", "fact": "Program cost is $3,999 — a one-time fee for the full certification and 1-year access.", "source": "landing" },
+    { "id": "affirm", "fact": "Affirm financing is available on FHEA. Exact monthly figures are computed by Affirm at checkout — quote only 'financing available via Affirm' plus an illustrative ballpark (~$334/mo over 12 months), always labeled illustrative.", "source": "vision", "caution": "never quote a fixed monthly price as fact" },
+    { "id": "hours", "fact": "The program is accredited for 95 contact hours, including 24 Rx (pharmacology) hours that count toward prescribing requirements.", "source": "landing" },
+    { "id": "accreditation", "fact": "Elite NP partnered with NetCE for development; NetCE is an IACET Accredited Provider offering IACET CEUs compliant with the ANSI/IACET Continuing Education and Training Standard.", "source": "landing" },
+    { "id": "format", "fact": "Completely online and self-paced — no travel or rigid schedules. 1 year to complete; most providers finish in 3–6 months.", "source": "landing" },
+    { "id": "access-after", "fact": "You keep lifetime access to the core certification content available at the time of purchase, even after the certification year ends.", "source": "landing" },
+    { "id": "experience", "fact": "No prior functional medicine experience is needed — the program covers foundational concepts through advanced protocols.", "source": "landing" },
+    { "id": "applicability", "fact": "Protocols are immediately applicable whether you work in primary care, urgent care, specialty clinics, or your own practice.", "source": "landing" },
+    { "id": "membership-exclusion", "fact": "This certification is EXCLUDED from FHEA Memberships and must be purchased separately.", "source": "landing" },
+    { "id": "director", "fact": "Program Director is Jenni Gallagher, MSN, NP-C — board-certified NP specializing in Functional Medicine, endocrinology, and metabolic health.", "source": "landing" },
+    { "id": "faculty", "fact": "Course authors and SMEs: Brendan Tennefoss NP, Keri Douglas NP, Justin Groce NP, Haley Stevens NP, Lisa Vasile NP, Danielle Hawkins NP, Nicholas Goodwin (Psychiatric & Mental Health NP) — practicing NPs and functional-medicine specialists.", "source": "landing" },
+    { "id": "modules", "fact": "Curriculum modules: Legalities/Regulations/Risks; Foundations of Functional Medicine; Lab Interpretation in Functional Medicine; Gut Health and the Biome; Immunity and Inflammation; Sex Hormones; Cardiometabolic Health; Environmental Toxins; HPA Axis Dysregulation; Integrative Mental Health; Trauma/Stress/Mind-Body; Business & Practice Growth Strategies.", "source": "landing" },
+    { "id": "module-labs", "fact": "The Lab Interpretation module teaches tighter 'optimal' ranges vs conventional ones, functional markers beyond CBC/CMP, and pattern-based early-dysfunction detection driving personalized treatment.", "source": "landing" },
+    { "id": "module-gut", "fact": "Gut Health module: GI tract as epicenter of health/disease; dysfunction appearing as skin, brain, metabolic symptoms; treatment via digestion, absorption, elimination, microbiome pillars.", "source": "landing" },
+    { "id": "module-business", "fact": "The Business & Practice Growth module teaches how to launch and scale a profitable functional-medicine clinic: cash vs insurance models, pricing, lab partnerships, patient retention, and marketing to attract cash-pay patients.", "source": "landing" },
+    { "id": "path", "fact": "Path to certification: build foundations → master clinical & lab skills → demonstrate expertise via case studies and assessments → pass the exam → receive certification.", "source": "landing" },
+    { "id": "why-us", "fact": "vs other programs: designed specifically for NPs; affordable and practical (no $20K+ price tags or unnecessary requirements); real-world clinical AND business strategies; completely online and self-paced.", "source": "landing" },
+    { "id": "market-clinicians", "fact": "Approximately 10,300+ U.S. clinicians hold a functional-medicine credential.", "source": "landing" },
+    { "id": "market-demand", "fact": "About 60 million chronically ill U.S. adults seek functional medicine.", "source": "landing" },
+    { "id": "market-earnings", "fact": "Average annual earnings for functional-medicine providers: $221,000 (IQR $153k–$283k).", "source": "landing" },
+    { "id": "liability", "fact": "Legalities module: low-to-moderate liability, covered under malpractice insurance; treat within scope and refer when appropriate.", "source": "landing" }
+  ],
+  "escalation": "If a question cannot be answered from these facts (e.g., state-specific prescribing authority, employer reimbursement policy, medical advice), say so plainly and offer the human colleague — never guess.",
+  "transcripts_note": "kb/transcripts/ is ingested by kb/ingest_transcripts.mjs when Gail provides course content + lecture transcripts (Aug 20 feedback requirement). Empty in sandbox."
+}
