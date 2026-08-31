@@ -18,7 +18,9 @@
   const API = localStorage.advisor_api_url || '';
   const rkey = () => localStorage.advisor_rkey || '';
   const REQUESTY_URL = 'https://router.requesty.ai/v1/chat/completions';
-  const MODEL = localStorage.advisor_model || 'bedrock/claude-sonnet-5';
+  // Cost-tuned: fast/cheap model for chat turns, premium model only for recovery emails.
+  const CHAT_MODEL = localStorage.advisor_model || 'anthropic/claude-haiku-4-5';
+  const EMAIL_MODEL = localStorage.advisor_email_model || 'anthropic/claude-sonnet-5';
   const DISCLOSURE = 'I am the FHEA program advisor and I am an AI assistant';
 
   /* ---------- the full trained brain: persona + verified KB (mirrors kb/facts.json) ---------- */
@@ -58,7 +60,7 @@
   };
   const SYSTEM = 'You are the FHEA program advisor — the customer-facing persona of the Functional Medicine AI SDR for the Functional Medicine Certification (FMP-C).\n\n' +
     'IDENTITY & DISCLOSURE\n- Warm, knowledgeable program advisor. On your FIRST message of a conversation say plainly you are an AI assistant ("' + DISCLOSURE + ', so you can ask me anything without a sales call") and that a human colleague is one message away.\n- Plain, concrete, peer-to-peer with a nurse practitioner. Never salesy.\n\n' +
-    'HARD RULES\n- SHORT messages: 2-5 sentences. Never a wall of text.\n- Answer ONLY from the verified facts below. Not covered (state prescribing authority, employer reimbursement, medical advice)? Say so and offer the human colleague. NEVER guess.\n- NEVER invent discounts. You may offer: the module outline, the employer-justification one-pager, Affirm info (illustrative only), a human colleague.\n- OBJECTION-SEQUENCED SELLING: if decision state is clinically_curious and rigor is unresolved, do NOT mention price/cost/financing (exception: price_dwell and cart_* triggers where price IS the topic).\n- One question max per message; end with a low-friction next step.\n\n' +
+    'HARD RULES\n- SHORT messages: 2-5 sentences. Never a wall of text.\n- Answer ONLY from the verified facts below. Not covered (state prescribing authority, employer reimbursement, medical advice)? Say so and offer the human colleague. NEVER guess.\n- NEVER invent discounts. You may offer: the module outline, the employer-justification one-pager, Affirm info (illustrative only), a human colleague.\n- OBJECTION-SEQUENCED SELLING: if decision state is clinically_curious and rigor is unresolved, do NOT bring up price/cost/financing yourself (exceptions: she asks price directly — answer in ONE short sentence then return to the open objection; or price_dwell / cart_* triggers where price IS the topic).\n- rigor_resolved becomes true ONLY after she signals the depth answer landed (asks for the outline, says that helps, moves to logistics). Answering once does NOT resolve it.\n- ALWAYS work toward the sale: every message ends with exactly one low-friction next step (outline via email, a specific module walkthrough, the cart link when buying_signal is true). One question max per message.\n\n' +
     'VERIFIED FACTS\n' + FACTS.map(f => '- ' + f).join('\n') + '\n\n' +
     'OUTPUT — ONLY a JSON object, no fences:\n{"reply":"<message>","state":"<clinically_curious|price_focused|career_pivot|employer_funded|browsing|unknown>","objection":"<rigor|cost|time|value|applicability|none|unknown>","rigor_resolved":<bool>,"buying_signal":<bool>}';
 
@@ -78,11 +80,11 @@
     try { return JSON.parse(text.replace(/^```(json)?|```$/g, '').trim()); }
     catch { const m = text.match(/\{[\s\S]*\}/); try { return JSON.parse(m[0]); } catch { return { reply: text.slice(0, 500), state: 'unknown', objection: 'unknown', rigor_resolved: false }; } }
   }
-  async function requesty(system, messages, maxTokens) {
+  async function requesty(model, system, messages, maxTokens) {
     const r = await fetch(REQUESTY_URL, {
       method: 'POST',
       headers: { 'Authorization': 'Bearer ' + rkey(), 'content-type': 'application/json' },
-      body: JSON.stringify({ model: MODEL, max_tokens: maxTokens, messages: [{ role: 'system', content: system }].concat(messages) })
+      body: JSON.stringify({ model, max_tokens: maxTokens, messages: [{ role: 'system', content: system }].concat(messages) })
     });
     const d = await r.json();
     if (!r.ok || d.error) throw new Error((d.error && d.error.message) || ('router ' + r.status));
@@ -136,7 +138,7 @@
   /* ---------- public API used by demo-widget.js and the demo pages ---------- */
   window.AdvisorBrain = {
     mode() { return API ? 'worker' : (rkey() ? 'requesty' : 'scripted'); },
-    modeLabel() { return API ? 'live via Worker' : (rkey() ? 'LIVE claude-sonnet-5 via Requesty' : 'scripted demo brain'); },
+    modeLabel() { return API ? 'live via Worker' : (rkey() ? 'LIVE haiku-4-5 chat + sonnet-5 emails via Requesty' : 'scripted demo brain'); },
     connect() {
       const k = prompt('Paste a Requesty router key (stays ONLY in this browser — localStorage):');
       if (k && k.trim()) { localStorage.advisor_rkey = k.trim(); location.reload(); }
@@ -161,7 +163,7 @@
       } else if (rkey()) {
         const convo = s.messages.map(m => ({ role: m.role, content: m.content }));
         convo.push({ role: 'user', content: message ? String(message).slice(0, 2000) : `[PROACTIVE GREETING — no user message yet. Trigger: ${trigger}. ${TRIGGER_MOVES[trigger] || ''} Write your opening message now.]` });
-        parsed = await requesty(SYSTEM, convo, 700);
+        parsed = await requesty(CHAT_MODEL, SYSTEM, convo, 700);
       } else {
         await new Promise(r => setTimeout(r, 500 + Math.random() * 600));
         parsed = scripted(s, trigger, message);
@@ -190,7 +192,7 @@
           : `MODE: NON-ENGAGED — she never talked to you. Signals: ${JSON.stringify(contact.signals || {}).slice(0, 1000)}.\nWrite a personal email grounded in her signals, INVITING her to interact with the advisor to get answers and complete the purchase. Never a template.`;
         const sys = SYSTEM.replace('OUTPUT — ONLY a JSON object, no fences:', 'You are writing a recovery EMAIL (same identity, AI disclosure in the signature, verified facts only, no invented discounts, 120-180 words). OUTPUT — ONLY a JSON object:')
           .replace(/\{"reply".*$/s, '{"subject":"<subject>","body":"<plain-text email signed as the advisor with AI disclosure>"}');
-        em = await requesty(sys, [{ role: 'user', content: ctx }], 900);
+        em = await requesty(EMAIL_MODEL, sys, [{ role: 'user', content: ctx }], 1100);
       } else { em = scriptedEmail(contact, s); }
       const entry = { id: 'em_' + Date.now() + '_' + Math.random().toString(36).slice(2, 6), mode: engaged ? 'engaged' : 'non_engaged', contact, subject: em.subject, body: em.body, grounded_in: engaged ? { state: s.state, objection: s.objection, turns: s.messages.length } : { signals: contact.signals || {} }, status: 'pending', created: new Date().toISOString() };
       const q = queue(); q.push(entry); saveQueue(q);
