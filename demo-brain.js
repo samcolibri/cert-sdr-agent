@@ -15,7 +15,10 @@
     const rest = qs.toString();
     history.replaceState(null, '', location.pathname + (rest ? '?' + rest : ''));
   }
-  const API = localStorage.advisor_api_url || '';
+  // DEFAULT_API: the deployed Worker (key server-side) — set after first CI deploy.
+  // When present, EVERY visitor gets the live brain from the plain URL, no key anywhere client-side.
+  const DEFAULT_API = '';
+  const API = localStorage.advisor_api_url || DEFAULT_API;
   const rkey = () => localStorage.advisor_rkey || '';
   const REQUESTY_URL = 'https://router.requesty.ai/v1/chat/completions';
   // Cost-tuned: fast/cheap model for chat turns, premium model only for recovery emails.
@@ -181,7 +184,7 @@
       }
       let parsed;
       if (API) {
-        const r = await fetch(API + '/chat', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ messages: s.messages, trigger, message, state: s.state, rigor_resolved: s.rigor_resolved }) });
+        const r = await fetch(API + '/chat', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ messages: s.messages, trigger, message, state: s.state, rigor_resolved: s.rigor_resolved, rag: message ? ragBlock(message) : '' }) });
         parsed = await r.json(); if (parsed.error) throw new Error(parsed.error);
       } else if (rkey()) {
         const convo = s.messages.map(m => ({ role: m.role, content: m.content }));
@@ -214,7 +217,7 @@
       const engaged = s.messages.length > 0;
       let em;
       if (API) {
-        const r = await fetch(API + '/email', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ mode: engaged ? 'engaged' : 'non_engaged', contact, messages: s.messages, state: s.state, objection: s.objection, signals: contact.signals || {} }) });
+        const r = await fetch(API + '/email', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ mode: engaged ? 'engaged' : 'non_engaged', contact, messages: s.messages, state: s.state, objection: s.objection, signals: contact.signals || {}, rag: ragBlock(engaged ? s.messages.map(m => m.content).join(' ').slice(-1200) : JSON.stringify(contact.signals || {})) }) });
         em = await r.json();
       } else if (rkey()) {
         const ctx = engaged
