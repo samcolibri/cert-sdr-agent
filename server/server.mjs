@@ -27,7 +27,7 @@ save('contacts.json', synthetic);
 const getSession = id => sessions[id] ||= { id, created: new Date().toISOString(), messages: [], state: 'unknown', objection: 'unknown', rigor_resolved: false, buying_signal: false, dismissed: false, abandoned: false, email: null, guardrail_notes: [], triggers: [] };
 const persist = () => { save('sessions.json', sessions); save('queue.json', queue); };
 
-const json = (res, code, obj) => { res.writeHead(code, { 'content-type': 'application/json', 'access-control-allow-origin': '*' }); res.end(JSON.stringify(obj)); };
+const json = (res, code, obj) => { res.writeHead(code, { 'content-type': 'application/json', 'access-control-allow-origin': '*', 'access-control-allow-methods': 'GET,POST,OPTIONS', 'access-control-allow-headers': 'content-type', 'access-control-max-age': '86400' }); res.end(JSON.stringify(obj)); };
 const body = req => new Promise(r => { let b = ''; req.on('data', c => b += c); req.on('end', () => { try { r(JSON.parse(b || '{}')); } catch { r({}); } }); });
 
 const MIME = { '.html': 'text/html', '.js': 'text/javascript', '.css': 'text/css', '.json': 'application/json', '.svg': 'image/svg+xml' };
