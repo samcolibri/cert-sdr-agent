@@ -84,7 +84,8 @@ flowchart TB
 - Enforces rules of engagement client-side: one proactive attempt/session, silent after dismissal, suppressed on checkout and for logged-in cert owners.
 
 ### 4.2 Advisor Service (Cloudflare Worker — reuses ATLAS deploy template)
-- **Conversation engine:** Claude, grounded exclusively in KB facts; hard message-length cap; always-on AI disclosure in the greeting; "human colleague one message away" escalation to a named person (Yazir designates).
+- **Conversation engine:** Claude (cost-tuned: haiku-4-5 chat turns / sonnet-5 emails), grounded in KB facts + retrieved course knowledge; hard message-length cap; always-on AI disclosure in the greeting.
+- **Human expert as part of the sequence:** the JSON contract carries `escalate` — when the buyer asks for a human or asks outside verified facts twice, the advisor tells her an expert will follow up and an **expert assignment** is created (queue on the dashboard; production = HubSpot task for Yazir's designated person). Escalation is a sequence step, not a failure mode.
 - **Decision-state classifier:** tags each contact's state (first archetype: *Clinically Curious* — objection: rigor; more archetypes to be defined with Gail as vision v2 sections land) and primary objection. Tags write to HubSpot.
 - **Contact memory:** every conversation, state, objection, and delivered asset stored per contact — cookie-matched returning visitors get continuity ("skip discovery, reference what she already told us").
 - **Guardrails:** price-timing per decision state, sourced-claims-only, defined scope of authority (what she may promise: outline delivery, invoice, one-pager, Affirm figures; what she may not: unlisted discounts, clinical advice, accreditation claims beyond KB).
@@ -96,7 +97,11 @@ flowchart TB
 - Delivered through HubSpot; human approval queue for the first ~50 generated emails, then graduated autonomy (KELLI lesson: stakeholder sign-off is the only gate).
 
 ### 4.4 Knowledge Base (auto-refresh — Gail's standing requirement)
-- **Primary source (Aug 20 feedback): the course itself.** The agent ingests the actual course content and lecture transcripts, module by module — this feeds the course facts and lets the advisor answer depth questions ("what does the lab-interpretation module actually cover?") from the source material. Access path (LMS export vs Teachable/NetSuite/BenchPrep API) is an open question.
+- **Primary source (Aug 20 feedback): the course itself — DELIVERED 2026-09-02 and INGESTED.** The 39-item corpus (37 course PDFs + 2 worksheets, 155MB, ~2.85M chars extracted) is now a two-tier RAG:
+  - **Private tier (full fidelity):** `kb/build_index.mjs` extracts + chunks all docs → `kb/index.json` (1,509 chunks, BM25-lite lexical retrieval via `kb/retrieve.mjs`, zero API cost). Used by the local server: top-4 verbatim excerpts injected per turn. Corpus and index are **gitignored — course content never enters the public repo.**
+  - **Public tier (distilled):** `kb/distill.mjs` (haiku via Requesty) turns each doc into a marketing-safe fact sheet — what the module *teaches*, no protocols/dosing (scrubbed post-pass) → `kb/kb-pack.json` (34 modules, ~385 facts, 81KB, committed). The Pages demo retrieves top-2 modules client-side per turn and injects them as "retrieved course knowledge."
+  - Rule in both tiers: the advisor uses course knowledge to *prove depth and sell*, never to give clinical advice.
+  - 5 image-only slide decks yielded no text (need OCR or source files) — 2 have text-rich duplicates already ingested; 3 are a known gap (Dietary Influence, Functional Psych Business, Pediatric Practice Integration decks).
 - Seeded with verified facts from the vision doc (see [docs/VISION.md](docs/VISION.md) KB-seed section); Gail confirms the fact seed.
 - Scrapers watch both landing pages; NetSuite/BenchPrep catalog sync when courses consolidate; Heather's objection content and assets (module outline, employer one-pager) as first-class entries.
 - Changed source content flags a review item — never silently changes live agent behavior.

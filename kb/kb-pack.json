@@ -1,0 +1,911 @@
+{
+ "built": "2026-09-02T18:02:10.773Z",
+ "cert": "Functional Medicine Certification (FMP-C)",
+ "entries": [
+  {
+   "doc": "71KSJTf7RQbvGcZnMLYA_lab+worksheet",
+   "title": "Functional Medicine Lab Interpretation & Analysis",
+   "pitch": "Master comprehensive lab panel interpretation across thyroid, metabolic, inflammatory, and hormonal markers\u2014the clinical foundation NPs need to assess root causes and design personalized treatment plans.",
+   "facts": [
+    "Teaches interpretation of complete thyroid panel including TSH, Free T4, Free T3, and Reverse T3 to identify subclinical and clinical thyroid dysfunction.",
+    "Covers metabolic markers: homocysteine, uric acid, fasting insulin, glucose, and triglyceride/HDL ratio for cardiovascular and metabolic risk assessment.",
+    "Trains analysis of inflammatory biomarkers including high-sensitivity CRP and white blood cell count as indicators of systemic inflammation.",
+    "Addresses iron metabolism assessment through ferritin, serum iron, and iron saturation percentage for anemia and iron overload detection.",
+    "Includes micronutrient status evaluation: B12, Vitamin D, and electrolyte balance (sodium/potassium) critical for cellular function.",
+    "Teaches hepatic function interpretation via liver enzymes (AST, ALT, alkaline phosphatase) to screen for metabolic syndrome and toxin burden.",
+    "Covers sex hormone and adrenal assessment including estrogen, progesterone, testosterone, and DHEA-S to address hormonal imbalances.",
+    "Provides structured worksheets for multi-patient case tracking and longitudinal lab value monitoring to demonstrate clinical progression.",
+    "Trains NPs to recognize functional ranges\u2014not just normal lab ranges\u2014enabling earlier detection of subclinical disease patterns.",
+    "Enables evidence-based patient assessment that justifies functional medicine interventions and builds credibility with clients.",
+    "Supports practitioner ability to order, interpret, and track labs independently\u2014a cornerstone of the functional medicine business model."
+   ],
+   "keywords": [
+    "lab interpretation",
+    "thyroid markers",
+    "metabolic assessment",
+    "inflammatory biomarkers",
+    "hormonal imbalance",
+    "functional ranges"
+   ]
+  },
+  {
+   "doc": "AdvancedGutHealthCourseCaseStudy",
+   "title": "Advanced Gut Health Case Studies: Multi-System Root Cause Analysis",
+   "pitch": "Learn how to connect gastrointestinal pathology to cardiac, dermatological, and gynecological symptoms using functional medicine frameworks and stool panel interpretation.",
+   "facts": [
+    "Teaches interpretation of comprehensive stool analysis panels including bacterial pathogens, parasites, H. pylori virulence factors, dysbiosis markers, pancreatic enzyme sufficiency, and inflammatory biomarkers like calprotectin and secretory IgA.",
+    "Covers the clinical reasoning to connect low DAO enzyme production (declining progesterone in menopause) to histamine intolerance and its systemic manifestations across multiple organ systems.",
+    "Demonstrates how to identify when common health practices (fermented foods, probiotics) may be contraindicated based on individual biochemistry and microbiome status.",
+    "Includes case-based teaching on differential diagnosis: recognizing when a rash is histamine-driven rather than infectious (shingles) despite prior specialist labeling.",
+    "Teaches targeted supplementation protocols addressing root causes: H. pylori eradication, giardia and bacterial overgrowth treatment, microbiome restoration, and organ-system support (liver, pancreas, neurotransmitter synthesis).",
+    "Addresses how to manage patient expectations and monitor for herxheimer reactions during pathogen elimination and detoxification phases.",
+    "Covers hormonal-gut-microbiome axis: how sex hormone decline affects enzyme capacity and manifests as infections, rashes, and arrhythmias.",
+    "Demonstrates clinical outcome tracking: symptom resolution from cardiac arrhythmia, dyspnea, fatigue, and vaginal infections through gut-focused functional medicine intervention.",
+    "Teaches interpretation of supporting labs: CBC eosinophil/basophil trends, ferritin, iodine, thyroid panel, and hs-CRP in the context of gut dysbiosis and histamine burden.",
+    "Includes nutritional and botanical intervention frameworks: timing, dosing rationale, and sequencing of treatments to avoid GI upset and support detoxification pathways."
+   ],
+   "keywords": [
+    "stool analysis interpretation",
+    "dysbiosis and systemic symptoms",
+    "h. pylori and parasites",
+    "histamine intolerance",
+    "hormone-gut axis",
+    "microbiome restoration",
+    "functional medicine case studies"
+   ]
+  },
+  {
+   "doc": "CaseStudies1",
+   "title": "Foundational Functional Medicine Case Studies Module",
+   "pitch": "Learn to recognize hidden root causes\u2014environmental triggers, microbiome dysfunction, chronic stress patterns\u2014by working through real-world cases that conventional medicine missed.",
+   "facts": [
+    "Teaches clinical reasoning to connect symptom onset timing with environmental exposures (renovation materials, indoor air quality, home office hazards).",
+    "Covers how to identify when acute presentations mask chronic systemic issues requiring root-cause investigation beyond symptomatic treatment.",
+    "Demonstrates assessment of medication burden and iatrogenic effects (prednisone weight gain, NSAID overuse) in functional medicine context.",
+    "Includes analysis of psychosocial stressors (financial pressure, sleep disruption, anxiety rumination) as measurable drivers of inflammatory and pain conditions.",
+    "Teaches interpretation of symptom patterns (morning stiffness, time-of-day variation, exercise response) to guide differential diagnostic thinking.",
+    "Shows how to recognize antibiotic history and microbiome disruption as foundational factors in autoimmune-adjacent presentations.",
+    "Covers lifestyle factor assessment: exercise capacity, diet quality, sleep architecture, smoking status, social support as integrated clinical data.",
+    "Demonstrates case-building methodology that integrates timeline analysis, occupational/environmental history, medication timeline, and stress markers.",
+    "Teaches the functional medicine model of distinguishing between symptom relief (conventional outcome) and functional restoration (FM outcome).",
+    "Includes multi-system pattern recognition: respiratory + GI + musculoskeletal + neuroendocrine connections in single-patient narratives."
+   ],
+   "keywords": [
+    "case-based learning",
+    "root cause analysis",
+    "environmental triggers",
+    "psychosocial assessment",
+    "clinical reasoning",
+    "symptom pattern recognition"
+   ]
+  },
+  {
+   "doc": "CaseStudies2",
+   "title": "Functional Medicine Chronic Case Studies: Cardiometabolic & Multi-System Disease",
+   "pitch": "Learn how to identify and treat root causes of chronic fatigue, metabolic dysfunction, and multi-system disease through real cases where standard labs missed diagnoses that FMP-C testing protocols reveal.",
+   "facts": [
+    "Teaches comprehensive lab interpretation including thyroid panel, HPAT axis dysfunction markers, nutrient deficiency testing (vitamin D, magnesium, B vitamins), and gut permeability indicators.",
+    "Covers the 5R gut-healing protocol (Remove, Replace, Reinoculate, Repair, Retain) applied to IBS, leaky gut, and gluten sensitivity cases.",
+    "Trains practitioners to recognize insulin resistance via fasting glucose, fasting insulin, HgbA1c, and 2-hour glucose/insulin testing, including prediabetic range interpretation.",
+    "Addresses H. pylori infection discovery and treatment sequencing in cases presenting with chronic hives, platelet dysfunction, and lipid abnormalities.",
+    "Teaches advanced cardiometabolic panels: triglycerides, HDL/LDL, HS-CRP, fibrinogen, homocysteine, and LDL particle number for cardiovascular risk stratification.",
+    "Covers hormone testing and replacement strategy including testosterone deficiency and B12 status in aging male fatigue cases.",
+    "Demonstrates dietary intervention frameworks (elimination of grains, sugar, alcohol, gluten) paired with supplement protocols (omega-3, curcumin, berberine, digestive enzymes, probiotics).",
+    "Teaches stress-driven neuroendocrine dysfunction: how chronic stress impairs HPAT axis and thyroid function independent of TSH normality.",
+    "Includes case-study format showing multi-month outcome tracking: weight loss, inflammation markers, cognitive improvement, sexual function, and medication discontinuation.",
+    "Addresses cash-pay vs. insurance-reimbursement practice model decision-making and patient compliance challenges with prescription vs. supplement-based treatment.",
+    "Trains NPs to recognize when conventional \"normal\" lab ranges mask functional medicine pathology in exhaustion, brain fog, and metabolic failure cases.",
+    "Teaches integration of lifestyle coaching (meal prep, stress reduction, sleep, exercise restructuring) with pharmaceutical and supplement intervention sequencing."
+   ],
+   "keywords": [
+    "insulin resistance",
+    "cardiometabolic testing",
+    "gut healing protocol",
+    "thyroid HPAT axis",
+    "multi-system chronic disease",
+    "lab interpretation",
+    "functional medicine outcomes"
+   ]
+  },
+  {
+   "doc": "EstrogenRulesorDoesIt",
+   "title": "Estrogen & Progesterone Management in Functional Medicine",
+   "pitch": "Master sex hormone physiology, estrogen dominance recognition, and evidence-based BHRT prescribing to address fertility, menopause, PMS, and metabolic dysfunction in your NP practice.",
+   "facts": [
+    "Teaches steroid hormone biosynthesis from cholesterol through pregnenolone, including cytochrome P450 enzymatic pathways and tissue-specific production sites (ovaries, adrenal, breast tissue, adipose storage).",
+    "Covers all four estrogen forms (estrone/E1, estradiol/E2, estriol/E3, estetrol/E4) and their distinct physiological roles in bone, cardiovascular, cognitive, and sexual health.",
+    "Provides lab interpretation protocols: estradiol optimal ranges by life stage (40\u201350 pg/mL for menopause, day-3 timing for fertility, day-21 for most presentations), DUTCH vs. serum cost-benefit analysis, and follow-up frequency (Q3\u20136 months).",
+    "Teaches estrogen dominance syndrome recognition: 15+ associated symptoms (heavy menstruation, mood swings, weight gain, anxiety, low ferritin/magnesium) and 9+ lab correlates (elevated CRP/insulin, low vitamin D/protein).",
+    "Addresses estrogen dominance conditions: PCOS, endometriosis, PMS/PMDD, infertility, insulin resistance, tumors, and medication-induced elevation (ampicillin, steroids, phenothiazines).",
+    "Prescribing framework: micronized progesterone dosing, cycling strategies for intact uterus, and symptom-guided titration with 6\u20138 week reassessment windows.",
+    "Teaches insulin-inflammation pathways: how carbohydrate consumption triggers insulin-mediated inflammation and hormone imbalance, linking grain consumption to phytate-blocking of iron/T3 absorption.",
+    "Includes adjunctive supplement and medication protocols: inositol, berberine/metformin, spironolactone, resveratrol, and curcumin with dose ranges and indications.",
+    "Covers fertility-specific management: micronized progesterone vs. synthetic progestins, AMH testing, cycle-day-specific lab draws, and progesterone's role in ovulation and pregnancy support.",
+    "Provides menopausal and menorrhagia follow-up frameworks: symptom diaries, comprehensive lab panels (CMP, ferritin, homocysteine, uric acid, CRP), and diagnosis coding (low/high estrogen, menopausal symptoms, menorrhagia).",
+    "Teaches evidence-based safety monitoring: annual or per-visit symptom questionnaires, red-flag lab changes requiring evaluation, mammography/ultrasound frequency based on risk, and when to stop hormone 3\u20134 days pre-draw for trough vs. peak levels.",
+    "Addresses progesterone's oppositional role as 'brakes' to estrogen/testosterone 'gas pedals' and its therapeutic uses in irregular cycles, endometrial hyperplasia, hot flashes, anxiety, and infertility support."
+   ],
+   "keywords": [
+    "estrogen dominance",
+    "progesterone prescribing",
+    "bhrt bioidentical hormone replacement",
+    "sex hormone lab interpretation",
+    "fertility menopause management",
+    "insulin resistance inflammation"
+   ]
+  },
+  {
+   "doc": "FMCAdvancedFuncandLabPracticeIntegrationandBusinessConsiderations",
+   "title": "Practice Integration and Business Considerations for Functional Medicine NPs",
+   "pitch": "Learn how to operationalize functional medicine in your practice, manage lab relationships for profitability, and document patient education on non-FDA labs to build a revenue-generating FM business.",
+   "facts": [
+    "Teaches negotiation strategies with lab vendors and pricing models (2-4x markup rule for cash-based labs).",
+    "Covers documentation best practices for functional medicine visits, including patient education on risks/benefits of non-FDA labs.",
+    "Provides vetted lab partner relationships: Access Medical Labs, Rupa Health, and Genova Diagnostics with discounted pricing frameworks.",
+    "Clarifies regulatory requirements (no CLIA waiver needed to draw labs in-practice) to reduce compliance barriers.",
+    "Instructs on establishing your practice as primary care provider or transitioning patients to PCP relationships in a functional medicine model.",
+    "Teaches how to position functional medicine as a high-demand, top-5% competency market differentiator for NPs.",
+    "Covers patient education protocols tailored to both patient and parent (when applicable) for non-standard diagnostic tools.",
+    "Addresses alternative diagnostic and treatment option discussions as documentation and informed consent strategy.",
+    "Teaches lab ordering competency across serum, allergy, and specialized functional panels integrated into practice workflow.",
+    "Explains functional medicine's role as a revenue-generating service line and business model for NP-owned or employed practices."
+   ],
+   "keywords": [
+    "practice integration",
+    "lab partnerships and negotiation",
+    "functional medicine business model",
+    "cash-based pricing",
+    "patient documentation",
+    "compliance and regulations"
+   ]
+  },
+  {
+   "doc": "FMCAdvancedFunctionalandLabTestingCourse",
+   "title": "Advanced Functional and Laboratory Testing Course",
+   "pitch": "Master ordering and interpreting 50+ advanced lab panels to identify root causes of chronic disease and differentiate yourself in functional medicine practice.",
+   "facts": [
+    "Teaches interpretation of organic acid testing, mycotoxin, gut microbiome, IgG food sensitivity, and heavy metal/environmental toxin panels.",
+    "Covers advanced reading of standard labs including CBC, CMP, NMR lipid panel, PSA, omega-3/6 ratios, and lipid particle analysis (Pattern A vs. B LDL).",
+    "Includes deep-dive into oxidized LDL, apolipoprotein B, and cardiovascular risk markers beyond conventional cholesterol interpretation.",
+    "Teaches DUTCH test (hormonal metabolites) interpretation with detailed case studies and clinical application frameworks.",
+    "Over 14 hours of content with dozens of lab panels, covering when to order, what results mean, and how to use findings in patient care.",
+    "Provides comprehensive functional vs. conventional lab reference ranges and initial lab recommendation bundles (iron panel, thyroid full cascade, inflammatory markers, nutrient status).",
+    "Integrates lifestyle and dietary approaches aligned with lab findings (detoxification support, microbiome restoration, anti-inflammatory foods).",
+    "Designed for any NP specialty (HRT, weight loss, primary care) with immediate practice integration regardless of setting or resources.",
+    "Taught by experienced clinician-owners: Justin Allan (FNP, Elite NP), Dr. Brendan Tennefoss (DNP telehealth), Justin Groce (functional clinic owner).",
+    "Positions NPs in top 5% of clinical competence in functional lab interpretation, addressing patient demand for advanced testing knowledge.",
+    "Includes real patient case studies with full lab panels and clinical decision-making workups.",
+    "Assumes foundational functional medicine knowledge but accessible to those with integrative medicine training seeking advanced lab skills."
+   ],
+   "keywords": [
+    "functional lab interpretation",
+    "advanced testing panels",
+    "root cause diagnosis",
+    "NMR lipid analysis",
+    "DUTCH hormonal testing",
+    "microbiome and organic acids"
+   ]
+  },
+  {
+   "doc": "FMCFuncandLabTestingCaseStudy",
+   "title": "Advanced Functional Case Studies and Laboratory Testing Part 1",
+   "pitch": "Learn to interpret comprehensive lab panels through a real 33-year-old case with fatigue, GI dysfunction, and sleep disturbance\u2014mastering the functional medicine differential diagnostic approach NPs need to identify root causes others miss.",
+   "facts": [
+    "Teaches interpretation of complete metabolic panels (CMP), lipid ratios (TC/HDL, LDL/HDL, TG/HDL), and CBC differentials beyond reference ranges to detect early metabolic dysfunction and immune suppression.",
+    "Covers functional vs. conventional lab reading: identifies subtle trends (e.g., rising glucose 4.9\u21925.4 A1C, elevated BUN/creatinine ratio) that suggest dehydration, protein dysmetabolism, or renal changes before clinical disease.",
+    "Trains assessment of hormonal markers including salivary cortisol patterns (4-point diurnal curve), fasting insulin, TSH, testosterone, and vitamin D to map HPA axis dysregulation and adrenal insufficiency.",
+    "Teaches candida immune complex and hs-CRP interpretation to differentiate gut dysbiosis, fungal overgrowth, and low-grade inflammation from autoimmune or systemic inflammatory conditions.",
+    "Addresses nutritional biomarker analysis: albumin/globulin ratios, liver enzyme patterns (ALT/AST/GGT/ALP), and implications for protein status, immune suppression, and potential nutrient deficiencies (B6, zinc, magnesium, CoQ10).",
+    "Presents functional medicine differential diagnoses framework: dysbiosis, leaky gut, mitochondrial dysfunction, adrenal fatigue, histamine intolerance, oxalate sensitivity, hypochlorhydria\u2014each mapped to lab findings and symptom clusters.",
+    "Demonstrates how to correlate conventional labs with dietary history, medication use (sertraline, cyclobenzaprine), supplement protocols, and food sensitivities to build integrated root-cause hypotheses.",
+    "Teaches differential reasoning for complex presentations: distinguishes between primary liver/bone disease, metabolic syndrome, cardiovascular risk, and secondary gut-driven cholesterol dysregulation.",
+    "Covers case-based integration of sleep study findings (mild obstructive sleep apnea, narcolepsy concerns) with lab markers (elevated RBC, hemoglobin) to identify fatigue contributors.",
+    "Trains recognition of iatrogenic patterns: how prior antimicrobials (tetracycline, metronidazole, rifaximin) and restrictive diets (vegan\u2192carnivore\u2192paleo) shape microbiome, nutrient status, and immune tolerance.",
+    "Teaches interpretation of prior negative conventional workups (colonoscopy, standard stool analysis, autoimmune panels) alongside positive functional findings to frame the functional medicine value proposition.",
+    "Includes assessment of supplement tolerance, IgG immunoglobulin reactions, and food-specific immune responses to guide safe therapeutic sequencing in patients with severe intestinal permeability."
+   ],
+   "keywords": [
+    "lab interpretation",
+    "functional differential diagnosis",
+    "gut dysbiosis",
+    "metabolic markers",
+    "adrenal cortisol patterns",
+    "case-based learning"
+   ]
+  },
+  {
+   "doc": "FMCFunctionalVitaminSuppandNutriCaseStudy",
+   "title": "Functional Vitamin, Supplement & Nutrition Case Study Analysis",
+   "pitch": "Learn to interpret comprehensive micronutrient and metabolic lab panels to identify hidden deficiencies and metabolic dysfunction driving fatigue, brain fog, and hormonal symptoms in perimenopausal women.",
+   "facts": [
+    "Teaches interpretation of complete thyroid function panels including TSH, FT4, FT3, and reverse T3 to assess thyroid adequacy beyond standard dosing.",
+    "Covers micronutrient assessment via vitamin D, B12, iron panel, ferritin, and iron saturation to identify deficiencies contributing to fatigue and cognitive dysfunction.",
+    "Addresses electrolyte and protein status interpretation (sodium, potassium, total protein, albumin, globulin) as nutritional markers of systemic health.",
+    "Includes metabolic dysfunction assessment through fasting insulin, glucose, and A1c to identify insulin resistance and prediabetic states.",
+    "Teaches analysis of inflammatory markers (CRP-hs) and metabolic byproducts (homocysteine, uric acid) linked to chronic symptom patterns.",
+    "Covers hormone assessment in perimenopausal transitions, including estradiol, estrone, and testosterone evaluation for symptom causation.",
+    "Uses real-world case studies of symptomatic patients with multiple lab abnormalities to teach pattern recognition across systems.",
+    "Demonstrates how to prioritize supplement and nutritional interventions based on lab findings rather than symptom-driven guessing.",
+    "Teaches CBC (white blood cells, red blood cells) interpretation within functional medicine context.",
+    "Includes liver function enzyme assessment (alkaline phosphatase, AST, ALT) to evaluate nutritional metabolism capacity.",
+    "Addresses the relationship between thyroid medication adequacy, nutrient absorption, and persistent symptoms despite 'normal' TSH.",
+    "Integrates case-based learning where practitioners analyze multi-system dysfunction to recommend targeted supplementation strategies."
+   ],
+   "keywords": [
+    "micronutrient labs",
+    "thyroid interpretation",
+    "case study analysis",
+    "metabolic dysfunction",
+    "perimenopausal health",
+    "supplement protocol"
+   ]
+  },
+  {
+   "doc": "FMCFunctionalVitaminsSuppandNutritionCourse",
+   "title": "Functional Vitamins, Supplements & Nutrition Course",
+   "pitch": "Learn evidence-based supplement and nutritional assessment, interpretation, and recommendation strategies to add a high-margin revenue service that patients actively seek from licensed providers.",
+   "facts": [
+    "Teaches interpretation of functional vs. normal reference ranges for micronutrient lab panels (B vitamins, vitamin D, iron/ferritin, cobalt, magnesium, omega-3) and optimization targets.",
+    "Covers B-complex vitamin strategy including methylcobalamin vs. cyanocobalamin selection, MTHFR/COMT genetic variant implications, dosing timing (morning vs. evening), and lab-draw preparation protocols.",
+    "Instructs on vitamin D assessment, cofactor requirements for absorption (K2, magnesium), and distinction between low/normal/optimal serum levels.",
+    "Teaches comprehensive initial visit framework: 45\u201360 min intake, thyroid questionnaire scoring, targeted review-of-systems (fatigue, sleep, stress, palpitations, joint/muscle pain), and relevant ICD-10 diagnosis coding.",
+    "Provides lab ordering guidance including LabCorp/Quest account setup, electronic vs. hard-copy transmission, and insurance coverage justification using specific diagnosis codes.",
+    "Covers supplement quality assessment: FDA-approved facilities, third-party testing verification, ingredient transparency, avoidance of contaminants and heavy metals, and independent sealing standards.",
+    "Teaches nutrient-specific protocols: omega-3, berberine, curcumin, inositol (B8), biotin (B7) interference with 150+ lab processes, valerian root GABA mechanism, and magnesium application.",
+    "Instructs on clinical monitoring: glucose/insulin optimization, liver enzyme interpretation, protein/albumin assessment, and follow-up timing (Q3\u20134 months for iron/CMP until optimized; Q6\u201312 months for maintenance).",
+    "Teaches patient education essentials: distinguishing serving size from dose, label reading for duplicate ingredients, biotin cessation 5\u20137 days pre-lab draw, and supplement-medication interactions.",
+    "Addresses business model: positioning supplementation as standalone high-margin revenue stream suitable for wellness, anti-aging, HRT, functional medicine, aesthetics, primary care, and psychiatric practices.",
+    "Instructors include Justin Allan (FNP, $0\u2013$70K/month practice model owner) and Jenni Gallagher (APRN, integrative/functional medicine owner), both running multi-service clinics incorporating supplement protocols.",
+    "Teaches metabolic/nutritional condition management: hypothyroidism coding, fatigue workup, morbid obesity, myalgia, anemia, and metabolic disease optimization through integrated nutrient protocols."
+   ],
+   "keywords": [
+    "micronutrient lab interpretation",
+    "B-vitamin dosing and MTHFR",
+    "supplement quality assurance",
+    "functional nutrition assessment",
+    "vitamin D optimization",
+    "clinical monitoring protocols",
+    "practice revenue diversification"
+   ]
+  },
+  {
+   "doc": "FunctionalApproachPsychiatricCaseStudy",
+   "title": "Functional Psychiatry Case Analysis: Pediatric Depression with Family Suicide History",
+   "pitch": "Learn how to apply functional medicine frameworks to complex psychiatric cases involving genetic risk, medication concerns, and nutritional/lifestyle interventions in pediatric patients.",
+   "facts": [
+    "Teaches functional assessment of pediatric depression including sleep disruption, social withdrawal, and academic decline as interconnected functional markers rather than isolated symptoms.",
+    "Covers family history analysis and genetic predisposition screening for mood disorders, suicide risk, and psychiatric inheritance patterns across generations.",
+    "Addresses the functional medicine approach to medication decisions, including understanding conventional drug therapy (SSRIs, hydroxyzine) alongside patient/parent concerns about black box warnings.",
+    "Teaches evaluation of nutritional and supplemental interventions (including trace minerals) as adjunctive or alternative options within a functional framework.",
+    "Includes assessment of sleep architecture dysfunction as a primary driver of mood and behavioral symptoms in children and adolescents.",
+    "Covers trauma and loss as functional stressors with physiological consequences, requiring systems-based intervention strategies.",
+    "Teaches how to elicit comprehensive environmental, lifestyle, and psychosocial data to identify root causes beyond diagnostic labels.",
+    "Demonstrates case-based reasoning for managing psychiatric cases where conventional treatment initiation raises patient/family safety or acceptance barriers.",
+    "Addresses the NP's role in coordinating functional interventions with conventional psychiatric care and PCP referrals."
+   ],
+   "keywords": [
+    "pediatric depression",
+    "family psychiatric history",
+    "functional psychiatry",
+    "medication decision-making",
+    "nutritional psychiatry",
+    "sleep and mood",
+    "suicide risk assessment",
+    "case-based learning"
+   ]
+  },
+  {
+   "doc": "FunctionalApproachtoPsychiatricTreatment",
+   "title": "Functional Approach to Psychiatric Treatment",
+   "pitch": "Master functional medicine frameworks for depression, anxiety, ADHD, dementia, and insomnia\u2014with evidence-based supplement protocols, lab interpretation, and private practice integration strategies.",
+   "facts": [
+    "Teaches functional vs. integrative vs. orthomolecular approaches to mental health, grounded in systems biology and root-cause identification rather than symptom suppression alone.",
+    "Covers diagnostic and lab selection for mood disorders, anxiety, ADHD, PTSD, dementia, and insomnia\u2014with guidance on when functional interventions are clinically safe and appropriate.",
+    "Trains NPs on nutritional and supplement protocols for depression (SAM-e, L-methylfolate, St. John's Wort, folate, lithium) and anxiety (magnesium glycinate, L-theanine, ashwagandha, kava, rhodiola rosea) with dosing frameworks.",
+    "Addresses hormone optimization for psychiatric symptoms\u2014estrogen, progesterone, testosterone, thyroid, DHEA, and vitamin D\u2014with specific guidance for perimenopausal and postmenopausal women.",
+    "Teaches comparative analysis of functional interventions vs. mainstream psychiatry, including standard of care, scientific basis, and when to collaborate with specialty psychiatry for bipolar disorder and suicidality.",
+    "Covers non-pharmacological in-office treatments including transcranial magnetic stimulation (TMS) and ketamine, plus lifestyle interventions (exercise, diet, therapy, sleep optimization).",
+    "Includes specific clinical pearls for complex presentations: treatment-resistant depression, bipolar II (with safety warnings on SAM-e and St. John's Wort), ADHD elimination diets, and dementia lifestyle protocols.",
+    "Teaches risk assessment, informed consent, and patient education strategies for functional medicine\u2014including placebo effects, provider bias, and cost/timeline realistic expectations.",
+    "Provides scope-of-practice guidance aligned with state nursing law, liability coverage, and collaboration thresholds for complex psychiatric conditions.",
+    "Demonstrates business integration strategies for incorporating functional elements into private practice to enhance patient experience and practice profitability.",
+    "Instructor Nicholas Goodwin, DNP, PMHNP brings clinical private practice experience teaching evidence-based and clinical-opinion-based functional psychiatry.",
+    "Covers special populations\u2014young children, pregnant individuals, elderly\u2014where functional approaches offer advantages due to pharmacological side-effect burden."
+   ],
+   "keywords": [
+    "functional psychiatry",
+    "supplement protocols depression anxiety",
+    "hormone optimization mental health",
+    "nutrient-based intervention adhd dementia",
+    "functional medicine private practice",
+    "integrative psychiatric treatment"
+   ]
+  },
+  {
+   "doc": "FunctionalHypothyroidManagement",
+   "title": "Functional Hypothyroid Management",
+   "pitch": "Learn to interpret advanced thyroid panels, dose T3/T4 medications by symptom response rather than TSH, and address root nutritional and inflammatory drivers of thyroid dysfunction\u2014a practice model that differentiates NPs in primary care.",
+   "facts": [
+    "Teaches interpretation of six-marker thyroid panels (TSH, Free T4, Free T3, Reverse T3, TPO, TgAB) and why TSH alone is insufficient for functional management.",
+    "Covers the enzymatic conversion process from T4 to T3, deiodinase enzyme deficiencies, and MTHFR impact on thyroid hormone utilization.",
+    "Teaches clinical decision-making for choosing between levothyroxine (T4-only), liothyronine (T3), and natural desiccated thyroid (NDT) based on lab ratios and patient conversion capacity.",
+    "Provides dosing frameworks for liothyronine titration that mimic circadian thyroid hormone release (divided doses early AM, mid-morning, early afternoon) rather than single daily doses.",
+    "Covers essential pre-treatment screening for ferritin sufficiency (>45 ng/mL) before T3 dosing to prevent cardiac complications.",
+    "Teaches symptom-guided dosing protocols with safety monitoring (heart rate, blood pressure tracking on graphs) and recognition of hyperstimulation signs.",
+    "Addresses nutritional foundations required for thyroid function: iodine, vitamin D, iron, protein, and gut health/absorption capacity.",
+    "Covers lab follow-up timing (8\u201310 week intervals during titration, 6-month intervals long-term) and why in-person visits\u2014not phone management\u2014are required for T3 dosing safety.",
+    "Includes Hashimoto's-specific management: dietary inflammation elimination (grains, seed oils, dairy, oxalates), anti-inflammatory supplementation (vitamin C, black cumin, CoQ10, luteolin, berberine), and antibody monitoring.",
+    "Teaches comprehensive symptom assessment tools to identify thyroid dysfunction (fatigue, brain fog, hair loss, muscle pain, GI issues, mood changes, numbness/paresthesias).",
+    "Introduces adjunctive therapies like low-dose naltrexone (LDN) as non-first-line support after inflammation sources are eliminated.",
+    "Instructor is an APRN with real-world practice experience running a functional health clinic, using referenced protocols from *Recovering with T3*, *Hashimoto's Protocol*, and evidence-based blogs.",
+    "Teaches optimal lab ranges for medicated vs. unmedicated patients and how to interpret FT3/RT3 ratios to assess conversion efficiency and guide medication adjustments."
+   ],
+   "keywords": [
+    "thyroid hormone conversion",
+    "T3 T4 dosing protocols",
+    "reverse T3 management",
+    "functional lab interpretation",
+    "hashimoto's inflammation protocol",
+    "liothyronine titration"
+   ]
+  },
+  {
+   "doc": "FunctionalMedicinePediatricCourse",
+   "title": "Functional Medicine Pediatrics Course",
+   "pitch": "Master systems-based root cause identification and natural healing protocols for pediatric patients to build a high-demand cash-pay pediatric functional medicine practice.",
+   "facts": [
+    "Teaches functional medicine framework applied to pediatric patients: identifying root causes (gut dysfunction, nutrient deficiencies, environmental toxins, emotional triggers) rather than symptom management alone.",
+    "Covers GI disorders comprehensively including constipation, stomachaches, and failure to thrive with both acute relief strategies and long-term gut healing protocols.",
+    "Instructs interpretation of pediatric-specific stool testing (GI MAP, Tiny Health for infants under 2) and microbiome analysis to guide dysbiosis treatment.",
+    "Teaches nutritional deficiency assessment and supplementation for common pediatric conditions: magnesium, B vitamins, lithium, vitamin D in mood and behavior disorders.",
+    "Addresses mood, behavior, anxiety, ADHD, and sleep disturbances through gut-brain connection lens with specific calming herbs, amino acids, and lifestyle interventions.",
+    "Covers food sensitivity elimination (dairy, gluten) and functional food sensitivity testing (KBMO Fit 176) as root cause investigation tools.",
+    "Teaches natural acute symptom relief techniques: castor oil packs, abdominal massage, herbal tinctures, homeopathy, craniosacral therapy referral protocols.",
+    "Includes real pediatric case studies (behavior concerns, failure to thrive, constipation) demonstrating diagnostic workup and 8-week to 2-month outcome tracking.",
+    "Instructors are active practitioners: Dr. Haley Stevens operates her own pediatric functional medicine practice; Justin Allan runs multiple cash-pay practices ($0-$70K monthly revenue model demonstrated).",
+    "Teaches cash-pay practice model positioning\u2014emphasizes high demand for pediatric functional medicine providers and parental demand for alternative treatment options.",
+    "Covers integrated assessment: maternal diet analysis for breastfeeding infants, oral restrictions (tongue/lip tie), environmental toxin exposure, and family history genetics.",
+    "Teaches how to transition pediatric patients off unnecessary medications and diagnostic procedures through root cause restoration and natural healing protocols."
+   ],
+   "keywords": [
+    "pediatric functional medicine",
+    "gut dysbiosis testing protocols",
+    "root cause pediatric disease",
+    "cash-pay pediatric practice",
+    "behavior ADHD mood disorders children",
+    "failure to thrive infant"
+   ]
+  },
+  {
+   "doc": "FunctionalvsNormalLabResults",
+   "title": "Functional vs. Normal Lab Results: Optimized Reference Ranges & Interpretation",
+   "pitch": "Learn to interpret labs using functional medicine reference ranges rather than conventional normals\u2014enabling earlier detection and prevention of chronic disease.",
+   "facts": [
+    "Teaches optimal vitamin D ranges (60\u2013100 ng/mL) versus mainstream reference ranges, with toxicity thresholds and associations to chronic disease.",
+    "Covers iron/ferritin optimization (80\u2013120 range for both values) to assess oxygen transport and storage capacity beyond standard CBC interpretation.",
+    "Addresses thyroid optimization by teaching Free T3 ('gas pedal'), Reverse T3 ('brake pedal'), and TSH limitations\u2014with specific optimal ranges (Free T3: 3.5\u20134 ng/dL; Reverse T3: 10\u201312 ng/dL).",
+    "Teaches glucose and HbA1c interpretation showing diabetes complications begin at 5.3% HbA1c, not the mainstream 7% threshold.",
+    "Includes continuous glucose monitor (CGM) use and fasting glucose targets (ideal in 80s) with OTC options (Stelo, Theia) for patient monitoring.",
+    "Covers fasting insulin optimization interpreted in context of A1C, fasting glucose, triglycerides, and thyroid status.",
+    "Teaches ferritin as inflammation marker when 1.5\u20132\u00d7 higher than iron number; mineral testing via RBC (magnesium, chromium, selenium) not serum.",
+    "Addresses electrolyte optimization: sodium upper end of range (140 mEq/L), potassium upper half (4.0 mEq/L via RBC testing for accuracy).",
+    "Covers liver enzyme interpretation and protein fractions (albumin, globulin) linked to malnutrition and absorption.",
+    "Teaches hormone optimization: DHEAS mid-to-high range, total testosterone mid-range or higher, free testosterone upper 1/3, estradiol near 100 pg/mL, estrone as low as possible.",
+    "Includes inflammation marker panel interpretation (CRP-HS, WBC, homocysteine, uric acid, TPO/TgAb, other autoimmune markers) for root-cause assessment.",
+    "Taught by Jenni Gallagher, APRN, functional medicine practitioner at Joyful Heart Healthcare, grounded in peer-reviewed cardiovascular and metabolic research.",
+    "Emphasizes paradigm shift from symptom management to optimization: more patient time, food/nutrient/lifestyle focus versus prescription-heavy mainstream care."
+   ],
+   "keywords": [
+    "functional lab interpretation",
+    "optimized reference ranges",
+    "thyroid free t3 reverse t3",
+    "glucose cgm fasting insulin",
+    "inflammation markers ferritin",
+    "hormone optimization estradiol"
+   ]
+  },
+  {
+   "doc": "GutHealth",
+   "title": "Gut Health Module",
+   "pitch": "Master functional assessment of the entire digestive tract, identify root causes of GI dysfunction, and apply evidence-based treatment protocols for common conditions like SIBO, dysbiosis, and H. pylori.",
+   "facts": [
+    "Teaches systematic functional anatomy of digestion from mastication through large intestine, linking each stage to common pathologies and absorption barriers.",
+    "Covers Bristol Stool Form Scale assessment and teaches how to screen for chronic constipation using a 15-question symptom checklist to catch subtle dysfunction.",
+    "Trains interpretation of advanced stool testing panels including OCP, C&S, C. difficile, FOBT/FIT, fecal calprotectin, lactoferrin, secretory IgA, and zonulin.",
+    "Addresses 15+ comorbidities connected to digestive health including metabolic syndrome, autoimmune disease, NAFLD, mental health, Parkinson's, and Alzheimer's.",
+    "Teaches diagnosis and treatment protocols for SIBO, candida overgrowth, parasites, H. pylori, and celiac disease with both pharmaceutical and botanical options.",
+    "Covers how medications (PPIs, H2 blockers) impair absorption of sodium, chloride, fats, and vitamin A, and teaches nutrient repletion strategies.",
+    "Teaches differential use of specific probiotic strains (Lactobacillus acidophilus, reuteri, rhamnosus; Bifidobacterium bifidum; Saccharomyces boulardii) for H. pylori eradication.",
+    "Trains interpretation of comprehensive stool labs from major companies (GI Map, Doctor's Data, Genova) using a holistic framework that integrates symptoms, serum labs, medications, and supplements.",
+    "Covers botanical and antimicrobial treatment options for dysbiosis and intestinal permeability including oregano, barberry, goldenseal, garlic, and combination protocols.",
+    "Instructs how to assess for nutrient deficiencies (iron, trace minerals, electrolytes) in celiac disease and design repair protocols including digestive enzyme support.",
+    "Teaches how to avoid over-focusing on test minutiae and instead synthesize overall clinical picture for functional GI assessment and treatment planning.",
+    "Taught by Jenni Gallagher, APRN, Program Director for Elite NP's Functional Medicine Certification with evidence-based references from peer-reviewed nutrition and gastroenterology literature."
+   ],
+   "keywords": [
+    "gut health",
+    "stool analysis",
+    "SIBO",
+    "dysbiosis",
+    "H. pylori",
+    "digestive enzymes",
+    "nutrient absorption",
+    "functional gastroenterology"
+   ]
+  },
+  {
+   "doc": "InfectiousDiseaseIntroFMCertWebinar",
+   "title": "Infectious Disease in Functional Medicine: Lyme, EBV & Long Haul COVID-19",
+   "pitch": "Master pathophysiology, targeted lab interpretation, and foundational management protocols for three major post-infectious conditions your NP patients are asking about.",
+   "facts": [
+    "Teaches pathophysiology of Lyme disease (Borrelia burgdorferi transmission, dissemination), EBV (B-lymphocyte infection, latency), and Long Haul COVID-19 (ACE2 receptor mechanisms, multi-organ impacts across 10 disease categories).",
+    "Covers specific lab panels for diagnosis: Lyme ELISA with reflex antibody testing (includes LabCorp and Quest test codes), EBV serology interpretation (Early Antigen, Viral Capsid Antigen, Nuclear Antigen antibodies), and quantitative/semi-quantitative SARS-CoV2 antibody testing.",
+    "Teaches assessment frameworks including comprehensive review of systems, symptom questionnaires (with access to validated research instruments and instructor-developed tools), cardiac function evaluation, and multi-system screening protocols.",
+    "Addresses differential and supportive lab interpretation: CBC, comprehensive metabolic panel, vitamin D, thyroid panel (TSH, FT4, FT3, reverse T3), homocysteine, iron studies, hormone panels, high-sensitivity CRP, and B12/folate status.",
+    "Covers foundational management approaches including antibiotic trial decision-making for Lyme/Long Haul COVID, immunomodulatory options (IV immunoglobulin, low-dose naltrexone, steroids), and antivirals for herpes reactivation.",
+    "Teaches anti-inflammatory protocol selection with specific supplement categories: Vitamin D with cofactors, omega-3 fish oil, curcumin, quercetin, NAC, turkey tail mushroom, resveratrol, glutathione precursors, CoQ10, and melatonin.",
+    "Includes multi-system treatment considerations for comorbid Lyme and Long Haul COVID, addressing inflammation, immune support, and duration of therapy (2-3 month treatment windows with dosing titration).",
+    "Teaches sleep and recovery support strategies: low-dose naltrexone, progesterone for females, melatonin, GABA, L-theanine, valerian, and lifestyle interventions (walking, blue light management, sleep hygiene).",
+    "Covers treatment decision-making framework using patient symptom reports and lab results to guide protocol selection, with emphasis on globulin optimization (target 2.9-3.3 g/dL) for immune health.",
+    "Includes follow-up and monitoring protocols: repeat labs every 4-6 months, symptom questionnaire reassessment every 6 months, and treatment duration guidance based on clinical response.",
+    "Instructor is Jenni Gallagher, APRN, with clinical practice background in Nebraska, emphasizing evidence-based decision-making with individual patient customization.",
+    "Addresses real-world clinical challenges: half of Lyme patients lack detectable antibodies, 2/3 of patients respond to antibiotic trials, and 70% of chronic Lyme resolve with appropriate therapy."
+   ],
+   "keywords": [
+    "lyme disease diagnosis lab testing",
+    "long haul covid pathophysiology multi-organ",
+    "EBV epstein barr serology interpretation",
+    "functional medicine antibiotic protocols",
+    "anti-inflammatory supplement management",
+    "post-infectious disease follow-up"
+   ]
+  },
+  {
+   "doc": "IronCladWaystoOptimizeEnergy&HairGrowth",
+   "title": "Iron Optimization & Energy/Hair Growth Module",
+   "pitch": "Learn to distinguish iron deficiency from hypothyroidism using functional lab interpretation and evidence-based supplementation strategies to resolve fatigue and hair loss in clinical practice.",
+   "facts": [
+    "Teaches differentiation between low iron, low ferritin, and hypothyroidism\u2014which present with identical symptoms (fatigue, hair loss, brain fog) but require different treatment approaches.",
+    "Covers functional vs. conventional lab ranges for ferritin (optimal 80\u2013100 ng/mL) and explains symptom progression at each deficiency stage (65, 45, 20 ng/mL thresholds).",
+    "Instructs on iron absorption cofactors including vitamin C, vitamin D, trace minerals (copper, zinc, selenium, manganese, molybdenum), and dietary factors that enhance or block iron uptake.",
+    "Teaches oral supplementation protocols including Ferrochel dosing, high-dose vitamin C ratios, and dietary interventions (red meat emphasis, grain elimination rationale).",
+    "Covers IV iron infusion indications, ordering procedures, and facility-specific protocols (Feraheme and Venofer dosing/frequency) when oral supplementation fails or insurance barriers exist.",
+    "Instructs safety protocols including iron toxicity monitoring, contraindication of liothyronine when ferritin <45, and cardiac risk stratification at critical ferritin thresholds.",
+    "Teaches comprehensive follow-up laboratory schedules (Q4 months during treatment, Q6\u201312 months post-discontinuation) and patient education on long-term monitoring without continuous supplementation.",
+    "Covers ICD-10 coding for fatigue, myalgia, metabolic/endocrine/nutritional disorders, and hypothyroidism to support billing and documentation in functional medicine practice.",
+    "Addresses anemia type differentiation (iron deficiency anemia, B12 anemia, anemia of chronic disease) and their distinct lab implications for NP diagnostic decision-making.",
+    "Teaches supplement comparison and bioavailability strategies (liposomal vitamin C absorption rates, Ferrosolve vs. standard formulations) to optimize patient compliance and outcomes.",
+    "Integrates thyroid lab interpretation (Free T3, Reverse T3) alongside iron/ferritin assessment to prevent unsafe prescribing and manage comorbid conditions.",
+    "Instructs root-cause identification strategies for relapsed iron levels (diet changes, menstrual factors, grain reintroduction) to enable sustainable, food-based maintenance therapy."
+   ],
+   "keywords": [
+    "iron deficiency",
+    "ferritin optimization",
+    "functional lab ranges",
+    "supplementation protocols",
+    "iv iron infusions",
+    "thyroid-iron interaction"
+   ]
+  },
+  {
+   "doc": "MensHealthCaseStudy",
+   "title": "Men's Health Case Studies & Testosterone Management",
+   "pitch": "Learn how to recognize symptomatic low testosterone despite lab-normal ranges and build a profitable cash-based men's health clinic model.",
+   "facts": [
+    "Teaches interpretation of testosterone bloodwork and how to identify symptomatic hypogonadism even when lab values fall within 'normal' reference ranges",
+    "Covers cash-based men's health clinic business model and positioning for NPs in mid-market settings",
+    "Includes real patient case studies (e.g., middle-aged business owners with fatigue, motivation loss, and muscle maintenance challenges)",
+    "Addresses the clinical decision-making gap between reference range values and patient symptomatology in hormone assessment",
+    "Demonstrates patient counseling approaches when conventional lab-normal results conflict with patient complaints and functional status"
+   ],
+   "keywords": [
+    "testosterone interpretation",
+    "men's health clinic",
+    "cash-based practice",
+    "hypogonadism symptoms",
+    "case-based learning"
+   ]
+  },
+  {
+   "doc": "MensHealthEssentials",
+   "title": "Men's Health Essentials: Testosterone Therapy & Clinic Success",
+   "pitch": "Master testosterone replacement therapy clinical protocols, men's health condition management, and cash-based practice business models to build a profitable men's health clinic.",
+   "facts": [
+    "Teaches testosterone physiology including HPA/HPG axes, age-related hormonal decline (andropause), and exogenous causes of deficiency.",
+    "Covers interpretation of comprehensive hormone labs: total testosterone, free testosterone, SHBG, estradiol, DHT, LH, and FSH with hCG challenge testing.",
+    "Differentiates three types of hypogonadism using clinical presentation and endocrine laboratory pathways including conversion enzymes.",
+    "Teaches TRT modality comparison and contraindications for testosterone replacement therapy based on current evidence guidelines.",
+    "Addresses 12+ men's health conditions including erectile dysfunction, premature ejaculation, benign prostatic hyperplasia, pelvic floor dysfunction, post-vasectomy pain syndrome, and prostate cancer.",
+    "Instructs on standardized assessment tools (ADAM, AMS, IIEF, EPIC, IPSS questionnaires) for symptom evaluation and patient-reported outcomes monitoring.",
+    "Covers TRT impact on fertility, prostate health, metabolic syndrome, sleep apnea, and mental health using conventional and functional medicine approaches.",
+    "Teaches emerging male sexual health interventions including peptide therapies, SARMs, and platelet-rich plasma (PRP) with legal and safety considerations.",
+    "Instructs pelvic floor dysfunction diagnosis and treatment (physical therapy, self-management, medications) with clinical assessment methods.",
+    "Covers post-vasectomy pain syndrome pathophysiology, conservative management (NSAIDs, gabapentin, physical therapy), and surgical options including vasectomy reversal.",
+    "Teaches the Elite NP Model: six-step framework for building multiple side businesses, operating cash-only practices, and achieving financial freedom and professional autonomy.",
+    "Designed by Brendan Tennefoss (DNP, AGPCNP, ACHPN, AFMC) with emphasis on clinical practice evidence plus expert opinion in men's health.",
+    "Provides integrated treatment planning that combines TRT with lifestyle, nutritional, and functional medicine strategies for optimal outcomes.",
+    "Focuses on cash-practice business models to eliminate insurance regulation, federal oversight, and reduce operational complexity for NP entrepreneurs."
+   ],
+   "keywords": [
+    "testosterone replacement therapy",
+    "men's health clinic business",
+    "erectile dysfunction treatment",
+    "hormonal assessment labs",
+    "pelvic floor dysfunction",
+    "cash practice model"
+   ]
+  },
+  {
+   "doc": "MensHealthPracticeCreationandManagement",
+   "title": "Men's Health Practice Creation and Management",
+   "pitch": "Learn how to launch and operate a profitable, low-overhead men's health clinic from legal structure through marketing, taught by a practicing DNP with a standardized, cash-pay business model.",
+   "facts": [
+    "Covers complete practice startup including LLC formation, EIN registration, state licensing (business license, medication dispensing, CLIA), and banking setup.",
+    "Teaches office infrastructure design for minimal overhead: waiting room, single exam room, receptionist desk, storage, and bathroom on $500\u2013$1,000/month budget.",
+    "Addresses staffing strategy: hiring and compensating one medical assistant or LPN (at ~$20/hour with performance bonuses) to run 90% of clinic operations.",
+    "Includes accounting systems using QuickBooks, single business credit card, single checking account, and point-of-sale options (Square, Stripe, Clover).",
+    "Teaches charting choices from full EMR to low-cost alternatives (SimplePractice, Unicharts) to paper, with rationale for each based on patient volume.",
+    "Covers marketing strategy ($1,000\u2013$2,000/month) with specific placement channels: gyms, golf courses, bars, male-focused publications, billboards, radio, Google Ads, and referral reward systems.",
+    "Teaches documentation standards: SOAP notes, informed consent forms, and risk/benefit discussion protocols for testosterone replacement, growth hormone optimization, erectile dysfunction, and B12 treatments.",
+    "Includes detailed informed consent templates and clinical documentation covering TRT education (cardiovascular risk, fertility, prostate cancer theory), GHO education, and PDE5 inhibitor safety discussions.",
+    "Addresses expense categories: rent, utilities, malpractice/liability insurance (Berxi), supplies (20% overhead), payroll, marketing, website (GoDaddy, Wix), and tax planning.",
+    "Teaches customer service and patient retention: postcard campaigns (holidays, anniversary), referral tracking to measure marketing ROI, and flexible hours (early/late/Saturday availability).",
+    "Covers practice naming strategy with keyword optimization (testosterone, TRT, optimization, elite, champion) to support search visibility and patient understanding.",
+    "Provides context for men's health niche: market size ($2B+ growing to $2.9B by 2032), target demographic (age 30+, disposable income), and advantages (low liability, standardized treatment, part-time compatible)."
+   ],
+   "keywords": [
+    "men's health clinic startup",
+    "practice management",
+    "llc formation",
+    "cash pay business model",
+    "medical marketing",
+    "compliance documentation"
+   ]
+  },
+  {
+   "doc": "MetabolicSyndromeandInsulinResistance",
+   "title": "Metabolic Syndrome and Insulin Resistance: A Functional Perspective",
+   "pitch": "Master functional medicine assessment and reversal protocols for metabolic syndrome and insulin resistance\u2014the root cause of multiple chronic conditions including diabetes, hormone imbalance, and cardiovascular disease.",
+   "facts": [
+    "Teaches ATP III/NCEP diagnostic criteria for metabolic syndrome including waist circumference, triglycerides, HDL, blood pressure, and fasting glucose thresholds.",
+    "Covers interpretation of insulin resistance markers: HOMA-IR (goal <1.0), fasting insulin levels, glucose disposal rate, and postprandial insulin assay as earliest biomarker.",
+    "Instructs on functional medicine connections between insulin dysregulation and hormone imbalances\u2014low testosterone in men, estrogen dominance in women, menopausal drops, and PCOS/PMOS.",
+    "Teaches identification of early insulin resistance through home blood pressure readings, waist circumference trends, and subclinical lab values.",
+    "Covers inflammation markers linked to insulin resistance: high-sensitivity CRP, uric acid, homocysteine, WBC, and ferritin-to-iron ratio interpretation.",
+    "Addresses thyroid-insulin resistance interaction and how to optimize thyroid levels as part of IR reversal strategy.",
+    "Teaches dietary and lifestyle interventions including carbohydrate restriction, elimination of processed foods and seed oils, and protein/nutrient optimization protocols.",
+    "Instructs on reproductive hormone assessment (testosterone, estradiol, progesterone, DHEA) and their relationship to insulin resistance in both men and women.",
+    "Covers symptom recognition including fatigue, brain fog, carb cravings, visceral weight gain, skin tags, acanthosis nigricans, and scalp hair changes.",
+    "Teaches vitamin D, iron, ferritin, and protein optimization as foundational interventions to slow or reverse insulin resistance.",
+    "Includes evidence-based research on ketogenic and low-carb nutrition for metabolic improvement, with remote care and virtual coaching models.",
+    "Instructor: Jenni Gallagher, APRN, with 25+ references to peer-reviewed endocrinology and metabolic medicine literature."
+   ],
+   "keywords": [
+    "insulin resistance",
+    "metabolic syndrome",
+    "hormone imbalance",
+    "HOMA-IR",
+    "carbohydrate restriction",
+    "inflammation markers"
+   ]
+  },
+  {
+   "doc": "PediatricCaseStudy",
+   "title": "Pediatric Functional Medicine Case Studies",
+   "pitch": "Learn how to identify and address root causes of common pediatric conditions\u2014from juvenile arthritis to behavioral concerns\u2014using functional testing and integrative protocols that often resolve symptoms without escalating to specialist medications.",
+   "facts": [
+    "Teaches interpretation of pediatric gut dysbiosis panels (GI Map) including pathogen identification (Giardia, H. pylori, Strep, Klebsiella) and beneficial bacteria assessment in inflammatory conditions.",
+    "Covers functional approaches to juvenile arthritis, chronic constipation, stuttering/expressive language delay, ADHD-like behavioral symptoms, and failure to thrive\u2014five distinct case presentations.",
+    "Demonstrates how to identify hidden drivers: mold exposure and mycotoxin testing in speech/neurological delays, nutritional deficiencies (vitamin D, B vitamins, zinc), and heavy metal accumulation.",
+    "Teaches food sensitivity elimination protocols and their role in pediatric GI and behavioral cases, with maternal dietary modification strategies for breastfeeding mothers.",
+    "Shows integration of environmental medicine (mold remediation, allergen removal) alongside supplementation and dietary intervention in pediatric cases.",
+    "Covers functional assessment of failure to thrive in infants, including tongue-tie revision coordination, gut dysbiosis in breastfed babies, and MCT oil/homeopathic support protocols.",
+    "Demonstrates case-by-case use of functional lab testing (GI Map, heavy metal panels, mycotoxin urine testing, micronutrient analysis) to guide treatment planning.",
+    "Teaches behavioral and lifestyle interventions as root-cause treatments\u2014sugar/processed food elimination, screen time restriction, sleep optimization\u2014rather than medication escalation.",
+    "Includes multi-system case studies showing how one underlying condition (dysbiosis, nutritional deficiency, mold exposure) can manifest across GI, immune, behavioral, and neurological domains in children.",
+    "Shows measurement of clinical success across 2\u20138 week and 2\u20134 month timelines with objective markers: bowel function normalization, developmental milestone recovery, elimination of medication dependency.",
+    "Teaches coordination with conventional pediatrics (speech therapy, rheumatology, neurology referrals) while identifying when functional approaches address root causes those specialists do not assess."
+   ],
+   "keywords": [
+    "pediatric functional medicine",
+    "gut dysbiosis children",
+    "juvenile arthritis",
+    "behavioral ADHD functional",
+    "failure to thrive infant",
+    "mold mycotoxin pediatric"
+   ]
+  },
+  {
+   "doc": "PracticeCreationandManagement (1)",
+   "title": "Practice Creation and Management for Women's Health/HRT Clinics",
+   "pitch": "Learn the complete business infrastructure to launch a profitable women's health practice\u2014from legal structure and licensing to marketing strategies, pricing models, and vendor relationships.",
+   "facts": [
+    "Teaches LLC formation strategy including asset protection, EIN filing, and state licensing requirements (CLIA, dispensing licenses, business licenses).",
+    "Covers telemedicine setup including DEA controlled-substance regulations for testosterone prescribing and remote lab/medication dispensing workflows.",
+    "Instructs on malpractice insurance navigation, naming three specialist carriers (CM&F Group, Presidio, Admiral) and broker recommendations for HRT-specific coverage.",
+    "Details physical office design (exam room, waiting area, storage) and cost minimization, including option to operate entirely telemedicine with under $1,000/month overhead.",
+    "Teaches accounting and bookkeeping systems using single business credit card + checking account model, with POS recommendations (Square, Stripe, Clover, SimpleChart).",
+    "Provides staffing guidance including medical assistant compensation ($20/hour baseline with performance bonuses) and state licensing requirements (MA vs. LPN).",
+    "Instructs on compounding pharmacy integration as revenue model\u2014vendor list (Empower, Tailor Made, Harbor, Olympia, Vertisis), cost structure, and home-delivery workflow setup.",
+    "Covers lab sourcing and markup strategy (100-200% markup on cash labs, in-clinic draws, Access Medical Labs partnerships).",
+    "Teaches two pricing models: membership-based ($100-200/month all-inclusive) and per-service ($50-200/visit with 2-4x medication markup).",
+    "Details revenue projections showing 100 patients = $15,000+/month revenue, 150 patients = $20,000+/month, with profit examples ($6,500/month part-time feasible).",
+    "Provides comprehensive marketing strategy including target-location advertising (salons, gyms, restaurants), digital channels (Google Ads, Facebook, Instagram), SEO/keyword optimization, and referral systems.",
+    "Instructs on informed consent documentation requirements for off-label hormone use and FDA-unapproved BHRT formulations.",
+    "Teaches cash-pay practice positioning with patient communication, super-bill invoicing for insurance reimbursement, and insurance-acceptance decision framework.",
+    "Includes timeline expectations: 3-4 months to autopilot, 6-12 months for significant profit, 12-24 months for sustained profitability."
+   ],
+   "keywords": [
+    "women's health practice business model",
+    "HRT clinic startup",
+    "telemedicine setup NP",
+    "compounding pharmacy workflow",
+    "cash-pay practice",
+    "practice profitability NP"
+   ]
+  },
+  {
+   "doc": "PracticeCreationandManagement",
+   "title": "Practice Creation and Management for Functional Medicine",
+   "pitch": "Learn the complete operational blueprint for launching a functional medicine practice\u2014from legal structure and licensing to marketing strategies and revenue models\u2014enabling NPs to start lean, scale fast, and maximize profitability.",
+   "facts": [
+    "Teaches LLC formation strategy, including Wyoming/Nevada asset protection options and state licensing requirements (CLIA, medication dispensing, NPI registration).",
+    "Covers cash-only vs. insurance-based practice models, including credentialing timelines, billing company selection (5-7% commission benchmarks), and group NPI registration via CAQH.",
+    "Provides telemedicine setup guidance including multi-state licensing requirements, lab order coordination via Access Medical Labs, and direct-to-patient pharmaceutical/nutraceutical shipping protocols.",
+    "Instructs on office configuration (waiting room, exam rooms, procedure-ready setup, IV infusion space) and alternatives: home-based, virtual, co-located (med spas, chiropractic offices), and mobile delivery models.",
+    "Teaches informed consent and documentation standards for off-label treatments, compounded medications, and non-FDA-approved nutraceuticals, including risk/benefit discussion templates.",
+    "Details marketing strategy with budget allocation: social media ($10\u201320/day), Google My Business optimization, Google Ads, referral systems, and traditional advertising ($1,200\u2013$3,700/month total).",
+    "Outlines financial planning: 2\u20133 month breakeven, 6\u201312 month significant profit timeline, 12\u201324 month sustained profitability, and tax optimization (business vehicle, CME deductions, self-directed retirement accounts, CPA selection).",
+    "Covers revenue models including medication/nutraceutical dispensing from practice (vs. external prescriptions), subscription-based patient retention, and passive income stream positioning.",
+    "Provides startup cost framework ($5,000\u2013$10,000 minimum) and ongoing expense management (3-month emergency fund, supply-linked costs, flexible staffing hours).",
+    "Teaches practice naming strategy using functional/integrative/wellness keywords to improve patient understanding and search visibility.",
+    "Addresses liability fundamentals and indemnification clauses for off-label treatment practices.",
+    "Includes integration strategies for adding functional medicine to existing NP practices without major capital investment."
+   ],
+   "keywords": [
+    "practice startup",
+    "llc formation",
+    "cash vs insurance",
+    "telemedicine setup",
+    "marketing strategy",
+    "revenue optimization",
+    "informed consent",
+    "office configuration"
+   ]
+  },
+  {
+   "doc": "PracticeIntegrationandBusinessConsiderations (1)",
+   "title": "Practice Integration and Business Considerations for Functional Medicine NPs",
+   "pitch": "Learn the operational and revenue-building mechanics of running a cash-based functional medicine practice, including supplement sourcing, lab partnerships, compounding pharmacy setup, and compliant documentation strategies.",
+   "facts": [
+    "Teaches setup and management of 503A (patient-specific) and 503B (in-clinic dispensing) compounding pharmacy accounts to maximize practice revenue and patient convenience.",
+    "Covers FullScript and alternative supplement vendor platforms (MeyerDC, Emerson Ecologics, Doctors Supplement Store) for direct-to-patient or bulk in-practice distribution with profit-sharing models.",
+    "Instructs on negotiating discounted lab pricing with Access Medical Labs and specialty gut-health labs (Genova Diagnostics, Diagnostic Solutions, Cyrex, ZRT) and applying standard 2\u20134x markup for cash-based models.",
+    "Provides compliant documentation templates for supplement/vitamin counseling, including discussion of risks, benefits, side effects, long-term implications, and alternative options.",
+    "Teaches end-of-visit documentation language that clarifies voluntary nature of health optimization treatments and non-FDA-approved modalities, protecting the practice legally.",
+    "Explains when to establish the NP's own practice as primary care provider vs. coordinating with existing PCPs, and how to structure patient relationships accordingly.",
+    "Instructs on in-office injection and infusion protocols using 503B compounding pharmacy sourcing (e.g., B12 injections, IV infusions, vitamin therapies).",
+    "Covers the practical workflow for ordering and receiving compounded medications: account setup, Rx submission via portal/fax/phone, and typical 5\u20137 day patient delivery timelines.",
+    "Teaches that lab draw privileges do not require CLIA waivers, reducing barriers to in-office testing and expanding revenue opportunities.",
+    "Emphasizes gut health as a root-cause framework applicable to multiple NP niches (mental health, autoimmune, metabolic, dermatology, cardiovascular) backed by peer-reviewed research.",
+    "Provides a curated preferred vendor list (Empower Pharmacy, South Lake Pharmacy, APS Belmar, Hallandale, Vertisis, Innovation Pharmacy) to accelerate account setup and reduce vetting time."
+   ],
+   "keywords": [
+    "compounding pharmacy setup",
+    "supplement vendor management",
+    "cash-based lab pricing",
+    "practice revenue optimization",
+    "compliant documentation",
+    "gut-health business model"
+   ]
+  },
+  {
+   "doc": "TheFMCPDF",
+   "title": "Foundational Functional Medicine Course",
+   "pitch": "Learn to build a low-overhead, high-ROI functional medicine practice or integrate it into existing care, with business blueprints and clinical foundations tailored for NP scope.",
+   "facts": [
+    "Teaches lab interpretation frameworks for cardiometabolic health, including insulin resistance detection via fasting insulin and triglyceride/HDL ratios.",
+    "Covers ten clinical domains: gut health, immunity, inflammation, sex hormones, cardiometabolic health, environmental toxins, HPA axis dysfunction, integrative mental health, trauma-stress-body connection, and functional medicine foundations.",
+    "Includes micronutrient-based therapeutic education for glucose/insulin regulation and diabetic health across 13+ essential nutrients (vitamin D, chromium, magnesium, CoQ10, alpha-lipoic acid, and others).",
+    "Provides business model comparison: cash-based vs. insurance-based reimbursement strategies, regulatory scope for NPs, liability assessment, and malpractice insurance guidance.",
+    "Teaches revenue projections and financial milestones: 2\u20133 months to automate, 6\u201312 months for significant profit, 12\u201324 months for sustained income, with expansion timelines.",
+    "Delivers practice startup economics: low barrier to entry ($5,000\u2013$10,000 initial investment), minimal overhead, and telemedicine scalability for rural/underserved markets.",
+    "Covers tax optimization strategies: business vehicle deductions, CME travel, self-directed retirement accounts, rental properties, and contractor employment structures.",
+    "Addresses legalities: cash/insurance regulatory considerations, scope creep prevention, asset protection, and specialized malpractice carriers for functional medicine practitioners.",
+    "Teaches complementary service integration (IV infusion, weight loss programs) and recurrent revenue models to generate partially passive monthly income.",
+    "Designed by practitioner-entrepreneur with two men's health practices and medical cannabis clinic generating $0\u2013$70K/month in 2.5 years\u2014real-world case study embedded.",
+    "Includes practice maintenance fundamentals: emergency fund reserves, continuous marketing, patient retention strategies, and lean operational workflows.",
+    "Positions functional medicine within NP scope of practice and emphasizes critical thinking, professional liability, and referral protocols for safe integration."
+   ],
+   "keywords": [
+    "functional medicine practice startup",
+    "cardiometabolic lab interpretation",
+    "cash-based healthcare business model",
+    "micronutrient therapeutics",
+    "np business income scaling",
+    "functional medicine scope"
+   ]
+  },
+  {
+   "doc": "TheFunctionalMedicineAdvancedGutHealthCourse",
+   "title": "Functional Medicine Advanced Gut Health Course",
+   "pitch": "Master diagnostic interpretation, treatment algorithms, and practice integration for gut-driven chronic disease management\u2014the fastest-growing functional medicine revenue driver.",
+   "facts": [
+    "Teaches root-cause identification framework for chronic disease using systems biology approach, moving beyond symptom suppression to underlying drivers.",
+    "Covers stool analysis interpretation, breath testing protocols for SIBO detection, and food sensitivity assessment as core diagnostic tools.",
+    "Provides step-by-step SIBO treatment algorithms distinguishing hydrogen- vs. methane-dominant presentations with pharmaceutical and herbal antibiotic options.",
+    "Instructs on dietary interventions including Low-FODMAP, Specific Carbohydrate Diet (GAPS), elemental diet, and Cedar-Sinai fermentation diet selection by patient phenotype.",
+    "Teaches vagal nerve support, HCL/pancreatic enzyme optimization, and bile function assessment as foundational digestion-restoration techniques.",
+    "Addresses autoimmunity-driven gut pathology including intestinal permeability mechanisms (paracellular vs. transcellular), endotoxemia, and immune tolerance loss with prioritized treatment sequencing.",
+    "Covers yeast/fungal overgrowth symptom recognition and pharmaceutical vs. herbal treatment options (undecylenic acid, antifungals, dietary modification).",
+    "Includes real-world case study demonstrating 5-month stool retest progression, showing how to track healing markers and adjust treatment timing.",
+    "Taught by two credentialed instructors (Justin Allan FNP, CFMP and Keri Douglas FNP, CFMP) both operating multi-practice functional medicine clinics generating $0-$70K+ monthly revenue.",
+    "Designed for immediate practice integration across all NP types with business model aligned to $87B functional medicine industry growth.",
+    "Incorporates Kharrazian assessment framework adapted as 20-category patient self-report tool for symptom-to-test correlation and interconnectedness mapping.",
+    "Emphasizes lifestyle modification integration (sleep, stress, toxin exposure, brain-gut axis activation) alongside pharmaceutical and supplement protocols."
+   ],
+   "keywords": [
+    "sibo diagnosis treatment algorithm",
+    "stool analysis interpretation",
+    "gut microbiome dysbiosis",
+    "functional medicine practice integration",
+    "autoimmune gut permeability",
+    "herbal pharmaceutical antibiotics"
+   ]
+  },
+  {
+   "doc": "TheFunctionalMedicineChronicDiseaseandCardiometabolicCourse",
+   "title": "Functional Medicine Chronic Disease and Cardiometabolic Course",
+   "pitch": "Learn to identify root causes of chronic disease and cardiometabolic dysfunction, then guide patients toward medication reduction and metabolic restoration using functional medicine frameworks.",
+   "facts": [
+    "Teaches functional medicine approach to 12+ chronic conditions: obesity, diabetes, heart disease, fatty liver disease, neuropathy, osteoarthritis, digestive issues, mitochondrial dysfunction, and more.",
+    "Covers advanced cardiometabolic lab interpretation including HS-CRP, LDL particle number, fibrinogen, homocysteine, fasting insulin, A1c, and apoB as cardiovascular risk markers.",
+    "Instructs on the 4 biggest health drivers: diet, sleep, exercise, and toxin exposure/detoxification\u2014with emphasis on lifestyle as 75-80% of metabolic syndrome drivers.",
+    "Teaches nutritional deficiency assessment for the top 4 suboptimal nutrients in US population: magnesium, vitamin D, B12, and iron, including clinical consequences of each.",
+    "Provides real case studies showing patient transformation: tracking inflammation markers, insulin resistance reversal, weight loss, medication reduction, and lifestyle outcome metrics over 6 months.",
+    "Covers gut-brain-metabolic axis: microbiome's role in chronic disease, how sympathetic/parasympathetic nervous system imbalance impairs digestion and drives disease.",
+    "Teaches metabolic dysfunction drivers including SAD (Standard American Diet), high-glycemic foods, inflammatory fats, corticosteroids, statins, and oxidative stress mechanisms.",
+    "Instructs on supplementation strategy for metabolic support: magnesium, vitamin D, chromium, berberine, and CoQ10\u2014with evidence linking each to insulin sensitivity and cardiovascular outcomes.",
+    "Teaches root-cause identification model: shifting from symptom-suppression (medication-first) to system rebalancing and natural restoration of body function.",
+    "Integrates business/practice models: taught by two practicing FNPs\u2014Lisa Vasile (4-clinic owner, 30-year career) and Justin Allan (2 men's health practices + cannabis clinic generating $0-70k/month).",
+    "Covers inflammation, insulin resistance, hormonal imbalance, and mitochondrial health as interconnected drivers across multiple chronic conditions.",
+    "Uses evidence-based YouTube discussions and current research citations (BMJ 2023, eBioMedicine 2023, NCBI) to ground clinical decision-making."
+   ],
+   "keywords": [
+    "cardiometabolic disease management",
+    "chronic disease root cause",
+    "functional medicine labs",
+    "nutritional deficiencies",
+    "insulin resistance",
+    "metabolic syndrome",
+    "patient case studies"
+   ]
+  },
+  {
+   "doc": "TheThyroidOptimizationCourse",
+   "title": "Thyroid Optimization Course",
+   "pitch": "Learn to identify, diagnose, and manage subclinical and suboptimal thyroid dysfunction\u2014a high-margin service that fits seamlessly into wellness, HRT, weight loss, and primary care practices.",
+   "facts": [
+    "Teaches pathophysiology of thyroid disease and how suboptimal thyroid hormone levels drive symptoms across weight, sexual function, cognition, skin/hair quality, and aging.",
+    "Covers differential diagnosis between primary/secondary hypothyroidism, subclinical hypothyroidism, and sub-laboratory hypothyroidism\u2014conditions within NP scope of practice.",
+    "Instructs on comprehensive thyroid lab panel interpretation including TSH, free T3, free T4, thyroid antibodies, and related markers (prolactin, ferritin, vitamin D, androgens).",
+    "Teaches focused history-taking, physical exam, and SOAP documentation standards specific to thyroid hormone replacement therapy (THRT) with informed consent requirements.",
+    "Provides business models for cash-pay vs. insurance billing, including E&M coding, telemedicine integration, compounding pharmacy workflows, and revenue optimization strategies.",
+    "Addresses legal/compliance requirements: malpractice insurance vetting for off-label thyroid optimization, informed consent templates with indemnification clauses, and notification protocols.",
+    "Identifies 9+ practice types suitable for thyroid optimization integration: HRT clinics, weight loss, aesthetics, wellness, anti-aging, functional medicine, sexual medicine, dermatology, and IV infusion.",
+    "Covers recognition of hyperthyroidism and appropriate referral protocols, establishing clear scope boundaries for NP-led management.",
+    "References 40+ peer-reviewed sources on thyroid-hormone interactions with sexual function, metabolism, autoimmunity, vitamin D, androgens, prolactin, and mitochondrial function.",
+    "Taught by Justin Allan (FNP, founder of two men's health and cannabis practices generating $0\u2013$70K/month) and Justin Groce (NP, integrative medicine expert, telemedicine and clinic operator).",
+    "Explains how to launch a cash-based thyroid optimization practice in ~1 month without credentialing or preauthorization delays.",
+    "Demonstrates how dispensing or using compounding pharmacies increases practice revenue compared to standard pharmacy referrals."
+   ],
+   "keywords": [
+    "thyroid optimization",
+    "subclinical hypothyroidism",
+    "thyroid hormone replacement therapy",
+    "functional medicine practice",
+    "cash practice business model",
+    "telemedicine"
+   ]
+  },
+  {
+   "doc": "ThyroidOptimizationCaseStudy",
+   "title": "Thyroid Optimization Case Studies",
+   "pitch": "Learn to interpret thyroid panels beyond TSH alone and recognize subclinical dysfunction in symptomatic patients using a functional medicine framework.",
+   "facts": [
+    "Teaches interpretation of a three-marker thyroid panel (TSH, Free T4, Free T3) to identify dysfunction missed by standard TSH-only screening.",
+    "Covers clinical recognition of subclinical hypothyroidism presentations including fatigue, anhedonia, and impaired recovery in active patients.",
+    "Includes case-based learning on thyroid assessment in young, athletic populations where conventional reference ranges may miss functional deficiency.",
+    "Addresses differential diagnosis considerations including the relationship between thyroid markers and clinical symptom severity.",
+    "Teaches systematic patient intake approaches including detailed symptom history (fatigue patterns, mood changes, physical complaints) relevant to thyroid dysfunction.",
+    "Integrates physical examination skills specific to thyroid assessment (palpation, lymph node evaluation) with lab interpretation.",
+    "Provides case study framework showing how to synthesize patient presentation, vital signs, and multi-marker lab results into clinical decision-making.",
+    "Demonstrates the functional medicine principle of optimizing thyroid function beyond 'normal range' when symptoms persist."
+   ],
+   "keywords": [
+    "thyroid panel interpretation",
+    "free t3 free t4",
+    "subclinical hypothyroidism",
+    "fatigue assessment",
+    "case-based learning"
+   ]
+  },
+  {
+   "doc": "WomensHealthandHRTCaseStudy",
+   "title": "Women's Health and HRT Case Studies",
+   "pitch": "Learn to diagnose and treat complex hormonal imbalances in women by analyzing real case studies that integrate lab interpretation, lifestyle assessment, and bioidentical hormone therapy protocols.",
+   "facts": [
+    "Teaches interpretation of comprehensive hormone panels including testosterone, estradiol, progesterone, and FSH levels to identify imbalances",
+    "Covers assessment of metabolic markers (HbA1C, glucose) alongside hormone status to address pre-diabetes and metabolic dysfunction in menopausal/perimenopausal women",
+    "Demonstrates functional medicine approach to post-hysterectomy management with ovarian preservation and its unique hormonal considerations",
+    "Includes lifestyle factor analysis: sleep architecture, circadian rhythm disruption, stress load, exercise intensity, and nutritional patterns as drivers of hormonal symptoms",
+    "Teaches bidirectional relationship between sleep deprivation, cortisol patterns, and hormone dysregulation with specific intervention strategies",
+    "Addresses restrictive and binge eating patterns as root cause of hormonal dysfunction and provides nutritional rebalancing frameworks",
+    "Covers bioidentical hormone therapy decision-making: when to prescribe testosterone, progesterone, and estrogen optimization strategies",
+    "Teaches estrogen metabolism optimization using dietary and supplement approaches (cruciferous vegetables, DIM) grounded in functional medicine principles",
+    "Integrates comorbidity management: depression, anxiety, autoimmune conditions (psoriatic arthritis), and pre-diabetes alongside HRT planning",
+    "Demonstrates stress management and exercise modification as essential hormonal rebalancing tools, shifting from high-intensity to restorative modalities",
+    "Includes follow-up monitoring frameworks and biomarker tracking to adjust therapy and measure clinical outcomes"
+   ],
+   "keywords": [
+    "bioidentical hormone therapy",
+    "menopause hrt case studies",
+    "hormone panel interpretation",
+    "functional medicine women's health",
+    "metabolic hormonal assessment",
+    "estrogen metabolism optimization"
+   ]
+  },
+  {
+   "doc": "WomensHealthandHRTClinicCourse",
+   "title": "Women's Health and HRT Clinic Course",
+   "pitch": "Learn to build a high-revenue women's health practice by mastering bioidentical HRT, hormone lab interpretation, and treatment of pre/post-menopausal conditions within FNP scope.",
+   "facts": [
+    "Teaches bioidentical HRT (BHRT) versus synthetic hormone replacement, including molecular differences and safety comparisons based on current evidence.",
+    "Covers optimal lab interpretation frameworks for adrenal function using saliva and serum cortisol, DHEA-S, and cortisol/DHEA ratios across diurnal patterns.",
+    "Instructs on adrenal dysfunction staging (hypercortisolism, chronic fatigue, burnout) with corresponding symptoms and clinical decision rules.",
+    "Teaches thyroid lab interpretation including TSH, Free T4, Free T3, Reverse T3, and TPO/thyroglobulin antibodies with optimal versus subclinical/overt ranges.",
+    "Addresses five core clinical conditions: adrenal health, thyroid dysfunction, premenopausal hormonal issues, perimenopausal/postmenopausal issues, and sexual dysfunction.",
+    "Covers sex hormone lab considerations including the limitations of single-point testing due to daily hormonal fluctuation and varying reference ranges across labs.",
+    "Teaches business model fundamentals for women's health niches, including market sizing ($45B market, 5-6% growth), low-overhead practice setup, and cash-versus-insurance models.",
+    "Explains FNP scope of practice for women's health: Pap smears, pelvic exams, IUD/Nexplanon insertion, birth control management, and HRT\u2014all deliverable in primary care.",
+    "Instructor is Danielle Hawkins, MSN, FNP, with direct contact for questions and course feedback.",
+    "Updated Version 2.0 includes simplified treatment protocols, expanded testosterone coverage, updated treatment options, and redesigned clinical components based on practitioner feedback.",
+    "Designed for underserved female population (167+ million US women) with emphasis on premenopausal, perimenopausal, and postmenopausal symptom relief.",
+    "Provides evidence-based and expert-opinion clinical frameworks while acknowledging practice variation and encouraging critical independent thinking by NP providers."
+   ],
+   "keywords": [
+    "bioidentical HRT",
+    "women's health niche practice",
+    "hormone lab interpretation",
+    "adrenal thyroid sex hormones",
+    "menopause management",
+    "FNP scope women's health"
+   ]
+  },
+  {
+   "doc": "eCZj59bFTU649IKf5FCF_thyroid+questionnaire+JHHC",
+   "title": "Thyroid Symptom Assessment & Questionnaire Scoring",
+   "pitch": "Learn to administer and interpret a comprehensive thyroid symptom questionnaire that captures functional thyroid dysfunction across 10+ symptom categories\u2014essential for identifying patients who need thyroid investigation before and during treatment.",
+   "facts": [
+    "Teaches a weighted symptom questionnaire covering general symptoms (cold intolerance, weight gain), mood/libido changes, fatigue and sleep patterns, skin/hair/nail findings, head/neck/throat signs, and extremity symptoms.",
+    "Covers interpretation of symptom severity using a 0-10-5-2 scoring scale that distinguishes between occasional issues, moderate problems, and significant/noticeable complaints.",
+    "Addresses sex-specific thyroid presentations including menstrual cycle mood changes in women and erectile dysfunction patterns in men.",
+    "Includes assessment of classic thyroid signs: outer eyebrow thinning, dry/brittle hair, rough skin, facial puffiness, and hoarseness\u2014visible markers NPs can observe during intake.",
+    "Teaches fatigue pattern recognition relevant to thyroid: afternoon energy crashes, reliance on caffeine, unrefreshing sleep, and post-rest energy loss.",
+    "Covers thyroid-related cognitive symptoms: brain fog, memory struggles, and concentration problems as measurable complaint categories.",
+    "Includes gastrointestinal and neurological symptom assessment (reflux, constipation, muscle cramps, numbness, carpal tunnel) linked to thyroid dysfunction.",
+    "Provides a systematic tallying method for total symptom burden, enabling objective baseline tracking and treatment response monitoring in practice.",
+    "Equips NPs to recognize patterns across multiple organ systems rather than siloed symptoms\u2014foundational to functional medicine thyroid assessment."
+   ],
+   "keywords": [
+    "thyroid symptom questionnaire",
+    "functional thyroid assessment",
+    "symptom scoring",
+    "patient intake tool",
+    "thyroid dysfunction screening",
+    "baseline measurement"
+   ]
+  }
+ ]
+}

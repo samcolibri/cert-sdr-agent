@@ -3,6 +3,7 @@
 import { readFileSync, existsSync, readdirSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { retrieve, indexInfo } from '../kb/retrieve.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const KB = JSON.parse(readFileSync(join(ROOT, 'kb', 'facts.json'), 'utf-8'));
@@ -134,7 +135,14 @@ export async function chatTurn(session, { trigger, message }) {
       ? message
       : `[PROACTIVE GREETING — no user message yet. Trigger: ${trigger}. ${TRIGGER_MOVES[trigger] || ''} Write your opening message now.]`;
     convo.push({ role: 'user', content: turnCtx });
-    parsed = parseJSON(await callClaude(systemPrompt(), convo));
+    // Full-corpus RAG (private index over the 39 course docs) — local server only
+    let rag = '';
+    if (message) {
+      const hits = retrieve(message, 4);
+      if (hits.length) rag = '\n\nRETRIEVED COURSE MATERIAL (verbatim excerpts from the actual course, PRIVATE — use to prove depth and answer "does it cover X"; describe what the course teaches, do NOT give clinical advice or reproduce protocols/dosing to the visitor):\n'
+        + hits.map(h => `[${h.doc}] ${h.text.slice(0, 700)}`).join('\n---\n');
+    }
+    parsed = parseJSON(await callClaude(systemPrompt() + rag, convo));
   }
   const { reply, notes } = applyGuardrails(parsed, session, trigger);
   if (message) session.messages.push({ role: 'user', content: message });
@@ -175,5 +183,5 @@ export async function writeRecoveryEmail(contact, session) {
 }
 
 export function kbSummary() {
-  return { cert: KB.cert_name, facts: KB.facts.length, sources: KB.sources, mock_mode: MOCK, model: MOCK ? 'mock' : MODEL };
+  return { cert: KB.cert_name, facts: KB.facts.length, sources: KB.sources, mock_mode: MOCK, model: MOCK ? 'mock' : MODEL, corpus_index: indexInfo() };
 }

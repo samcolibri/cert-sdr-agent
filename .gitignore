@@ -11,3 +11,5 @@ data/exports/
 data/
 kb/raw/
 kb/transcripts/
+kb/index.json
+kb/corpus/

@@ -45,6 +45,10 @@
   <div class="kv"><b>Decision states</b><div id="states"></div></div>
   <div class="kv"><b>Objections captured (the survey effect)</b><div id="objections"></div></div>
   <div class="kv"><b>Guardrail events</b><div id="guards"></div></div>
+  <div class="kv"><b>Course knowledge (RAG)</b><div id="kbpack"></div></div>
+
+  <h2>Human Expert Assignments — part of the sequence, not a failure mode</h2>
+  <div id="experts"></div>
 
   <h2>Approval Queue — every email is human-approved before sending</h2>
   <div class="btns">
@@ -68,11 +72,22 @@
     $('mode').textContent = 'Brain: ' + s.brain;
     const t = $('tiles'); t.textContent = '';
     t.append(tile(s.sessions, 'sessions'), tile(s.conversations, 'conversations'), tile(s.leads_captured, 'leads captured'),
+             tile(s.expert_assignments || 0, 'expert assignments'),
              tile(s.abandoned, 'abandonments'), tile(s.emails.pending, 'emails pending'), tile(s.emails.approved, 'approved'),
              tile(s.emails.engaged_mode, 'continuation emails'), tile(s.emails.non_engaged_mode, 'invite emails'));
     $('states').textContent = fmt(s.states);
     $('objections').textContent = fmt(s.objections);
     $('guards').textContent = (s.guardrail_events || []).join(' · ') || 'none';
+    $('kbpack').textContent = s.kb_pack || '—';
+    const exd = $('experts'); exd.textContent = '';
+    const exs = B.experts();
+    if (!exs.length) exd.appendChild(el('div', 'sub', 'None yet — ask the advisor for a human, or ask two questions outside the course facts.'));
+    exs.slice().reverse().forEach(x => {
+      const c = el('div', 'email');
+      c.appendChild(el('div', 'subj', '👤 ' + x.email + ' — ' + (x.objection || 'unknown') + ' (' + (x.state || 'unknown') + ')'));
+      c.appendChild(el('div', 'meta', 'Question: ' + (x.question || '(proactive escalation)') + ' · assigned ' + new Date(x.assigned).toLocaleString() + ' · ' + x.status));
+      exd.appendChild(c);
+    });
 
     const qd = $('queue'); qd.textContent = '';
     const q = B.queue();

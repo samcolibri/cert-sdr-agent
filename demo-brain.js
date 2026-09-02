@@ -62,7 +62,30 @@
     'IDENTITY & DISCLOSURE\n- Warm, knowledgeable program advisor. On your FIRST message of a conversation say plainly you are an AI assistant ("' + DISCLOSURE + ', so you can ask me anything without a sales call") and that a human colleague is one message away.\n- Plain, concrete, peer-to-peer with a nurse practitioner. Never salesy.\n\n' +
     'HARD RULES\n- SHORT messages: 2-5 sentences. Never a wall of text.\n- Answer ONLY from the verified facts below. Not covered (state prescribing authority, employer reimbursement, medical advice)? Say so and offer the human colleague. NEVER guess.\n- NEVER invent discounts. You may offer: the module outline, the employer-justification one-pager, Affirm info (illustrative only), a human colleague.\n- OBJECTION-SEQUENCED SELLING: if decision state is clinically_curious and rigor is unresolved, do NOT bring up price/cost/financing yourself (exceptions: she asks price directly — answer in ONE short sentence then return to the open objection; or price_dwell / cart_* triggers where price IS the topic).\n- rigor_resolved becomes true ONLY after she signals the depth answer landed (asks for the outline, says that helps, moves to logistics). Answering once does NOT resolve it.\n- ALWAYS work toward the sale: every message ends with exactly one low-friction next step (outline via email, a specific module walkthrough, the cart link when buying_signal is true). One question max per message.\n\n' +
     'VERIFIED FACTS\n' + FACTS.map(f => '- ' + f).join('\n') + '\n\n' +
-    'OUTPUT — ONLY a JSON object, no fences:\n{"reply":"<message>","state":"<clinically_curious|price_focused|career_pivot|employer_funded|browsing|unknown>","objection":"<rigor|cost|time|value|applicability|none|unknown>","rigor_resolved":<bool>,"buying_signal":<bool>}';
+    'HUMAN EXPERT: a human expert is part of your sequence, not a failure mode. If she asks for a human, or asks something outside the verified facts twice, set escalate=true and tell her a named expert will follow up (do not invent the expert’s name).\n\n' +
+    'OUTPUT — ONLY a JSON object, no fences:\n{"reply":"<message>","state":"<clinically_curious|price_focused|career_pivot|employer_funded|browsing|unknown>","objection":"<rigor|cost|time|value|applicability|none|unknown>","rigor_resolved":<bool>,"buying_signal":<bool>,"escalate":<bool>}';
+
+  /* ---------- RAG: distilled course knowledge pack (public, 34 modules / 387 facts) ---------- */
+  let PACK = null;
+  fetch('kb/kb-pack.json').then(r => r.ok ? r.json() : null).then(p => { PACK = p; }).catch(() => {});
+  const STOPW = { the: 1, a: 1, an: 1, and: 1, or: 1, of: 1, to: 1, in: 1, for: 1, with: 1, on: 1, is: 1, are: 1, it: 1, how: 1, what: 1, does: 1, do: 1, this: 1, that: 1, i: 1, you: 1, my: 1 };
+  const toks = s => (String(s).toLowerCase().match(/[a-z][a-z0-9-]{2,}/g) || []).filter(w => !STOPW[w]);
+  function retrievePack(query, k) {
+    if (!PACK || !PACK.entries) return [];
+    const q = toks(query); if (!q.length) return [];
+    const scored = PACK.entries.map(e => {
+      const hay = (e.title + ' ' + e.pitch + ' ' + e.keywords.join(' ') + ' ' + e.facts.join(' ')).toLowerCase();
+      let s = 0; for (const t of q) { if (e.keywords.join(' ').toLowerCase().includes(t)) s += 3; else if (hay.includes(t)) s += 1; }
+      return [s, e];
+    }).filter(x => x[0] > 0).sort((a, b) => b[0] - a[0]);
+    return scored.slice(0, k || 2).map(x => x[1]);
+  }
+  function ragBlock(query) {
+    const hits = retrievePack(query, 2);
+    if (!hits.length) return '';
+    return '\n\nRETRIEVED COURSE KNOWLEDGE (distilled from the actual course modules — use it to demonstrate depth and answer "does it cover X"; describe what the course TEACHES, never give clinical advice yourself):\n'
+      + hits.map(e => `### ${e.title}\nPitch: ${e.pitch}\n${e.facts.map(f => '- ' + f).join('\n')}`).join('\n');
+  }
 
   /* ---------- browser-side store ---------- */
   const store = {
@@ -162,8 +185,9 @@
         parsed = await r.json(); if (parsed.error) throw new Error(parsed.error);
       } else if (rkey()) {
         const convo = s.messages.map(m => ({ role: m.role, content: m.content }));
+        const rag = message ? ragBlock(message) : '';
         convo.push({ role: 'user', content: message ? String(message).slice(0, 2000) : `[PROACTIVE GREETING — no user message yet. Trigger: ${trigger}. ${TRIGGER_MOVES[trigger] || ''} Write your opening message now.]` });
-        parsed = await requesty(CHAT_MODEL, SYSTEM, convo, 700);
+        parsed = await requesty(CHAT_MODEL, SYSTEM + rag, convo, 700);
       } else {
         await new Promise(r => setTimeout(r, 500 + Math.random() * 600));
         parsed = scripted(s, trigger, message);
@@ -175,8 +199,14 @@
       s.rigor_resolved = parsed.rigor_resolved || s.rigor_resolved;
       const em = (message || '').match(/[\w.+-]+@[\w-]+\.[\w.]+/); if (em) s.email = em[0];
       s.guardrail_notes = (s.guardrail_notes || []).concat(g.notes);
+      if (parsed.escalate && !s.expert_assigned) {
+        s.expert_assigned = new Date().toISOString();
+        const ex = store.get('experts', []);
+        ex.push({ session: s.id, email: s.email || '(not captured yet)', state: s.state, objection: s.objection, question: (message || '').slice(0, 200), assigned: s.expert_assigned, status: 'awaiting_expert' });
+        store.set('experts', ex);
+      }
       saveSession(s);
-      return { reply: g.reply, state: s.state, objection: s.objection, rigor_resolved: s.rigor_resolved, guardrails: g.notes };
+      return { reply: g.reply, state: s.state, objection: s.objection, rigor_resolved: s.rigor_resolved, guardrails: g.notes, escalate: !!parsed.escalate };
     },
     dismiss(sessionId) { const s = getSession(sessionId); s.dismissed = true; saveSession(s); },
     async abandon(sessionId, contact) {
@@ -190,8 +220,9 @@
         const ctx = engaged
           ? `MODE: ENGAGED. Conversation:\n${s.messages.map(m => m.role + ': ' + m.content).join('\n').slice(0, 8000)}\nState: ${s.state}; objection: ${s.objection}.\nWrite the recovery email as a CONTINUATION of this conversation. Subject references her actual objection; body answers it; invite reply.`
           : `MODE: NON-ENGAGED — she never talked to you. Signals: ${JSON.stringify(contact.signals || {}).slice(0, 1000)}.\nWrite a personal email grounded in her signals, INVITING her to interact with the advisor to get answers and complete the purchase. Never a template.`;
+        const ragQ = engaged ? s.messages.map(m => m.content).join(' ').slice(-1200) : JSON.stringify(contact.signals || {});
         const sys = SYSTEM.replace('OUTPUT — ONLY a JSON object, no fences:', 'You are writing a recovery EMAIL (same identity, AI disclosure in the signature, verified facts only, no invented discounts, 120-180 words). OUTPUT — ONLY a JSON object:')
-          .replace(/\{"reply".*$/s, '{"subject":"<subject>","body":"<plain-text email signed as the advisor with AI disclosure>"}');
+          .replace(/\{"reply".*$/s, '{"subject":"<subject>","body":"<plain-text email signed as the advisor with AI disclosure>"}') + ragBlock(ragQ);
         em = await requesty(EMAIL_MODEL, sys, [{ role: 'user', content: ctx }], 1100);
       } else { em = scriptedEmail(contact, s); }
       const entry = { id: 'em_' + Date.now() + '_' + Math.random().toString(36).slice(2, 6), mode: engaged ? 'engaged' : 'non_engaged', contact, subject: em.subject, body: em.body, grounded_in: engaged ? { state: s.state, objection: s.objection, turns: s.messages.length } : { signals: contact.signals || {} }, status: 'pending', created: new Date().toISOString() };
@@ -208,12 +239,15 @@
       return out;
     },
     decide(id, action) { const q = queue(); const e = q.find(x => x.id === id); if (e) { e.status = action; e.decided = new Date().toISOString(); saveQueue(q); } },
+    experts() { return store.get('experts', []); },
     queue, sessions,
     stats() {
       const ss = Object.values(sessions()); const q = queue();
       const count = (arr, key) => arr.reduce((a, s) => { const k = s[key] || 'unknown'; a[k] = (a[k] || 0) + 1; return a; }, {});
       return { brain: this.modeLabel(),
+        kb_pack: PACK ? PACK.entries.length + ' course modules / ' + PACK.entries.reduce((a, e) => a + e.facts.length, 0) + ' facts loaded' : 'not loaded',
         sessions: ss.length, conversations: ss.filter(s => s.messages.length).length, leads_captured: ss.filter(s => s.email).length,
+        expert_assignments: store.get('experts', []).length,
         abandoned: ss.filter(s => s.abandoned).length, dismissed: ss.filter(s => s.dismissed).length,
         states: count(ss, 'state'), objections: count(ss, 'objection'),
         guardrail_events: ss.flatMap(s => s.guardrail_notes || []),
