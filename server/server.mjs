@@ -5,6 +5,7 @@ import { readFileSync, writeFileSync, existsSync, mkdirSync } from 'node:fs';
 import { join, dirname, extname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { chatTurn, writeRecoveryEmail, kbSummary, MOCK } from './advisor.mjs';
+import { publicChat, publicEmail, publicApiReady } from './public_api.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const PORT = process.env.PORT || 4321;
@@ -36,6 +37,11 @@ const server = createServer(async (req, res) => {
   const url = new URL(req.url, `http://localhost:${PORT}`);
   try {
     if (req.method === 'OPTIONS') return json(res, 200, {});
+
+    // ---- worker-compatible public endpoints (served through the demo tunnel) ----
+    if (url.pathname === '/health') return json(res, 200, { ok: true, brain: publicApiReady() ? 'requesty' : 'missing REQUESTY_API_KEY', rag: 'full-corpus' });
+    if (url.pathname === '/chat' && req.method === 'POST') return json(res, 200, await publicChat(await body(req)));
+    if (url.pathname === '/email' && req.method === 'POST') return json(res, 200, await publicEmail(await body(req)));
 
     // ---- API ----
     if (url.pathname === '/api/chat' && req.method === 'POST') {
