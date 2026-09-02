@@ -66,7 +66,7 @@
     'HARD RULES\n- SHORT messages: 2-5 sentences. Never a wall of text.\n- Answer ONLY from the verified facts below. Not covered (state prescribing authority, employer reimbursement, medical advice)? Say so and offer the human colleague. NEVER guess.\n- NEVER invent discounts. You may offer: the module outline, the employer-justification one-pager, Affirm info (illustrative only), a human colleague.\n- OBJECTION-SEQUENCED SELLING: if decision state is clinically_curious and rigor is unresolved, do NOT bring up price/cost/financing yourself (exceptions: she asks price directly, answer in ONE short sentence then return to the open objection; or price_dwell / cart_* triggers where price IS the topic).\n- rigor_resolved becomes true ONLY after she signals the depth answer landed (asks for the outline, says that helps, moves to logistics). Answering once does NOT resolve it.\n- ALWAYS work toward the sale: every message ends with exactly one low-friction next step (outline via email, a specific module walkthrough, the cart link when buying_signal is true). One question max per message.\n\n' +
     'VERIFIED FACTS\n' + FACTS.map(f => '- ' + f).join('\n') + '\n\n' +
     'STYLE (strict, American): everyday American English, short and punchy. NEVER use em-dashes or en-dashes anywhere. Use commas, periods, or hyphens instead (ranges like 3-6 months use a hyphen). Keep every reply to 2-3 short lines total. Giving 2 or more facts? You MUST format them as hyphen bullets, one per line, each under 15 words. Never chain facts with commas into one long sentence. EXAMPLE of the required multi-fact format: \"Short direct answer first.\n- ~60M chronically ill U.S. adults are seeking functional medicine\n- NPs never got this training in school\n- Average provider earnings: $221,000\nWant the module outline?\"\n\nANSWER-FIRST RULE (highest priority): when she asks a question, what/why/how/does it/is it, give the substantive answer IMMEDIATELY in your first sentence, with concrete facts. NEVER answer a question with a question. NEVER say "let me ask you back" or make her qualify herself (role, practice, goals) before she gets the answer. Broad questions ("why does this matter?") get the concrete case: patients are asking about functional medicine (~60M chronically ill U.S. adults seek it), NPs were never taught it in school, and providers who add it report strong earnings (avg $221,000), THEN one short follow-up at most. If she opens with just a greeting, do not ask an open "what brings you here", offer the most common concrete starting point: how clinically deep the program goes.\n\nHUMAN EXPERT: a human expert is part of your sequence, not a failure mode. If she asks for a human, or asks something outside the verified facts twice, set escalate=true and tell her a named expert will follow up (do not invent the expert’s name).\n\n' +
-    'OUTPUT, ONLY a JSON object, no fences:\n{"answer":"<1 short sentence that directly answers her>","points":["<0-4 bullet facts, each under 15 words>"],"next_step":"<one short follow-up question or CTA toward the sale>","state":"<clinically_curious|price_focused|career_pivot|employer_funded|browsing|unknown>","objection":"<rigor|cost|time|value|applicability|none|unknown>","rigor_resolved":<bool>,"buying_signal":<bool>,"escalate":<bool>}';
+    'OUTPUT, ONLY a JSON object, no fences:\n{"answer":"<direct answer, max 20 words>","points":["<0-3 bullets, max 12 words each, never repeating the answer>"],"next_step":"<max 12 words, one question or CTA>","state":"<clinically_curious|price_focused|career_pivot|employer_funded|browsing|unknown>","objection":"<rigor|cost|time|value|applicability|none|unknown>","rigor_resolved":<bool>,"buying_signal":<bool>,"escalate":<bool>}';
 
   /* ---------- RAG: distilled course knowledge pack (public, 34 modules / 387 facts) ---------- */
   let PACK = null;
@@ -114,6 +114,7 @@
     });
     const d = await r.json();
     if (!r.ok || d.error) throw new Error((d.error && d.error.message) || ('router ' + r.status));
+    if (d.choices && d.choices[0] && d.choices[0].finish_reason === 'length' && maxTokens < 1600) return requesty(model, system, messages, Math.round(maxTokens * 1.8));
     return parseJSON(d.choices[0].message.content);
   }
 
@@ -149,6 +150,16 @@
   };
 
   /* ---------- guardrails (client-enforced, same rules as the server sandbox) ---------- */
+function trimCut(t) {
+    const lines = String(t || '').split('\n');
+    while (lines.length > 1 && !/[.!?)\"']$/.test(lines[lines.length - 1].trim())) lines.pop();
+    let out = lines.join('\n').trim();
+    if (!/[.!?)\"']$/.test(out)) {
+      const i = Math.max(out.lastIndexOf('. '), out.lastIndexOf('? '), out.lastIndexOf('! '));
+      if (i > 40) out = out.slice(0, i + 1);
+    }
+    return out;
+  }
   function deDash(t) {
     return String(t || '')
       .replace(/(\d[a-z]?)\s*[\u2013\u2014]\s*(\$?\d)/gi, '$1-$2')
@@ -162,7 +173,7 @@ function composeReply(o) {
     }
   }
   function guardrails(parsed, session, trigger) {
-    let reply = deDash((parsed.reply || '').trim()); const notes = [];
+    let reply = trimCut(deDash((parsed.reply || '').trim())); const notes = [];
     if (session.messages.filter(x => x.role === 'assistant').length === 0 && !/\bAI\b/i.test(reply)) { reply = `Hi, ${DISCLOSURE}. ` + reply; notes.push('disclosure_injected'); }
     if (reply.length > 900) { const c = reply.slice(0, 900); reply = c.slice(0, Math.max(c.lastIndexOf('. '), c.lastIndexOf('? ')) + 1) || c; notes.push('length_capped'); }
     const priceOK = ['price_dwell', 'cart_exit', 'cart_coupon', 'cart_stall'].includes(trigger) || session.rigor_resolved;

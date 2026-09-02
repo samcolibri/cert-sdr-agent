@@ -68,7 +68,7 @@ VERIFIED FACTS
 ${FACTS.map(f => '- ' + f).join('\n')}
 
 OUTPUT — ONLY a JSON object, no fences:
-{"answer":"<1 short sentence that directly answers her>","points":["<0-4 bullet facts, each under 15 words>"],"next_step":"<one short follow-up question or CTA toward the sale>","state":"<clinically_curious|price_focused|career_pivot|employer_funded|browsing|unknown>","objection":"<rigor|cost|time|value|applicability|none|unknown>","rigor_resolved":<bool>,"buying_signal":<bool>,"escalate":<bool>}`;
+{"answer":"<direct answer, max 20 words>","points":["<0-3 bullets, max 12 words each, never repeating the answer>"],"next_step":"<max 12 words, one question or CTA>","state":"<clinically_curious|price_focused|career_pivot|employer_funded|browsing|unknown>","objection":"<rigor|cost|time|value|applicability|none|unknown>","rigor_resolved":<bool>,"buying_signal":<bool>,"escalate":<bool>}`;
 
 const TRIGGER_MOVES = {
   dwell_scroll: '45s+ dwell, 60% scroll, no CTA click. Offer the thing most people at that scroll position ask about: how clinically deep it actually goes.',
@@ -87,12 +87,23 @@ function deDash(t) {
     .replace(/(\d[a-z]?)\s*[\u2013\u2014]\s*(\$?\d)/gi, '$1-$2')
     .replace(/\s*[\u2013\u2014]\s*/g, ', ');
 }
+function trimCut(t) {
+  const lines = String(t || '').split('\n');
+  while (lines.length > 1 && !/[.!?)\"']$/.test(lines[lines.length - 1].trim())) lines.pop();
+  let out = lines.join('\n').trim();
+  if (!/[.!?)\"']$/.test(out)) {
+    const i = Math.max(out.lastIndexOf('. '), out.lastIndexOf('? '), out.lastIndexOf('! '));
+    if (i > 40) out = out.slice(0, i + 1);
+  }
+  return out;
+}
 function composeReply(o) {
   if (!o) return;
   if (o.answer !== undefined || o.points || o.next_step) {
     const pts = Array.isArray(o.points) ? o.points.slice(0, 4).map(p => '- ' + String(p).trim().replace(/^[-•]\s*/, '')) : [];
     o.reply = [String(o.answer || o.reply || '').trim(), ...pts, String(o.next_step || '').trim()].filter(Boolean).join('\n');
   }
+  if (o.reply) o.reply = trimCut(o.reply);
 }
 function parseJSON(text) {
   try { return JSON.parse(text.replace(/^```(json)?|```$/g, '').trim()); }
@@ -107,6 +118,7 @@ async function requesty(model, system, messages, maxTokens) {
   });
   const d = await res.json();
   if (!res.ok || d.error) throw new Error((d.error && d.error.message) || ('router ' + res.status));
+  if (d.choices && d.choices[0] && d.choices[0].finish_reason === 'length' && maxTokens < 1600) return requesty(model, system, messages, Math.round(maxTokens * 1.8));
   return parseJSON(d.choices[0].message.content);
 }
 
