@@ -224,6 +224,13 @@
         const sys = SYSTEM.replace('OUTPUT — ONLY a JSON object, no fences:', 'You are writing a recovery EMAIL (same identity, AI disclosure in the signature, verified facts only, no invented discounts, 120-180 words). OUTPUT — ONLY a JSON object:')
           .replace(/\{"reply".*$/s, '{"subject":"<subject>","body":"<plain-text email signed as the advisor with AI disclosure>"}') + ragBlock(ragQ);
         em = await requesty(EMAIL_MODEL, sys, [{ role: 'user', content: ctx }], 1100);
+        if (!em || !em.body) {                       // model returned an unexpected shape — normalize or fall back
+          const text = em && (em.reply || em.subject) ? (em.reply || '') : '';
+          em = text.length > 80
+            ? { subject: (em && em.subject) || 'About the certification you were considering', body: text }
+            : scriptedEmail(contact, s);
+        }
+        if (!/\bAI\b/i.test(em.body)) em.body += '\n\n— FHEA Program Advisor (AI assistant — a human colleague is one message away)';
       } else { em = scriptedEmail(contact, s); }
       const entry = { id: 'em_' + Date.now() + '_' + Math.random().toString(36).slice(2, 6), mode: engaged ? 'engaged' : 'non_engaged', contact, subject: em.subject, body: em.body, grounded_in: engaged ? { state: s.state, objection: s.objection, turns: s.messages.length } : { signals: contact.signals || {} }, status: 'pending', created: new Date().toISOString() };
       const q = queue(); q.push(entry); saveQueue(q);
