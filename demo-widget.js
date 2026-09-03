@@ -68,7 +68,10 @@
   async function agentTurn(payload) {
     const t = addMsg('…', 'a typing');
     try {
-      const out = await window.AdvisorBrain.chat(sid, payload); t.remove(); if (out.suppressed) return;
+      let out;
+      try { out = await window.AdvisorBrain.chat(sid, payload); }
+      catch (first) { await new Promise(r => setTimeout(r, 4000)); out = await window.AdvisorBrain.chat(sid, payload); }
+      t.remove(); if (out.suppressed) return;
       addMsg(out.reply, 'a');
       if (out.sources && out.sources.length) { const s = el('div', 'adv-src', '\ud83d\udcda from the course: ' + out.sources.join(' \u00b7 ')); msgs.appendChild(s); msgs.scrollTop = msgs.scrollHeight; }
       if (!opened) open();
