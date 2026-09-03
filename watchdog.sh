@@ -18,7 +18,7 @@ while true; do
     sleep 4
   fi
   # tunnel
-  TURL=$(grep -oE "https://[a-z0-9-]+\.trycloudflare\.com" /tmp/cert-sdr-tunnel.log 2>/dev/null | head -1)
+  TURL=$(grep -oE "https://[a-z0-9-]+\.trycloudflare\.com" /tmp/cert-sdr-tunnel.log 2>/dev/null | grep -v "^https://api\." | head -1)
   HOST="${TURL#https://}"
   IP=$(tunnel_ip "$HOST"); IP="${IP:-104.16.231.132}"
   ALIVE=0
@@ -30,14 +30,14 @@ while true; do
     pkill -f "cloudflared tunnel" 2>/dev/null; sleep 2
     nohup /opt/homebrew/opt/cloudflared/bin/cloudflared tunnel --url http://localhost:4321 --protocol http2 > /tmp/cert-sdr-tunnel.log 2>&1 &
     sleep 15
-    TURL=$(grep -oE "https://[a-z0-9-]+\.trycloudflare\.com" /tmp/cert-sdr-tunnel.log 2>/dev/null | head -1)
+    TURL=$(grep -oE "https://[a-z0-9-]+\.trycloudflare\.com" /tmp/cert-sdr-tunnel.log 2>/dev/null | grep -v "^https://api\." | head -1)
   fi
   # pointer file
   if [ -n "$TURL" ]; then
     CUR=$(python3 -c "import json;print(json.load(open('live-config.json')).get('api',''))" 2>/dev/null)
     if [ "$CUR" != "$TURL" ]; then
       printf '{"api":"%s","updated":"%s"}\n' "$TURL" "$(date -u +%FT%TZ)" > live-config.json
-      git add live-config.json && git commit -m "watchdog: tunnel rotated" --quiet && env -u GITHUB_TOKEN git push --quiet
+      git add live-config.json && git commit -m "watchdog: tunnel rotated" --quiet && env -u GITHUB_TOKEN git pull --rebase --quiet && env -u GITHUB_TOKEN git push --quiet
       echo "$(date -u +%FT%TZ) repointed live-config -> $TURL"
     fi
   fi
