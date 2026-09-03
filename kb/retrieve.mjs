@@ -8,7 +8,7 @@ const PATH = join(HERE, 'index.json');
 let IDX = null;
 if (existsSync(PATH)) IDX = JSON.parse(readFileSync(PATH, 'utf-8'));
 
-const STOP = new Set('the a an and or of to in for with on at by is are was be as this that it from can will your you not have has'.split(' '));
+const STOP = new Set('the a an and or of to in for with on at by is are was be as this that it from can will your you not have has what does do how why about course say says teach teaches module cover covers'.split(' '));
 const tokenize = s => (s.toLowerCase().match(/[a-z][a-z0-9-]{2,}/g) || []).filter(w => !STOP.has(w));
 
 export function retrieve(query, k = 4) {

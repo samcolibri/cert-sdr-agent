@@ -123,10 +123,13 @@ async function requesty(model, system, messages, maxTokens) {
 }
 
 function fullRag(query) {
-  const hits = retrieve(String(query || ''), 4);
-  if (!hits.length) return '';
-  return '\n\nRETRIEVED COURSE MATERIAL (excerpts from the actual course, private source):\n'
-    + hits.map(h => `[${h.doc}] ${h.text.slice(0, 700)}`).join('\n---\n');
+  const hits = retrieve(String(query || ''), 5);
+  if (!hits.length) return { block: '', docs: [] };
+  return {
+    block: '\n\nRETRIEVED COURSE MATERIAL (excerpts from the actual course, private source):\n'
+      + hits.map(h => `[${h.doc}] ${h.text.slice(0, 700)}`).join('\n---\n'),
+    docs: [...new Set(hits.map(h => h.doc))].slice(0, 3)
+  };
 }
 
 export const publicApiReady = () => !!requestyKey;
@@ -137,10 +140,11 @@ export async function publicChat(body) {
     ? String(body.message).slice(0, 2000)
     : `[PROACTIVE GREETING — no user message yet. Trigger: ${body.trigger}. ${TRIGGER_MOVES[body.trigger] || ''} Write your opening message now.]`;
   msgs.push({ role: 'user', content: turn });
-  const rag = body.message ? fullRag(body.message) : '';
-  const out = await requesty(CHAT_MODEL, SYSTEM + rag, msgs, 700);
+  const rag = body.message ? fullRag(body.message) : { block: '', docs: [] };
+  const out = await requesty(CHAT_MODEL, SYSTEM + rag.block, msgs, 700);
   composeReply(out);
   if (out && out.reply) out.reply = deDash(out.reply);
+  if (out) out.sources = rag.docs;
   return out;
 }
 
@@ -151,7 +155,7 @@ export async function publicEmail(body) {
     : `MODE: NON-ENGAGED — she never talked to you. Signals: ${JSON.stringify(body.signals || {}).slice(0, 1000)}.\nWrite a personal email grounded in her signals, INVITING her to interact with the advisor to get answers and complete the purchase. Never a template.`;
   const ragQ = engaged ? (body.messages || []).map(m => m.content).join(' ').slice(-1200) : JSON.stringify(body.signals || {});
   const sys = SYSTEM.replace('OUTPUT — ONLY a JSON object, no fences:', 'You are writing a recovery EMAIL (same identity, AI disclosure in the signature, verified facts only, no invented discounts, 120-180 words). OUTPUT — ONLY a JSON object:')
-    .replace(/\{"answer".*$/s, '{"subject":"<subject>","body":"<plain-text email signed as the advisor with AI disclosure>"}') + fullRag(ragQ);
+    .replace(/\{"answer".*$/s, '{"subject":"<subject>","body":"<plain-text email signed as the advisor with AI disclosure>"}') + fullRag(ragQ).block;
   let em = await requesty(EMAIL_MODEL, sys, [{ role: 'user', content: ctx }], 1100);
   if (!em || !em.body) em = { subject: (em && em.subject) || 'About the certification you were considering', body: (em && em.reply) || "Hi — it's the FHEA program advisor (an AI assistant). Your cart is saved; reply with any question and I'll answer it, with a human colleague one message away." };
   if (!/\bAI\b/i.test(em.body)) em.body += '\n\n- FHEA Program Advisor (AI assistant, a human colleague is one message away)';

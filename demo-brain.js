@@ -21,6 +21,7 @@
   let API = localStorage.advisor_api_url || '';
   const apiReady = (async () => {
     if (API) return;
+    if (rkey()) return; // browser-held key = laptop-independent brain; prefer it over the tunnel
     try {
       const r = await fetch('live-config.json?cb=' + Math.random());
       if (r.ok) { const c = await r.json(); if (c && c.api) { API = c.api; return; } }
@@ -220,10 +221,12 @@ function composeReply(o) {
         parsed = await r.json(); if (parsed.error) throw new Error(parsed.error);
       } else if (rkey()) {
         const convo = s.messages.map(m => ({ role: m.role, content: m.content }));
+        const ragHits = message ? retrievePack(message, 2) : [];
         const rag = message ? ragBlock(message) : '';
         convo.push({ role: 'user', content: message ? String(message).slice(0, 2000) : `[PROACTIVE GREETING, no user message yet. Trigger: ${trigger}. ${TRIGGER_MOVES[trigger] || ''} Write your opening message now.]` });
         parsed = await requesty(CHAT_MODEL, SYSTEM + rag, convo, 700);
         composeReply(parsed);
+        if (parsed && ragHits.length) parsed.sources = ragHits.map(e => e.title);
       } else {
         await new Promise(r => setTimeout(r, 500 + Math.random() * 600));
         parsed = scripted(s, trigger, message);
@@ -242,7 +245,7 @@ function composeReply(o) {
         store.set('experts', ex);
       }
       saveSession(s);
-      return { reply: g.reply, state: s.state, objection: s.objection, rigor_resolved: s.rigor_resolved, guardrails: g.notes, escalate: !!parsed.escalate };
+      return { reply: g.reply, state: s.state, objection: s.objection, rigor_resolved: s.rigor_resolved, guardrails: g.notes, escalate: !!parsed.escalate, sources: parsed.sources || [] };
     },
     dismiss(sessionId) { const s = getSession(sessionId); s.dismissed = true; saveSession(s); },
     async abandon(sessionId, contact) {
