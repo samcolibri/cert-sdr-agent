@@ -53,7 +53,8 @@
   const B = window.AdvisorBrain;
   const live = B && B.mode() !== 'scripted';
   const note = el('div', 'adv-note');
-  note.appendChild(el('span', null, 'SANDBOX — ' + (B ? B.modeLabel() : '?') + (FAST > 1 ? ' · fast triggers ×5' : '') + ' · '));
+  const noteLabel = el('span', null, 'SANDBOX — connecting to live brain…' + (FAST > 1 ? ' · fast triggers ×5' : '') + ' · ');
+  note.appendChild(noteLabel);
   const brainLink = el('a', null, live ? 'disconnect brain' : 'connect live brain');
   brainLink.href = 'javascript:void(0)';
   brainLink.onclick = () => { if (live) { if (confirm('Disconnect the live brain from this browser?')) B.disconnect(); } else B.connect(); };
@@ -73,6 +74,7 @@
       catch (first) { await new Promise(r => setTimeout(r, 4000)); out = await window.AdvisorBrain.chat(sid, payload); }
       t.remove(); if (out.suppressed) return;
       addMsg(out.reply, 'a');
+      noteLabel.textContent = 'SANDBOX — LIVE course-trained brain (34 course docs)' + (FAST > 1 ? ' · fast triggers ×5' : '') + ' · ';
       if (out.sources && out.sources.length) { const s = el('div', 'adv-src', '\ud83d\udcda from the course: ' + out.sources.join(' \u00b7 ')); msgs.appendChild(s); msgs.scrollTop = msgs.scrollHeight; }
       if (!opened) open();
     }
