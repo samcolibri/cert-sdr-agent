@@ -17,8 +17,16 @@
   }
   // DEFAULT_API: the deployed Worker (key server-side), set after first CI deploy.
   // When present, EVERY visitor gets the live brain from the plain URL, no key anywhere client-side.
-  const DEFAULT_API = 'https://textiles-synopsis-chicken-eng.trycloudflare.com';
-  const API = localStorage.advisor_api_url || DEFAULT_API;
+  const DEFAULT_API = 'https://gate-heroes-munich-carriers.trycloudflare.com';
+  let API = localStorage.advisor_api_url || '';
+  const apiReady = (async () => {
+    if (API) return;
+    try {
+      const r = await fetch('live-config.json?cb=' + Math.random());
+      if (r.ok) { const c = await r.json(); if (c && c.api) { API = c.api; return; } }
+    } catch (e) {}
+    API = DEFAULT_API;
+  })();
   const rkey = () => localStorage.advisor_rkey || '';
   const REQUESTY_URL = 'https://router.requesty.ai/v1/chat/completions';
   // Cost-tuned: fast/cheap model for chat turns, premium model only for recovery emails.
@@ -198,6 +206,7 @@ function composeReply(o) {
       location.reload();
     },
     async chat(sessionId, { trigger, message }) {
+      await apiReady;
       const s = getSession(sessionId);
       if (s.dismissed && !message) return { suppressed: true };
       if (trigger && !message) {
@@ -237,6 +246,7 @@ function composeReply(o) {
     },
     dismiss(sessionId) { const s = getSession(sessionId); s.dismissed = true; saveSession(s); },
     async abandon(sessionId, contact) {
+      await apiReady;
       const s = getSession(sessionId); s.abandoned = true; if (contact.email) s.email = contact.email; saveSession(s);
       const engaged = s.messages.length > 0;
       let em;
