@@ -55,7 +55,7 @@
   const note = el('div', 'adv-note');
   const noteLabel = el('span', null, 'SANDBOX — connecting to live brain…' + (FAST > 1 ? ' · fast triggers ×5' : '') + ' · ');
   note.appendChild(noteLabel);
-  const brainLink = el('a', null, live ? 'disconnect brain' : 'connect live brain');
+  const brainLink = el('a', null, live ? 'disconnect brain' : 'advanced: use own key');
   brainLink.href = 'javascript:void(0)';
   brainLink.onclick = () => { if (live) { if (confirm('Disconnect the live brain from this browser?')) B.disconnect(); } else B.connect(); };
   note.appendChild(brainLink);
@@ -74,14 +74,17 @@
       catch (first) { await new Promise(r => setTimeout(r, 4000)); out = await window.AdvisorBrain.chat(sid, payload); }
       t.remove(); if (out.suppressed) return;
       addMsg(out.reply, 'a');
-      noteLabel.textContent = 'SANDBOX — LIVE course-trained brain (34 course docs)' + (FAST > 1 ? ' · fast triggers ×5' : '') + ' · ';
+      noteLabel.textContent = 'SANDBOX — LIVE course-trained brain (34 course docs)' + (FAST > 1 ? ' · fast triggers ×5' : '');
+      brainLink.style.display = 'none';
       if (out.sources && out.sources.length) { const s = el('div', 'adv-src', '\ud83d\udcda from the course: ' + out.sources.join(' \u00b7 ')); msgs.appendChild(s); msgs.scrollTop = msgs.scrollHeight; }
       if (!opened) open();
     }
     catch (e) { t.className = 'adv-m adv-warn'; t.textContent = 'Live course-trained brain is unreachable right now (server offline). Please try again later so you see the real thing, not a limited preview.'; }
   }
+  let userEngaged = false;
   async function userSend() {
     const v = input.value.trim(); if (!v) return; input.value = '';
+    userEngaged = true;
     addMsg(v, 'u'); await agentTurn({ message: v });
   }
   send.onclick = userSend; input.addEventListener('keydown', e => { if (e.key === 'Enter') userSend(); });
@@ -96,6 +99,7 @@
 
   function proactive(trigger) {
     if (dismissed) return;
+    if (userEngaged) return;                        // she's already talking; don't interject
     if (PAGE === 'checkout') return;
     if (trigger.indexOf('cart_') === 0) {
       if (sessionStorage['advisor_r_' + trigger]) return;
