@@ -17,7 +17,7 @@
   }
   // DEFAULT_API: the deployed Worker (key server-side), set after first CI deploy.
   // When present, EVERY visitor gets the live brain from the plain URL, no key anywhere client-side.
-  const DEFAULT_API = 'https://somewhat-component-builders-personally.trycloudflare.com';
+  const DEFAULT_API = 'https://textiles-synopsis-chicken-eng.trycloudflare.com';
   const API = localStorage.advisor_api_url || DEFAULT_API;
   const rkey = () => localStorage.advisor_rkey || '';
   const REQUESTY_URL = 'https://router.requesty.ai/v1/chat/completions';

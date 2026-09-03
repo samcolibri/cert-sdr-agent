@@ -20,14 +20,21 @@ echo "server up (full-corpus RAG)"
 # 2. tunnel
 pkill -f "cloudflared tunnel --url http://localhost:4321" 2>/dev/null || true
 sleep 1
-nohup /opt/homebrew/opt/cloudflared/bin/cloudflared tunnel --url http://localhost:4321 > /tmp/cert-sdr-tunnel.log 2>&1 &
+nohup /opt/homebrew/opt/cloudflared/bin/cloudflared tunnel --url http://localhost:4321 --protocol http2 > /tmp/cert-sdr-tunnel.log 2>&1 &
 TURL=""
 for i in $(seq 1 60); do
   TURL=$(grep -oE "https://[a-z0-9-]+\.trycloudflare\.com" /tmp/cert-sdr-tunnel.log | head -1 || true)
   [ -n "$TURL" ] && break; sleep 1
 done
 [ -z "$TURL" ] && { echo 'tunnel failed to start'; exit 1; }
-until curl -s --max-time 10 "$TURL/health" | grep -q '"ok"'; do sleep 3; done
+HOST="${TURL#https://}"
+IP=$(dig +short "$HOST" | head -1)
+OK=0
+for i in $(seq 1 20); do
+  if curl -s --max-time 10 --resolve "$HOST:443:${IP:-104.16.231.132}" "$TURL/health" | grep -q '"ok"'; then OK=1; break; fi
+  sleep 5
+done
+[ "$OK" = "1" ] || { echo "tunnel not healthy after 100s"; exit 1; }
 echo "tunnel up: $TURL"
 
 # 3. repoint the public site if the URL changed
