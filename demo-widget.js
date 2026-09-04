@@ -37,11 +37,11 @@
   const pick = sel => document.querySelector(sel);
   const pickAll = sel => Array.prototype.slice.call(document.querySelectorAll(sel));
 
-  const bubble = el('button', 'adv-bubble', '💬'); bubble.title = 'Ask the program advisor';
+  const bubble = el('button', 'adv-bubble', '💬'); bubble.title = 'Ask Claire, the certification advisor';
   const panel = el('div', 'adv-panel');
   const head = el('div', 'adv-head');
   const headL = el('div');
-  headL.appendChild(el('b', null, 'FHEA Program Advisor'));
+  headL.appendChild(el('b', null, 'Claire — FHEA Certification Advisor'));
   headL.appendChild(el('span', null, 'AI assistant · human colleague one message away'));
   const xBtn = el('button', 'adv-x', '×'); xBtn.setAttribute('aria-label', 'dismiss');
   head.append(headL, xBtn);
