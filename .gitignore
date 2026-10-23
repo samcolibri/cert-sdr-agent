@@ -13,3 +13,6 @@ kb/raw/
 kb/transcripts/
 kb/index.json
 kb/corpus/
+
+# FHEA lifecycle campaign drafts (internal, not for the public repo)
+campaign/

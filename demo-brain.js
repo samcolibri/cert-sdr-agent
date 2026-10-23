@@ -18,14 +18,15 @@
   // DEFAULT_API: the deployed Worker (key server-side), set after first CI deploy.
   // When present, EVERY visitor gets the live brain from the plain URL, no key anywhere client-side.
   const DEFAULT_API = 'https://gate-heroes-munich-carriers.trycloudflare.com';
-  let API = localStorage.advisor_api_url || '';
+  let API = '';
+  // The published server always wins. A browser-held key or a saved API URL is only a fallback:
+  // a stale one stored weeks ago must never override a healthy server.
   const apiReady = (async () => {
     try {
-      if (API) return;
-      if (localStorage.advisor_rkey) return; // browser-held key = laptop-independent brain; prefer it over the tunnel
       const r = await fetch('live-config.json?cb=' + Math.random());
       if (r.ok) { const c = await r.json(); if (c && c.api) { API = c.api; return; } }
     } catch (e) {}
+    API = localStorage.advisor_api_url || '';
     if (!API && !localStorage.advisor_rkey) API = DEFAULT_API;
   })();
   const rkey = () => localStorage.advisor_rkey || '';
