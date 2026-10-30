@@ -41,7 +41,7 @@
   const panel = el('div', 'adv-panel');
   const head = el('div', 'adv-head');
   const headL = el('div');
-  headL.appendChild(el('b', null, 'Claire — FHEA Certification Advisor'));
+  headL.appendChild(el('b', null, 'Claire, FHEA AI Certification Advisor'));
   headL.appendChild(el('span', null, 'AI assistant · human colleague one message away'));
   const xBtn = el('button', 'adv-x', '×'); xBtn.setAttribute('aria-label', 'dismiss');
   head.append(headL, xBtn);
@@ -94,7 +94,10 @@
     scriptedWarned = true;
     msgs.appendChild(el('div', 'adv-m adv-warn', 'Note: the live course-trained brain is OFFLINE. This is a limited scripted preview with landing-page facts only. Course-depth answers require the live brain.'));
   }
-  bubble.onclick = () => { panel.classList.toggle('open'); opened = panel.classList.contains('open'); warnScripted(); };
+  bubble.onclick = () => {
+    panel.classList.toggle('open'); opened = panel.classList.contains('open'); warnScripted();
+    if (opened && !msgs.querySelector('.adv-m.a') && !proactiveDone) { proactiveDone = true; sessionStorage.advisor_proactive = '1'; agentTurn({ trigger: 'opened' }); }
+  };
   xBtn.onclick = () => { panel.classList.remove('open'); dismissed = true; sessionStorage.advisor_dismissed = '1'; window.AdvisorBrain.dismiss(sid); };
 
   function proactive(trigger) {
