@@ -42,7 +42,7 @@
   const head = el('div', 'adv-head');
   const headL = el('div');
   headL.appendChild(el('b', null, 'Claire, FHEA AI Certification Advisor'));
-  headL.appendChild(el('span', null, 'AI assistant · human colleague one message away'));
+  headL.appendChild(el('span', null, 'AI assistant · FHEA team one message away'));
   const xBtn = el('button', 'adv-x', '×'); xBtn.setAttribute('aria-label', 'dismiss');
   head.append(headL, xBtn);
   const msgs = el('div', 'adv-msgs');
