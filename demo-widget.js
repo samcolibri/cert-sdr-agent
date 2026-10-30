@@ -90,9 +90,12 @@
   send.onclick = userSend; input.addEventListener('keydown', e => { if (e.key === 'Enter') userSend(); });
   let scriptedWarned = false;
   function warnScripted() {
-    if (scriptedWarned || !window.AdvisorBrain || window.AdvisorBrain.mode() !== 'scripted') return;
+    if (scriptedWarned || !window.AdvisorBrain) return;
     scriptedWarned = true;
+    // Wait until the published server address has loaded; before that mode() reads 'scripted' and the warning was a false alarm.
+    Promise.resolve(window.AdvisorBrain.ready).then(() => { if (window.AdvisorBrain.mode() !== 'scripted') return;
     msgs.appendChild(el('div', 'adv-m adv-warn', 'Note: the live course-trained brain is OFFLINE. This is a limited scripted preview with landing-page facts only. Course-depth answers require the live brain.'));
+    });
   }
   bubble.onclick = () => {
     panel.classList.toggle('open'); opened = panel.classList.contains('open'); warnScripted();

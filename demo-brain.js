@@ -195,6 +195,10 @@ function composeReply(o) {
   }
   function guardrails(parsed, session, trigger) {
     let reply = trimCut(deDash((parsed.reply || '').trim())); const notes = [];
+    if (session.messages.some(x => x.role === 'assistant')) {
+      const kept = reply.replace(/^(hi|hello|hey)( there)?[!,.]\s*/i, '').split(/(?<=[.!?])\s+/).filter(x => !/I['\u2019]m Claire/i.test(x)).join(' ').trim();
+      if (kept && kept !== reply) { reply = kept; notes.push('reintro_stripped'); }
+    }
     if (session.messages.filter(x => x.role === 'assistant').length === 0 && !/\bAI\b/i.test(reply)) { reply = `Hi, ${DISCLOSURE}. ` + reply; notes.push('disclosure_injected'); }
     if (reply.length > 900) { const c = reply.slice(0, 900); reply = c.slice(0, Math.max(c.lastIndexOf('. '), c.lastIndexOf('? ')) + 1) || c; notes.push('length_capped'); }
     const priceOK = ['price_dwell', 'cart_exit', 'cart_coupon', 'cart_stall'].includes(trigger) || session.rigor_resolved;
@@ -208,6 +212,7 @@ function composeReply(o) {
   /* ---------- public API used by demo-widget.js and the demo pages ---------- */
   window.AdvisorBrain = {
     intro: INTRO,
+    ready: apiReady,
     mode() { return API ? 'worker' : (rkey() ? 'requesty' : 'scripted'); },
     modeLabel() { return API ? 'live via Worker' : (rkey() ? 'LIVE haiku-4-5 chat + sonnet-5 emails via Requesty' : 'scripted demo brain'); },
     connect() {
@@ -231,7 +236,10 @@ function composeReply(o) {
       let parsed;
       const firstTurn = s.messages.filter(x => x.role === 'assistant').length === 0;
       const introTurn = firstTurn && (message ? BARE_GREETING.test(message) : trigger && trigger.indexOf('cart_') !== 0);
-      if (introTurn) {
+      const repeatGreeting = !firstTurn && message && BARE_GREETING.test(message);
+      if (repeatGreeting) {
+        parsed = { reply: 'Hi again! What would you like to know about the Functional Medicine Certification?', state: s.state, objection: s.objection, rigor_resolved: s.rigor_resolved };
+      } else if (introTurn) {
         parsed = { reply: INTRO, state: s.state, objection: s.objection, rigor_resolved: s.rigor_resolved };
       } else if (API) {
         const r = await fetch(API + '/chat', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ messages: s.messages, trigger, message, context: pageContext(s), state: s.state, rigor_resolved: s.rigor_resolved, rag: message ? ragBlock(message) : '' }) });
