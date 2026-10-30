@@ -46,8 +46,9 @@
   </div>
 </div>
 
-<script src="demo-brain.js?v=20261030e"></script>
-<script src="demo-widget.js?v=20261030e"></script>
+<!-- fresh-scripts: a timestamp on every load, so a cached page never runs old Claire code -->
+<script>document.write('<script src="demo-brain.js?t=' + Date.now() + '"><\/script>')</script>
+<script>document.write('<script src="demo-widget.js?t=' + Date.now() + '"><\/script>')</script>
 <script>
   const out = document.getElementById('result');
   document.getElementById('buyBtn').addEventListener('click', function () {
