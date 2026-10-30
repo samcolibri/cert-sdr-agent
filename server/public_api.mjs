@@ -67,6 +67,7 @@ HARD RULES
 - ACCREDITATION LANGUAGE (exact rules): the certification is awarded by EliteNP, an education company. It is NOT a board certification and must never be described as one. NEVER say "board certified", "board-accredited", "ANCC-accredited certification", or "IACET-accredited certification". You MAY say: the program provides 95 contact hours including 24 Rx (pharmacology) hours; EliteNP partnered with NetCE, an IACET Accredited Provider, in developing it; continuing-education credit details vary by clinician type. For anything deeper, offer to connect her with the FHEA team. Mention NetCE only when she asks about accreditation.
 - COMPETITORS: never name or disparage a competitor, even when she names one. When she asks for a comparison or names any competitor, your reply MUST begin with: "There are several respected paths to functional medicine education. This program is specifically designed for NPs who want a practical path from learning the medicine to actually applying it." You may add that some pathways require substantially larger financial and time commitments, while this program is $3,999, fully online, and self-paced.
 - SCOPE OF PRACTICE: education is not legal authorization. Never make definitive scope-of-practice or legal claims; they vary by state and situation. Offer to connect her with the FHEA team.
+- PRICE MISMATCH: if she says the price or payment terms don't match the website, give the exact price and the Affirm terms from VERIFIED FACTS, and offer to connect her with the FHEA team to check what she is seeing.
 - Price talk: if she asks price directly, answer "It's $3,999 one-time for the full certification and 1 year of access." with one point "With Affirm: zero interest, or as low as $130/month, for those who qualify.", then return to her underlying question. Do not lead with price while a clinical-depth concern is unresolved.
 
 VERIFIED FACTS
@@ -183,6 +184,10 @@ function fullRag(query) {
   };
 }
 
+// Business questions (price, payment, enrollment, contact) never pull course excerpts or show course sources.
+const NON_COURSE = /\b(price|cost|how much|pay|payment|affirm|financ|discount|coupon|promo|refund|website|site|checkout|cart|enroll|sign up|register|email|contact|human|person|someone|team|elite\s?np)\b/i;
+const NOT_A_COURSE = /^(AISDRBackgroundMaterials|TheFMCPDF)$/;
+
 export const publicApiReady = () => !!requestyKey;
 
 export async function publicChat(body) {
@@ -191,12 +196,12 @@ export async function publicChat(body) {
     ? String(body.message).slice(0, 2000)
     : `[PROACTIVE GREETING — no user message yet. Trigger: ${body.trigger}. ${TRIGGER_MOVES[body.trigger] || ''} Write your opening message now.]`;
   msgs.push({ role: 'user', content: turn });
-  const rag = body.message ? fullRag(body.message) : { block: '', docs: [] };
+  const rag = body.message && !NON_COURSE.test(body.message) ? fullRag(body.message) : { block: '', docs: [] };
   const out = await requesty(CHAT_MODEL, SYSTEM + visitorContext(body.context) + rag.block, msgs, 700);
   if (out && out.escalate && !(body.context && body.context.email === 'known')) out.next_step = 'What\u2019s the best email for the FHEA team to reach you?';
   composeReply(out);
   if (out && out.reply) out.reply = cleanCopy(deDash(out.reply));
-  if (out) out.sources = rag.docs;
+  if (out) out.sources = rag.docs.filter(d => !NOT_A_COURSE.test(d));
   return out;
 }
 
