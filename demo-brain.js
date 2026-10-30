@@ -236,9 +236,11 @@ function composeReply(o) {
       let parsed;
       const firstTurn = s.messages.filter(x => x.role === 'assistant').length === 0;
       const introTurn = firstTurn && (message ? BARE_GREETING.test(message) : trigger && trigger.indexOf('cart_') !== 0);
-      const repeatGreeting = !firstTurn && message && BARE_GREETING.test(message);
+      // A canned nudge only the first time she just says hi again; after that the model answers so it never loops.
+      const repeatGreeting = !firstTurn && message && BARE_GREETING.test(message)
+        && !s.messages.some(x => x.role === 'user' && BARE_GREETING.test(x.content));
       if (repeatGreeting) {
-        parsed = { reply: 'Hi again! What would you like to know about the Functional Medicine Certification?', state: s.state, objection: s.objection, rigor_resolved: s.rigor_resolved };
+        parsed = { reply: 'Hi! Happy to help. Many NPs start with how clinically deep the program goes, what\u2019s included, or how long it takes to finish. What\u2019s on your mind?', state: s.state, objection: s.objection, rigor_resolved: s.rigor_resolved };
       } else if (introTurn) {
         parsed = { reply: INTRO, state: s.state, objection: s.objection, rigor_resolved: s.rigor_resolved };
       } else if (API) {
