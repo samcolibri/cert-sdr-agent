@@ -207,8 +207,12 @@ function composeReply(o) {
   function guardrails(parsed, session, trigger) {
     let reply = trimCut(cleanCopy(deDash((parsed.reply || '').trim()))); const notes = [];
     if (session.messages.some(x => x.role === 'assistant')) {
-      const kept = reply.replace(/^(hi|hello|hey)( there)?[!,.]\s*/i, '').split(/(?<=[.!?])\s+/).filter(x => !/I['\u2019]m Claire/i.test(x)).join(' ').trim();
-      if (kept && kept !== reply) { reply = kept; notes.push('reintro_stripped'); }
+      // Drop a repeated self-intro sentence, line by line so bullets keep their line breaks.
+      if (/I['\u2019]m Claire/i.test(reply)) {
+        const kept = reply.replace(/^(hi|hello|hey)( there)?[!,.]\s*/i, '').split('\n')
+          .map(l => l.split(/(?<=[.!?])\s+/).filter(x => !/I['\u2019]m Claire/i.test(x)).join(' ')).filter(l => l.trim()).join('\n').trim();
+        if (kept) { reply = kept; notes.push('reintro_stripped'); }
+      }
     }
     if (session.messages.filter(x => x.role === 'assistant').length === 0 && !/\bAI\b/i.test(reply)) { reply = `Hi, ${DISCLOSURE}. ` + reply; notes.push('disclosure_injected'); }
     if (reply.length > 900) { const c = reply.slice(0, 900); reply = c.slice(0, Math.max(c.lastIndexOf('. '), c.lastIndexOf('? ')) + 1) || c; notes.push('length_capped'); }
